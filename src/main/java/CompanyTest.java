@@ -1,4 +1,5 @@
 import config.CompanyConfig;
+
 import domain.Address;
 import domain.Employee;
 import org.junit.Before;
@@ -9,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import repository.AddressRepository;
 import repository.EmployeeRepository;
-
 import javax.inject.Inject;
 import java.util.List;
 
@@ -32,12 +32,12 @@ public class CompanyTest {
     @Before
     public void setUp() throws Exception {
 
-        //Employee emp = new Employee("Cristian", "D.", 1500);
-       // Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
-        //empRepo.save(emp);
-       // addressRepo.save(adress);
-       // Address address = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
-       // addressRepo.save(address);
+        /*Employee emp = new Employee("Bogdan", "I.", 1500);
+        empRepo.save(emp);
+        Employee emp2 = new Employee("Alex", "C.", 1500);
+        empRepo.save(emp2);
+        Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
+        addressRepo.save(adress);*/
     }
 
     @Test
@@ -57,18 +57,16 @@ public class CompanyTest {
     }
 
     @Test
-    public void testFindAllAddressesByStreet() {
-        List<Address> address = addressRepo.findByStreet("Florilor");
-        for(Address a : address) {
-            assertEquals("Wrong street", a.getStreet(), "Florilor");
+    public void testFindAllEmployeesBySalary() {
+        List<Employee> employeeList = empRepo.findAllEmployeesBySalary(1500);
+        for(Employee employee : employeeList) {
+            System.out.println("Employee name: " + employee.getFirstname());
         }
     }
 
     @Test
-    public void testFindAllByCountry(){
-        List<Address> address = addressRepo.findAllByCountry("Romania");
-        for(Address a : address) {
-            assertEquals("Wrong country", a.getCountry(), "Romania");
-        }
+    public void testFindEmployeeByLastnameWithQuery() {
+        Employee employee = empRepo.findEmployeeByLastname("D.");
+        assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
     }
 }
