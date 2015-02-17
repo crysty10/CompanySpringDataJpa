@@ -17,6 +17,7 @@ public interface AddressRepository extends JpaRepository<Address, Long>  {
 
     Address findBylocality(String locality);
     List<Address> findByStreet(String street);
+    Address findByApartment(int apartment);
 
     @Query("SELECT A FROM Address A WHERE A.country = :country")
     List<Address> findAllByCountry(@Param("country") String country);

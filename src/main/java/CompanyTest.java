@@ -1,5 +1,4 @@
 import config.CompanyConfig;
-
 import domain.Address;
 import domain.Employee;
 import org.junit.Before;
@@ -10,6 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import repository.AddressRepository;
 import repository.EmployeeRepository;
+
 import javax.inject.Inject;
 import java.util.List;
 
@@ -57,6 +57,10 @@ public class CompanyTest {
     }
 
     @Test
+    public void testFindAllAddressesByStreet() {
+        List<Address> address = addressRepo.findByStreet("Florilor");
+        for(Address a : address) {
+            assertEquals("Wrong street", a.getStreet(), "Florilor");
     public void testFindEmployeeByLastnameWithQuery() {
         Employee employee = empRepo.findEmployeeByLastname("D.");
         assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
@@ -68,5 +72,21 @@ public class CompanyTest {
         for(Employee employee : employeeList) {
             System.out.println("Employee name: " + employee.getFirstname());
         }
+    }
+
+    @Test
+    public void testFindAllByCountry(){
+        List<Address> address = addressRepo.findAllByCountry("Romania");
+        for(Address a : address) {
+            assertEquals("Wrong country", a.getCountry(), "Romania");
+        }
+    }
+
+    @Test
+    public void testFindAddressByApartment() {
+
+        Address adress = addressRepo.findByApartment(45);
+        assertEquals("Wrong apartment", adress.getApartment(), 45);
+        //addressRepo.delete(adress);
     }
 }
