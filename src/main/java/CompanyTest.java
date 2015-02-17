@@ -1,6 +1,6 @@
 import config.CompanyConfig;
 
-import domain.Adress;
+import domain.Address;
 import domain.Employee;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import repository.AdressRepository;
+import repository.AddressRepository;
 import repository.EmployeeRepository;
 import javax.inject.Inject;
 import static org.junit.Assert.assertEquals;
@@ -24,25 +24,31 @@ public class CompanyTest {
     @Inject
     private EmployeeRepository empRepo;
 
-    //@Inject
-    //private AdressRepository adressRepo;
+    @Inject
+    private AddressRepository addressRepo;
 
     @Before
     public void setUp() throws Exception {
 
         //Employee emp = new Employee("Cristian", "D.", 1500);
-        //Adress adress = new Adress("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
+        Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
         //empRepo.save(emp);
-        //adressRepo.save(adress);
+        addressRepo.save(adress);
     }
 
     @Test
-    public void testConnectionWithDatabase() {
-        Employee employee = empRepo.findByFirstname("Cristian");
-        //Adress adress = adressRepo.findBylocality("Turnu-Magurele");
+    public void testFindEmployeeBySomething() {
 
+        Employee employee = empRepo.findEmployeeByFirstname("Cristian");
         assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
-        //assertEquals("Wrong locality", adress.getLocality(), "Turnu-Magurele");
         //empRepo.delete(employee);
+    }
+
+    @Test
+    public void testFindAddressBySomething() {
+
+        Address adress = addressRepo.findBylocality("Turnu-Magurele");
+        assertEquals("Wrong locality", adress.getLocality(), "Turnu-Magurele");
+        //addressRepo.delete(adress);
     }
 }
