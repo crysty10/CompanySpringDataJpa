@@ -68,17 +68,17 @@ public class CompanyConfig {
         emfb.setDataSource(dataSource());
         emfb.setJpaVendorAdapter(jpaVendorAdapter());
         //looking for classes with @Entity
-        emfb.setPackagesToScan("jpaExample.domain");
+        emfb.setPackagesToScan("domain");
 
         return emfb;
     }
 
-    /*@Bean
-    public PlatformTransactionManager transactionManager() {
-        return new JpaTransactionManager();
-    }*/
-
     @Bean
+    public PlatformTransactionManager transactionManager() {
+        return new JpaTransactionManager(entityManagerFactory().getObject());
+    }
+
+    /*@Bean
     public PersistenceAnnotationBeanPostProcessor paPostProcessor() {
         return new PersistenceAnnotationBeanPostProcessor();
     }
@@ -91,5 +91,5 @@ public class CompanyConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
-    }
+    }*/
 }
