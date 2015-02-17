@@ -6,11 +6,8 @@ CREATE TABLE Employee (
   salary DOUBLE PRECISION NOT NULL,
   PRIMARY KEY (ID)
 );
-<<<<<<< HEAD
 
 DROP TABLE Employee;
-=======
-<<<<<<< HEAD
 
 CREATE TABLE Adress(
 
@@ -22,6 +19,3 @@ CREATE TABLE Adress(
     apartment INT,
     locality TEXT NOT NULL,
     country TEXT NOT NULL);
-=======
->>>>>>> fa386be12fbba9ec92f32e8b404bb2159bbf9633
->>>>>>> 09abe328e0023927f26de8e8f8585b0c4c18006d

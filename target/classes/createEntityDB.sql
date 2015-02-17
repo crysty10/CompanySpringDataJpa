@@ -1,12 +1,13 @@
 /*Create table Employee*/
 CREATE TABLE Employee (
-  employee_id SERIAL NOT NULL,
+  ID SERIAL NOT NULL,
   firstname VARCHAR(30) NOT NULL,
   lastname VARCHAR(30) NOT NULL,
   salary DOUBLE PRECISION NOT NULL,
-  PRIMARY KEY (employee_id)
+  PRIMARY KEY (ID)
 );
-<<<<<<< HEAD
+
+DROP TABLE Employee;
 
 CREATE TABLE Adress(
 
@@ -18,5 +19,3 @@ CREATE TABLE Adress(
     apartment INT,
     locality TEXT NOT NULL,
     country TEXT NOT NULL);
-=======
->>>>>>> fa386be12fbba9ec92f32e8b404bb2159bbf9633

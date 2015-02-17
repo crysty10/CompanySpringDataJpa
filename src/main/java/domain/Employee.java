@@ -1,18 +1,18 @@
 package domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
  */
 @Entity
+@Table(name = "Employee")
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "emp_seq")
+    @SequenceGenerator(name = "emp_seq", sequenceName = "employee_id_seq")
+    @Column(name = "id")
     private long employee_id;
     private String firstname;
     private String lastname;
