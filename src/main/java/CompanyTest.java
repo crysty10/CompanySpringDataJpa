@@ -71,4 +71,12 @@ public class CompanyTest {
             assertEquals("Wrong country", a.getCountry(), "Romania");
         }
     }
+
+    @Test
+    public void testFindAddressByApartment() {
+
+        Address adress = addressRepo.findByApartment(45);
+        assertEquals("Wrong apartment", adress.getApartment(), 45);
+        //addressRepo.delete(adress);
+    }
 }
