@@ -1,5 +1,6 @@
 import config.CompanyConfig;
 import domain.Address;
+import domain.Car;
 import domain.Employee;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import repository.AddressRepository;
+import repository.CarRepository;
 import repository.EmployeeRepository;
 
 import javax.inject.Inject;
@@ -29,6 +31,9 @@ public class CompanyTest {
     @Inject
     private AddressRepository addressRepo;
 
+    @Inject
+    private CarRepository carRepo;
+
     @Before
     public void setUp() throws Exception {
 
@@ -38,6 +43,10 @@ public class CompanyTest {
        // addressRepo.save(adress);
        // Address address = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
        // addressRepo.save(address);
+        Car car = new Car("BMW", "X5");
+        Car car1 = new Car("Audi", "R8");
+        carRepo.save(car);
+        carRepo.save(car1);
     }
 
     @Test
@@ -80,5 +89,12 @@ public class CompanyTest {
         Address adress = addressRepo.findByApartment(45);
         assertEquals("Wrong apartment", adress.getApartment(), 45);
         //addressRepo.delete(adress);
+    }
+
+    @Test
+    public void testFindByCarName() {
+
+        Car car = carRepo.findByCarName("BMW");
+        assertEquals("Wrong CarName", car.getCar_name(), "BMW");
     }
 }
