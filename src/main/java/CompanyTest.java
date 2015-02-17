@@ -131,6 +131,6 @@ public class CompanyTest {
     public void testFindByCarName() {
 
         Car car = carRepo.findByCarName("BMW");
-        assertEquals("Wrong CarName", car.getCar_name(), "BMW");
+        assertEquals("Wrong CarName", car.getCarName(), "BMW");
     }
 }

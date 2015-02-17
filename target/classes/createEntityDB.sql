@@ -20,15 +20,16 @@ CREATE TABLE Address(
   PRIMARY KEY (ID)
 );
 
-/*Create table Department*/
-CREATE TABLE Department (
-  ID SERIAL NOT NULL,
-  deptname VARCHAR(30) NOT NULL,
-  PRIMARY KEY (ID)
-));
-
 CREATE TABLE Car(
   ID SERIAL NOT NULL,
   car_name TEXT NOT NULL,
   car_model CHAR(5) NOT NULL,
   PRIMARY KEY (ID));
+);
+
+/*Create table Department*/
+CREATE TABLE Department (
+  ID SERIAL NOT NULL,
+  deptname VARCHAR(30) NOT NULL,
+  PRIMARY KEY (ID)
+)

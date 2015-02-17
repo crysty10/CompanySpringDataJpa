@@ -16,17 +16,18 @@ public class Car {
     @Column(name = "id", nullable = false)
     private int car_id;
 
-    @Column(nullable = false)
-    private String car_name;
+    @Column(nullable = false, name = "car_name")
+    private String carName;
 
-    @Column(nullable = false)
-    private String car_model;
+    @Column(nullable = false, name = "car_model")
+    private String carModel;
 
-    public Car(){}
+    public Car() {
+    }
 
-    public Car(String car_name, String car_model) {
-        this.car_name = car_name;
-        this.car_model = car_model;
+    public Car(String carName, String carModel) {
+        this.carName = carName;
+        this.carModel = carModel;
 
     }
 
@@ -35,23 +36,24 @@ public class Car {
         return car_id;
     }
 
+    public String getCarName() {
+        return carName;
+    }
+
+    public void setCarName(String carName) {
+        this.carName = carName;
+    }
+
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
+
     public void setCar_id(int car_id) {
         this.car_id = car_id;
     }
 
-    public String getCar_name() {
-        return car_name;
-    }
-
-    public void setCar_name(String car_name) {
-        this.car_name = car_name;
-    }
-
-    public String getCar_model() {
-        return car_model;
-    }
-
-    public void setCar_model(String car_model) {
-        this.car_model = car_model;
-    }
 }
