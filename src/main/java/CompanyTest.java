@@ -62,17 +62,7 @@ public class CompanyTest {
 //        Car car1 = new Car("Audi", "R8");
 //        carRepo.save(car);
 //        carRepo.save(car1);
-        deptRepo.save(dept1);
-        Employee emp = new Employee("Cristian", "D.", 1500);
-        Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
-        empRepo.save(emp);
-        addressRepo.save(adress);
-        Address address = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
-        addressRepo.save(address);
-        Car car = new Car("BMW", "X5");
-        Car car1 = new Car("Audi", "R8");
-        carRepo.save(car);
-        carRepo.save(car1);*/
+
     }
 
     @Test
