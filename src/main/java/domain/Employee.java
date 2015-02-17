@@ -1,14 +1,19 @@
 package domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
  */
-
 @Entity
 public class Employee {
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long employee_id;
     private String firstname;
     private String lastname;
     private double salary;
@@ -21,12 +26,12 @@ public class Employee {
         this.salary = salary;
     }
 
-    public long getId() {
-        return id;
+    public long getEmployee_id() {
+        return employee_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setEmployee_id(long employee_id) {
+        this.employee_id = employee_id;
     }
 
     public double getSalary() {
