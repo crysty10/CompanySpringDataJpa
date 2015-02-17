@@ -1,5 +1,4 @@
 import config.CompanyConfig;
-
 import domain.Address;
 import domain.Employee;
 import org.junit.Before;
@@ -10,7 +9,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import repository.AddressRepository;
 import repository.EmployeeRepository;
+
 import javax.inject.Inject;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -31,9 +33,11 @@ public class CompanyTest {
     public void setUp() throws Exception {
 
         //Employee emp = new Employee("Cristian", "D.", 1500);
-        Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
+       // Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
         //empRepo.save(emp);
-        addressRepo.save(adress);
+       // addressRepo.save(adress);
+       // Address address = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
+       // addressRepo.save(address);
     }
 
     @Test
@@ -50,5 +54,21 @@ public class CompanyTest {
         Address adress = addressRepo.findBylocality("Turnu-Magurele");
         assertEquals("Wrong locality", adress.getLocality(), "Turnu-Magurele");
         //addressRepo.delete(adress);
+    }
+
+    @Test
+    public void testFindAllAddressesByStreet() {
+        List<Address> address = addressRepo.findByStreet("Florilor");
+        for(Address a : address) {
+            assertEquals("Wrong street", a.getStreet(), "Florilor");
+        }
+    }
+
+    @Test
+    public void testFindAllByCountry(){
+        List<Address> address = addressRepo.findAllByCountry("Romania");
+        for(Address a : address) {
+            assertEquals("Wrong country", a.getCountry(), "Romania");
+        }
     }
 }
