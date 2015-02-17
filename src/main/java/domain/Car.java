@@ -14,7 +14,7 @@ public class Car {
     @GeneratedValue(generator = "car_seq")
     @SequenceGenerator(name = "car_seq", sequenceName = "car_id_seq")
     @Column(name = "id", nullable = false)
-    private int car_id;
+    private Long car_id;
 
     @Column(nullable = false, name = "car_name")
     private String carName;
@@ -31,7 +31,7 @@ public class Car {
 
     }
 
-    public int getCar_id() {
+    public Long getCar_id() {
 
         return car_id;
     }
@@ -52,7 +52,7 @@ public class Car {
         this.carModel = carModel;
     }
 
-    public void setCar_id(int car_id) {
+    public void setCar_id(long car_id) {
         this.car_id = car_id;
     }
 

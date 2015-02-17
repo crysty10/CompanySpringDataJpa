@@ -13,22 +13,22 @@ public class Address {
     @GeneratedValue(generator = "add_seq")
     @SequenceGenerator(name = "add_seq", sequenceName = "address_id_seq")
     @Column(name = "id")
-    private int address_id;
+    private Long address_id;
 
     @Column(nullable = false)
     private String street;
 
     @Column
-    private int street_nr;
+    private Integer street_nr;
 
     @Column(length = 10)
     private String building;
 
     @Column
-    private int floor;
+    private Integer floor;
 
     @Column
-    private int apartment;
+    private Integer apartment;
 
     @Column(nullable = false)
     private String locality;
@@ -38,7 +38,7 @@ public class Address {
 
     public Address() {}
 
-    public Address(String street, int street_nr, String building, int floor, int apartment, String locality, String country) {
+    public Address(String street, Integer street_nr, String building, Integer floor, Integer apartment, String locality, String country) {
 
         this.street = street;
         this.street_nr = street_nr;
@@ -49,11 +49,11 @@ public class Address {
         this.country = country;
     }
 
-    public int getAddress_id() {
+    public Long getAddress_id() {
         return address_id;
     }
 
-    public void setAddress_id(int address_id) {
+    public void setAddress_id(Long address_id) {
         this.address_id = address_id;
     }
 
@@ -65,11 +65,11 @@ public class Address {
         this.street = street;
     }
 
-    public int getStreet_nr() {
+    public Integer getStreet_nr() {
         return street_nr;
     }
 
-    public void setStreet_nr(int street_nr) {
+    public void setStreet_nr(Integer street_nr) {
         this.street_nr = street_nr;
     }
 
@@ -81,19 +81,19 @@ public class Address {
         this.building = building;
     }
 
-    public int getFloor() {
+    public Integer getFloor() {
         return floor;
     }
 
-    public void setFloor(int floor) {
+    public void setFloor(Integer floor) {
         this.floor = floor;
     }
 
-    public int getApartment() {
+    public Integer getApartment() {
         return apartment;
     }
 
-    public void setApartment(int apartment) {
+    public void setApartment(Integer apartment) {
         this.apartment = apartment;
     }
 

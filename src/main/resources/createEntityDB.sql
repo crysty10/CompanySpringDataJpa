@@ -32,4 +32,4 @@ CREATE TABLE Department (
   ID SERIAL NOT NULL,
   deptname VARCHAR(30) NOT NULL,
   PRIMARY KEY (ID)
-)
+);
