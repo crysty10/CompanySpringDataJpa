@@ -72,6 +72,8 @@ public class CompanyTest {
         }
     }
 
+    
+
     @Test
     public void testFindAddressByApartment() {
 
