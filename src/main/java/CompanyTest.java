@@ -30,9 +30,9 @@ public class CompanyTest {
     @Before
     public void setUp() throws Exception {
 
-        Employee emp = new Employee("Cristian", "D.", 1500);
+        //Employee emp = new Employee("Cristian", "D.", 1500);
         //Adress adress = new Adress("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
-        empRepo.save(emp);
+        //empRepo.save(emp);
         //adressRepo.save(adress);
     }
 
@@ -43,5 +43,6 @@ public class CompanyTest {
 
         assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
         //assertEquals("Wrong locality", adress.getLocality(), "Turnu-Magurele");
+        //empRepo.delete(employee);
     }
 }

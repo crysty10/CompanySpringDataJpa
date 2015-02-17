@@ -27,7 +27,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = "repository")
 @ComponentScan("repository")
-@PropertySource("classpath:jpaConnection.properties")
+@PropertySource("classpath:/jpaConnection.properties")
 public class CompanyConfig {
 
     @Inject
@@ -38,13 +38,13 @@ public class CompanyConfig {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(org.postgresql.Driver.class);
 
-        dataSource.setUsername("postgres");
+        /*dataSource.setUsername("postgres");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/Company");
-        dataSource.setPassword("admin");
+        dataSource.setPassword("admin");*/
 
-        /*dataSource.setUsername(env.getProperty("dataSource.username"));
+        dataSource.setUsername(env.getProperty("dataSource.username"));
         dataSource.setUrl(env.getProperty("dataSource.url"));
-        dataSource.setPassword(env.getProperty("dataSource.password"));*/
+        dataSource.setPassword(env.getProperty("dataSource.password"));
 
         return dataSource;
     }
@@ -77,19 +77,4 @@ public class CompanyConfig {
     public PlatformTransactionManager transactionManager() {
         return new JpaTransactionManager(entityManagerFactory().getObject());
     }
-
-    /*@Bean
-    public PersistenceAnnotationBeanPostProcessor paPostProcessor() {
-        return new PersistenceAnnotationBeanPostProcessor();
-    }
-
-    @Bean
-    public BeanPostProcessor persistenceTranslation() {
-        return new PersistenceExceptionTranslationPostProcessor();
-    }
-
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }*/
 }
