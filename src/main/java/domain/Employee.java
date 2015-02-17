@@ -13,34 +13,26 @@ public class Employee {
     @GeneratedValue(generator = "emp_seq")
     @SequenceGenerator(name = "emp_seq", sequenceName = "employee_id_seq")
     @Column(name = "id")
-    private long employee_id;
+    private Long employee_id;
     private String firstname;
     private String lastname;
-    private double salary;
+    private Double salary;
 
     public Employee(){}
 
-    public Employee(String firstname, String lastname, double salary) {
+    public Employee(String firstname, String lastname, Double salary) {
 
         this.firstname = firstname;
         this.lastname = lastname;
         this.salary = salary;
     }
 
-    public long getEmployee_id() {
+    public Long getEmployee_id() {
         return employee_id;
     }
 
-    public void setEmployee_id(long employee_id) {
+    public void setEmployee_id(Long employee_id) {
         this.employee_id = employee_id;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
     }
 
     public String getFirstname() {
@@ -57,5 +49,13 @@ public class Employee {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 }

@@ -20,6 +20,7 @@ CREATE TABLE Address(
   PRIMARY KEY (ID)
 );
 
+/*Create table Car*/
 CREATE TABLE Car(
   ID SERIAL NOT NULL,
   car_name TEXT NOT NULL,
