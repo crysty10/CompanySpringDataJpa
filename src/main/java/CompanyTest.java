@@ -57,16 +57,16 @@ public class CompanyTest {
     }
 
     @Test
+    public void testFindEmployeeByLastnameWithQuery() {
+        Employee employee = empRepo.findEmployeeByLastname("D.");
+        assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
+    }
+
+    @Test
     public void testFindAllEmployeesBySalary() {
         List<Employee> employeeList = empRepo.findAllEmployeesBySalary(1500);
         for(Employee employee : employeeList) {
             System.out.println("Employee name: " + employee.getFirstname());
         }
-    }
-
-    @Test
-    public void testFindEmployeeByLastnameWithQuery() {
-        Employee employee = empRepo.findEmployeeByLastname("D.");
-        assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
     }
 }
