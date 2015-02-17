@@ -19,3 +19,10 @@ CREATE TABLE Address(
   country TEXT NOT NULL,
   PRIMARY KEY (ID)
 );
+
+/*Create table Department*/
+CREATE TABLE Department (
+  ID SERIAL NOT NULL,
+  deptname VARCHAR(30) NOT NULL,
+  PRIMARY KEY (ID)
+)

@@ -1,5 +1,6 @@
 import config.CompanyConfig;
 import domain.Address;
+import domain.Department;
 import domain.Employee;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import repository.AddressRepository;
+import repository.DepartmentRepository;
 import repository.EmployeeRepository;
 
 import javax.inject.Inject;
@@ -29,6 +31,9 @@ public class CompanyTest {
     @Inject
     private AddressRepository addressRepo;
 
+    @Inject
+    private DepartmentRepository deptRepo;
+
     @Before
     public void setUp() throws Exception {
 
@@ -37,7 +42,11 @@ public class CompanyTest {
         Employee emp2 = new Employee("Alex", "C.", 1500);
         empRepo.save(emp2);
         Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
-        addressRepo.save(adress);*/
+        addressRepo.save(adress);
+        Department dept = new Department("IT Solutions");
+        deptRepo.save(dept);
+        Department dept1 = new Department("Human Resource");
+        deptRepo.save(dept1);*/
     }
 
     @Test
@@ -59,9 +68,12 @@ public class CompanyTest {
     @Test
     public void testFindAllAddressesByStreet() {
         List<Address> address = addressRepo.findByStreet("Florilor");
-        for(Address a : address) {
+        for (Address a : address) {
             assertEquals("Wrong street", a.getStreet(), "Florilor");
-    public void testFindEmployeeByLastnameWithQuery() {
+        }
+    }
+
+    public void testFindEmployeeByLastnameWithQuery () {
         Employee employee = empRepo.findEmployeeByLastname("D.");
         assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
     }
@@ -88,5 +100,13 @@ public class CompanyTest {
         Address adress = addressRepo.findByApartment(45);
         assertEquals("Wrong apartment", adress.getApartment(), 45);
         //addressRepo.delete(adress);
+    }
+
+    @Test
+    public void testFindDepartmentByDeptname() {
+
+        Department dept = deptRepo.findByDeptname("IT Solutions");
+        assertEquals("Wrong department", dept.getDeptname(), "IT Solutions");
+        //deptRepo.delete(dept);
     }
 }
