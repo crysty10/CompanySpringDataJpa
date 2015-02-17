@@ -20,6 +20,7 @@ CREATE TABLE Address(
   PRIMARY KEY (ID)
 );
 
+/*Create table Car*/
 CREATE TABLE Car(
   ID SERIAL NOT NULL,
   car_name TEXT NOT NULL,
@@ -32,4 +33,4 @@ CREATE TABLE Department (
   ID SERIAL NOT NULL,
   deptname VARCHAR(30) NOT NULL,
   PRIMARY KEY (ID)
-)
+);

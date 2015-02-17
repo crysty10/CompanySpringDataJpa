@@ -1,15 +1,16 @@
 /*Create table Employee*/
 CREATE TABLE Employee (
-  ID SERIAL NOT NULL,
+  emp_ID SERIAL NOT NULL,
   firstname VARCHAR(30) NOT NULL,
   lastname VARCHAR(30) NOT NULL,
   salary DOUBLE PRECISION NOT NULL,
-  PRIMARY KEY (ID)
+  dep_ID INTEGER REFERENCES Department(dep_ID),
+  PRIMARY KEY (emp_ID)
 );
 
 /*Create table Address*/
 CREATE TABLE Address(
-  ID SERIAL NOT NULL,
+  add_ID SERIAL NOT NULL,
   street TEXT NOT NULL,
   street_nr INT,
   building CHAR(10),
@@ -17,20 +18,34 @@ CREATE TABLE Address(
   apartment INT,
   locality TEXT NOT NULL,
   country TEXT NOT NULL,
-  PRIMARY KEY (ID)
+  PRIMARY KEY (add_ID)
 );
 
 /*Create table Car*/
 CREATE TABLE Car(
-  ID SERIAL NOT NULL,
+  car_ID SERIAL NOT NULL,
   car_name TEXT NOT NULL,
   car_model CHAR(5) NOT NULL,
-  PRIMARY KEY (ID));
+  PRIMARY KEY (car_ID)
 );
 
 /*Create table Department*/
 CREATE TABLE Department (
-  ID SERIAL NOT NULL,
+  dep_ID SERIAL NOT NULL,
   deptname VARCHAR(30) NOT NULL,
-  PRIMARY KEY (ID)
+  PRIMARY KEY (dep_ID)
 );
+
+CREATE Table Employee_Car(
+  emp_ID INTEGER REFERENCES Employee(emp_ID),
+  car_ID INTEGER REFERENCES Car(car_ID),
+  PRIMARY KEY (emp_ID, car_ID)
+);
+
+CREATE TABLE Employee_Address(
+  emp_ID INTEGER REFERENCES Employee(emp_ID),
+  add_ID INTEGER REFERENCES Address(add_ID),
+  PRIMARY KEY (emp_ID, add_ID)
+);
+
+

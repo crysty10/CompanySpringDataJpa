@@ -1,6 +1,8 @@
 package domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Florin.Cojocaru on 2/17/2015.
@@ -22,6 +24,9 @@ public class Car {
     @Column(nullable = false, name = "car_model")
     private String carModel;
 
+    @ManyToMany(mappedBy = "cars")
+    private Set<Employee> employees = new HashSet<Employee>();
+
     public Car() {
     }
 
@@ -29,6 +34,18 @@ public class Car {
         this.carName = carName;
         this.carModel = carModel;
 
+    }
+
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+
+    public void setCar_id(Long car_id) {
+        this.car_id = car_id;
     }
 
     public Long getCar_id() {

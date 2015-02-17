@@ -1,6 +1,8 @@
 package domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
@@ -26,6 +28,21 @@ public class Employee {
         this.lastname = lastname;
         this.salary = salary;
     }
+
+    public Set<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(Set<Car> cars) {
+        this.cars = cars;
+    }
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "employee_car",
+               joinColumns = @JoinColumn(name = "employee_id"),
+               inverseJoinColumns = @JoinColumn(name = "car_id"))
+    private Set<Car> cars = new HashSet<Car>();
+
 
     public Long getEmployee_id() {
         return employee_id;
