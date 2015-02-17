@@ -10,13 +10,11 @@ import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
-import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
@@ -68,7 +66,7 @@ public class CompanyConfig {
         emfb.setDataSource(dataSource());
         emfb.setJpaVendorAdapter(jpaVendorAdapter());
         //looking for classes with @Entity
-        emfb.setPackagesToScan("jpaExample.domain");
+        emfb.setPackagesToScan("domain");
 
         return emfb;
     }

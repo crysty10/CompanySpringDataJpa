@@ -6,6 +6,7 @@ CREATE TABLE Employee (
   salary DOUBLE PRECISION NOT NULL,
   PRIMARY KEY (employee_id)
 );
+<<<<<<< HEAD
 
 CREATE TABLE Adress(
 
@@ -17,3 +18,5 @@ CREATE TABLE Adress(
     apartment INT,
     locality TEXT NOT NULL,
     country TEXT NOT NULL);
+=======
+>>>>>>> fa386be12fbba9ec92f32e8b404bb2159bbf9633
