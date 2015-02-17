@@ -1,5 +1,6 @@
 import config.CompanyConfig;
 import domain.Address;
+import domain.Department;
 import domain.Car;
 import domain.Employee;
 import org.junit.Before;
@@ -9,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import repository.AddressRepository;
+import repository.DepartmentRepository;
 import repository.CarRepository;
 import repository.EmployeeRepository;
 
@@ -32,11 +34,24 @@ public class CompanyTest {
     private AddressRepository addressRepo;
 
     @Inject
+    private DepartmentRepository deptRepo;
+
+    @Inject
     private CarRepository carRepo;
 
     @Before
     public void setUp() throws Exception {
 
+        /*Employee emp = new Employee("Bogdan", "I.", 1500);
+        empRepo.save(emp);
+        Employee emp2 = new Employee("Alex", "C.", 1500);
+        empRepo.save(emp2);
+        Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
+        addressRepo.save(adress);
+        Department dept = new Department("IT Solutions");
+        deptRepo.save(dept);
+        Department dept1 = new Department("Human Resource");
+        deptRepo.save(dept1);*/
         //Employee emp = new Employee("Cristian", "D.", 1500);
        // Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
         //empRepo.save(emp);
@@ -73,6 +88,19 @@ public class CompanyTest {
         }
     }
 
+    public void testFindEmployeeByLastnameWithQuery () {
+        Employee employee = empRepo.findEmployeeByLastname("D.");
+        assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
+    }
+
+    @Test
+    public void testFindAllEmployeesBySalary() {
+        List<Employee> employeeList = empRepo.findAllEmployeesBySalary(1500);
+        for(Employee employee : employeeList) {
+            System.out.println("Employee name: " + employee.getFirstname());
+        }
+    }
+
     @Test
     public void testFindAllByCountry(){
         List<Address> address = addressRepo.findAllByCountry("Romania");
@@ -89,6 +117,14 @@ public class CompanyTest {
         Address adress = addressRepo.findByApartment(45);
         assertEquals("Wrong apartment", adress.getApartment(), 45);
         //addressRepo.delete(adress);
+    }
+
+    @Test
+    public void testFindDepartmentByDeptname() {
+
+        Department dept = deptRepo.findByDeptname("IT Solutions");
+        assertEquals("Wrong department", dept.getDeptname(), "IT Solutions");
+        //deptRepo.delete(dept);
     }
 
     @Test
