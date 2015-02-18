@@ -1,7 +1,9 @@
 package domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,7 +17,7 @@ public class Car {
     @Id
     @GeneratedValue(generator = "car_seq")
     @SequenceGenerator(name = "car_seq", sequenceName = "car_car_id_seq", allocationSize = 1)
-    @Column(name = "id", nullable = false)
+    @Column(name = "car_id", nullable = false)
     private Long car_id;
 
     @Column(nullable = false, name = "car_name")
@@ -25,7 +27,7 @@ public class Car {
     private String carModel;
 
     @ManyToMany(mappedBy = "cars")
-    private Set<Employee> employees = new HashSet<Employee>();
+    private List<Employee> employees = new ArrayList<Employee>();
 
     public Car() {
     }
@@ -36,11 +38,11 @@ public class Car {
 
     }
 
-    public Set<Employee> getEmployees() {
+    public List<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(Set<Employee> employees) {
+    public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
 

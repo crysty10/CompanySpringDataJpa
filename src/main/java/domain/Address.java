@@ -11,8 +11,8 @@ public class Address {
 
     @Id
     @GeneratedValue(generator = "add_seq")
-    @SequenceGenerator(name = "add_seq", sequenceName = "address_add_id_seq", allocationSize = 1)
-    @Column(name = "id")
+    @SequenceGenerator(name = "add_seq", sequenceName = "address_add_id_seq", initialValue = 1, allocationSize = 1)
+    @Column(name = "add_id")
     private Long address_id;
 
     @Column(nullable = false)

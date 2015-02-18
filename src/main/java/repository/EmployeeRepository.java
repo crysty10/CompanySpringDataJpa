@@ -1,5 +1,6 @@
 package repository;
 
+import domain.Address;
 import domain.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,6 +23,11 @@ public interface EmployeeRepository extends
 
     @Query("select emp from Employee emp where emp.lastname = :lastname")
     Employee findEmployeeByLastname(@Param("lastname")String lastname);
+
+    /*TODO: */
+    /*@Query("select add from Address add, Employee emp, Employee_Address empAdd " +
+            "where emp.emp_id = empAdd.emp_id and add.add_id = empAdd.add_id and emp.firstname = :firstname")
+    List<Address> findEmployeeAddressByFirstname(@Param("firstname")String firstname);*/
 
     /*@Query("update Employee emp set emp.department = :department where emp.firstname = :firstname")
     Employee setDepartmentFor(String firstname, Long department);*/

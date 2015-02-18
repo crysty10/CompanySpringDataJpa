@@ -1,7 +1,9 @@
 package domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,7 +15,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "emp_seq")
-    @SequenceGenerator(name = "emp_seq", sequenceName = "employee_emp_id_seq", allocationSize = 1)
+    @SequenceGenerator(name = "emp_seq", sequenceName = "employee_emp_id_seq", initialValue = 1, allocationSize = 1)
     @Column(name = "emp_id", unique = true)
     private Long employee_id;
     private String firstname;
@@ -24,6 +26,18 @@ public class Employee {
     @JoinColumn(name = "dep_id")
     private Department department;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "Employee_Address",
+                joinColumns = @JoinColumn(name = "emp_id"),
+                inverseJoinColumns = @JoinColumn(name = "add_id"))
+    private List<Address> addressList = new ArrayList<Address>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "Employee_Car",
+            joinColumns = @JoinColumn(name = "emp_id"),
+            inverseJoinColumns = @JoinColumn(name = "car_id"))
+    private List<Car> cars = new ArrayList<Car>();
+
     public Employee(){}
 
     public Employee(String firstname, String lastname, Double salary) {
@@ -33,20 +47,21 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Set<Car> getCars() {
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void setCars(Set<Car> cars) {
+    public void setCars(List<Car> cars) {
         this.cars = cars;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "employee_car",
-               joinColumns = @JoinColumn(name = "employee_id"),
-               inverseJoinColumns = @JoinColumn(name = "car_id"))
-    private Set<Car> cars = new HashSet<Car>();
+    public List<Address> getAddressList() {
+        return addressList;
+    }
 
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
 
     public Long getEmployee_id() {
         return employee_id;
@@ -86,5 +101,18 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employee_id=" + employee_id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", salary=" + salary +
+                ", department=" + department +
+                ", addressList=" + addressList +
+                ", cars=" + cars +
+                '}';
     }
 }
