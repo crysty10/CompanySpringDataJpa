@@ -14,6 +14,13 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository<Car, Long> {
 
+    /*
+    * Get a car by car name!
+    * */
     Car findByCarName(String carName);
+
+    /*
+    * Get all cars by the car name!
+    * */
     List<Car> findAllCarByCarName(String carName);
 }
