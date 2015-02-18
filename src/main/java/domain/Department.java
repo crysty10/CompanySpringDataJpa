@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Table(name = "Department")
 public class Department {
 
+
     @Id
     @GeneratedValue(generator = "dept_seq")
     @SequenceGenerator(name = "dept_seq", sequenceName = "department_dep_id_seq", allocationSize = 1)
