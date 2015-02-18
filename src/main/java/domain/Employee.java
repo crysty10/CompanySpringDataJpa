@@ -12,13 +12,17 @@ import java.util.Set;
 public class Employee {
 
     @Id
-    @GeneratedValue(generator = "emp_seq")
-    @SequenceGenerator(name = "emp_seq", sequenceName = "employee_id_seq")
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "emp_seq")
+    @SequenceGenerator(name = "emp_seq", sequenceName = "employee_emp_id_seq", allocationSize = 1)
+    @Column(name = "emp_id", unique = true)
     private Long employee_id;
     private String firstname;
     private String lastname;
     private Double salary;
+
+    @OneToOne(fetch = FetchType.LAZY, targetEntity = Department.class)
+    @JoinColumn(name = "dep_id")
+    private Department department;
 
     public Employee(){}
 
@@ -74,5 +78,13 @@ public class Employee {
 
     public void setSalary(Double salary) {
         this.salary = salary;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

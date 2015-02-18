@@ -11,8 +11,9 @@ public class Department {
 
     @Id
     @GeneratedValue(generator = "dept_seq")
-    @SequenceGenerator(name = "dept_seq", sequenceName = "department_id_seq")
-    private Long id;
+    @SequenceGenerator(name = "dept_seq", sequenceName = "department_dep_id_seq", allocationSize = 1)
+    @Column(name = "dep_id")
+    private Long department_id;
     private String deptname;
 
     public Department() {}
@@ -21,12 +22,12 @@ public class Department {
         this.deptname = deptname;
     }
 
-    public Long getId() {
-        return id;
+    public Long getDepartment_id() {
+        return department_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDepartment_id(Long department_id) {
+        this.department_id = department_id;
     }
 
     public String getDeptname() {

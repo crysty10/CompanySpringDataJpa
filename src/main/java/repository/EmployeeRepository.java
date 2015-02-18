@@ -3,6 +3,7 @@ package repository;
 import domain.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +13,8 @@ import java.util.List;
  * Created by Cristian.Dumitru on 2/17/2015.
  */
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+public interface EmployeeRepository extends
+        JpaRepository<Employee, Long> {
 
     Employee findEmployeeByFirstname(String firstname);
 
@@ -20,4 +22,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     @Query("select emp from Employee emp where emp.lastname = :lastname")
     Employee findEmployeeByLastname(@Param("lastname")String lastname);
+
+    /*@Query("update Employee emp set emp.department = :department where emp.firstname = :firstname")
+    Employee setDepartmentFor(String firstname, Long department);*/
 }

@@ -14,7 +14,7 @@ public class Car {
 
     @Id
     @GeneratedValue(generator = "car_seq")
-    @SequenceGenerator(name = "car_seq", sequenceName = "car_id_seq")
+    @SequenceGenerator(name = "car_seq", sequenceName = "car_car_id_seq", allocationSize = 1)
     @Column(name = "id", nullable = false)
     private Long car_id;
 

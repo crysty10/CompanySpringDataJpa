@@ -6,6 +6,7 @@ import domain.Employee;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -42,9 +43,12 @@ public class CompanyTest {
     @Before
     public void setUp() throws Exception {
 
-        Employee emp = new Employee("Bogdan", "I.", (double) 1500);
+        /*Department dept = new Department("IT Solutions");
+        deptRepo.save(dept);
+        Employee emp = new Employee("Bogdan", "I.", (double)1500);
+        emp.setDepartment(dept);
         empRepo.save(emp);
-        Employee emp2 = new Employee("Alex", "C.", (double) 1500);
+        Employee emp2 = new Employee("Alex", "C.", 1500);
         empRepo.save(emp2);
         Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
         addressRepo.save(adress);
@@ -52,6 +56,8 @@ public class CompanyTest {
         deptRepo.save(dept);
         Department dept1 = new Department("Human Resource");
         deptRepo.save(dept1);
+        Employee emp = new Employee("Cristian", "D.", 1500);
+        Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
         empRepo.save(emp);
         addressRepo.save(adress);
         Address address = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
@@ -61,13 +67,10 @@ public class CompanyTest {
         carRepo.save(car);
         carRepo.save(car1);
 
-        emp.getCars().add(car);
-        emp.getCars().add(car1);
-        emp2.getCars().add(car1);
-
-
-
-
+        Employee emp = empRepo.findEmployeeByFirstname("Cristian");
+        emp.setDepartment(department);
+        empRepo.save(emp);
+        empRepo.setDepartmentFor(emp.getFirstname(), department.getDepartment_id());*/
     }
 
     @Test
@@ -115,13 +118,11 @@ public class CompanyTest {
         }
     }
 
-
-
     @Test
     public void testFindAddressByApartment() {
 
         Address adress = addressRepo.findByApartment(45);
-        assertEquals("Wrong apartment", adress.getApartment(), Integer.valueOf(45));
+        assertEquals("Wrong apartment", (long)adress.getApartment(), 45);
         //addressRepo.delete(adress);
     }
 

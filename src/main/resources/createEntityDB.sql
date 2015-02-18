@@ -36,12 +36,14 @@ CREATE TABLE Department (
   PRIMARY KEY (dep_ID)
 );
 
+/*Create table for relation Employee Car*/
 CREATE Table Employee_Car(
   emp_ID INTEGER REFERENCES Employee(emp_ID),
   car_ID INTEGER REFERENCES Car(car_ID),
   PRIMARY KEY (emp_ID, car_ID)
 );
 
+/*Create table for relation Employee Address*/
 CREATE TABLE Employee_Address(
   emp_ID INTEGER REFERENCES Employee(emp_ID),
   add_ID INTEGER REFERENCES Address(add_ID),
