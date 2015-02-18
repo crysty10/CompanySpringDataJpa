@@ -20,7 +20,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = "repository")
 @EnableAspectJAutoProxy
-@ComponentScan("repository")
+@ComponentScan({"repository", "aspects"})
 @PropertySource("classpath:/jpaConnection.properties")
 public class CompanyConfig {
 

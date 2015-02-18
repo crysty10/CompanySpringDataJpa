@@ -105,8 +105,8 @@ public class CompanyTest {
     public void testFindEmployeeBySomething() {
 
         Employee employee = empRepo.findEmployeeByFirstname("Cristian");
+        System.out.println("The employee: " + employee.getFirstname() + " " + employee.getLastname());
         assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
-        //empRepo.delete(employee);
     }
 
     @Test
@@ -114,7 +114,6 @@ public class CompanyTest {
 
         Address adress = addressRepo.findBylocality("Turnu-Magurele");
         assertEquals("Wrong locality", adress.getLocality(), "Turnu-Magurele");
-        //addressRepo.delete(adress);
     }
 
     @Test
@@ -151,8 +150,6 @@ public class CompanyTest {
 
         Address adress = addressRepo.findByApartment(45);
         assertEquals("Wrong apartment", (long)adress.getApartment(), 45);
-
-        //addressRepo.delete(adress);
     }
 
     @Test
@@ -160,7 +157,6 @@ public class CompanyTest {
 
         Department dept = deptRepo.findByDeptname("IT Solutions");
         assertEquals("Wrong department", dept.getDeptname(), "IT Solutions");
-        //deptRepo.delete(dept);
     }
 
     @Test
