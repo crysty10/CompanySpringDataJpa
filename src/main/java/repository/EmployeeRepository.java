@@ -1,10 +1,9 @@
 package repository;
 
-import domain.Address;
+import domain.Car;
 import domain.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -31,4 +30,8 @@ public interface EmployeeRepository extends
 
     /*@Query("update Employee emp set emp.department = :department where emp.firstname = :firstname")
     Employee setDepartmentFor(String firstname, Long department);*/
+
+    @Query("SELECT cars FROM Car cars, Employee emp, Employee_Car empCar " +
+           "WHERE emp.employee_id = empCar.employee_id AND cars.car_id = empCar.car_id AND emp.salary = :salary")
+    List<Car> findEmployeeCarBySalary(@Param("salary") Double salary);
 }

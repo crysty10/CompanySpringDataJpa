@@ -2,9 +2,7 @@ package domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
@@ -26,13 +24,13 @@ public class Employee {
     @JoinColumn(name = "dep_id")
     private Department department;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Employee_Address",
                 joinColumns = @JoinColumn(name = "emp_id"),
                 inverseJoinColumns = @JoinColumn(name = "add_id"))
     private List<Address> addressList = new ArrayList<Address>();
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Employee_Car",
             joinColumns = @JoinColumn(name = "emp_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id"))
