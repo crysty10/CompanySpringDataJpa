@@ -4,6 +4,8 @@ import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
+import org.springframework.orm.hibernate3.support.OpenSessionInViewFilter;
+import org.springframework.orm.hibernate3.support.OpenSessionInterceptor;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -25,7 +27,6 @@ public class CompanyConfig {
 
     @Inject
     Environment env;
-
 
     @Bean
 //    @Profile("dev")

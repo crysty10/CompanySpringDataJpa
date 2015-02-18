@@ -26,13 +26,13 @@ public class Employee {
     @JoinColumn(name = "dep_id")
     private Department department;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Employee_Address",
                 joinColumns = @JoinColumn(name = "emp_id"),
                 inverseJoinColumns = @JoinColumn(name = "add_id"))
     private List<Address> addressList = new ArrayList<Address>();
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Employee_Car",
             joinColumns = @JoinColumn(name = "emp_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id"))

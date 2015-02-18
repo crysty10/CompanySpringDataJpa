@@ -17,18 +17,27 @@ import java.util.List;
 public interface EmployeeRepository extends
         JpaRepository<Employee, Long> {
 
+    /*
+    * Get one employee by firstname!
+    * */
     Employee findEmployeeByFirstname(String firstname);
 
+    /*
+    * Get all employees with the same salary!
+    * */
     List<Employee> findAllEmployeesBySalary(double salary);
 
+    /*
+    * Get one employee by lastname, using a query!
+    * */
     @Query("select emp from Employee emp where emp.lastname = :lastname")
     Employee findEmployeeByLastname(@Param("lastname")String lastname);
 
-    /*TODO: */
-    /*@Query("select add from Address add, Employee emp, Employee_Address empAdd " +
-            "where emp.emp_id = empAdd.emp_id and add.add_id = empAdd.add_id and emp.firstname = :firstname")
-    List<Address> findEmployeeAddressByFirstname(@Param("firstname")String firstname);*/
+    /*
+    * Get all the addresses of an employee!
+    * */
+    @Query("select add from Address add, Employee emp, EmployeeAddress empAdd " +
+            "where emp.employee_id = empAdd.emp_id and add.address_id = empAdd.add_id and emp.firstname = :firstname")
+    List<Address> findEmployeeAddressByFirstname(@Param("firstname")String firstname);
 
-    /*@Query("update Employee emp set emp.department = :department where emp.firstname = :firstname")
-    Employee setDepartmentFor(String firstname, Long department);*/
 }

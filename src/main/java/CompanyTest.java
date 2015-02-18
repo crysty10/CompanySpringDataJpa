@@ -22,7 +22,6 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
  */
@@ -105,7 +104,6 @@ public class CompanyTest {
 
         Employee employee = empRepo.findEmployeeByFirstname("Cristian");
         assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
-        //empRepo.delete(employee);
     }
 
     @Test
@@ -113,7 +111,6 @@ public class CompanyTest {
 
         Address adress = addressRepo.findBylocality("Turnu-Magurele");
         assertEquals("Wrong locality", adress.getLocality(), "Turnu-Magurele");
-        //addressRepo.delete(adress);
     }
 
     @Test
@@ -150,7 +147,6 @@ public class CompanyTest {
 
         Address adress = addressRepo.findByApartment(45);
         assertEquals("Wrong apartment", (long)adress.getApartment(), 45);
-        //addressRepo.delete(adress);
     }
 
     @Test
@@ -158,7 +154,6 @@ public class CompanyTest {
 
         Department dept = deptRepo.findByDeptname("IT Solutions");
         assertEquals("Wrong department", dept.getDeptname(), "IT Solutions");
-        //deptRepo.delete(dept);
     }
 
     @Test
@@ -175,22 +170,23 @@ public class CompanyTest {
             assertEquals("Wrong car", car.getCarName(), "BMW");
         }
     }
-//
-//    @Test
-//    public void testFindOneEmployeeWithAllDetails() {
-//
-//        Employee emp = empRepo.findEmployeeByFirstname("Cristian");
-//        List<Address> address = empRepo.findEmployeeAddressByFirstname(emp.getFirstname());
-//
-//        for(Address add : address) {
-//            assertEquals("Wrong address", add.getCountry(), "Romania");
-//        }
-//    }
 
     @Test
     public void TestFindEmployeeWithAllAddress() {
 
         Employee employee = empRepo.findEmployeeByFirstname("Cristian");
-        assertTrue(employee.getAddressList().size() > 0);
+        assertTrue("Problems with getAddress()!", employee.getAddressList().size() > 0);
+        assertTrue("Problems with getCars()!", employee.getCars().size() > 0);
+    }
+
+    @Test
+    public void TestWithQueryLazy() {
+
+        Employee employee = empRepo.findEmployeeByFirstname("Cristian");
+        List<Address> addresses = empRepo.findEmployeeAddressByFirstname(employee.getFirstname());
+        for(Address address : addresses) {
+            System.out.println(address.getCountry());
+        }
+        assertTrue("Nop!!", addresses.size() > 0);
     }
 }
