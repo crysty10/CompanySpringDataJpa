@@ -50,4 +50,12 @@ CREATE TABLE Employee_Address(
   PRIMARY KEY (emp_ID, add_ID)
 );
 
-
+/*Create table for saving DateTime for every created object or modified object*/
+CREATE TABLE DateRegistration(
+  id SERIAL NOT NULL,
+  object_ID INTEGER NOT NULL,
+  object_type VARCHAR(30) NOT NULL ,
+  object_CreatedDate DATE,
+  object_ModifiedDate DATE,
+  PRIMARY KEY (id)
+);

@@ -47,4 +47,6 @@ public interface EmployeeRepository extends
     @Query("SELECT cars FROM Car cars, Employee emp, Employee_Car empCar " +
            "WHERE emp.employee_id = empCar.employee_id AND cars.car_id = empCar.car_id AND emp.salary = :salary")
     List<Car> findEmployeeCarBySalary(@Param("salary") Double salary);
+
+
 }

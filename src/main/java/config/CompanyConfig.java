@@ -36,6 +36,11 @@ public class CompanyConfig {
 
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(org.postgresql.Driver.class);
+
+        /*dataSource.setUsername("postgres");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/Company");
+        dataSource.setPassword("admin");*/
+
         dataSource.setUsername(env.getProperty("dataSource.username"));
         dataSource.setUrl(env.getProperty("dataSource.url"));
         dataSource.setPassword(env.getProperty("dataSource.password"));
