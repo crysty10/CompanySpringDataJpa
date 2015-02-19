@@ -42,55 +42,18 @@ public class AuditingAspect {
     private DateRegistrationRepository dateRegistrationRepository;
 
     /*
-    *
-    * */
-    /*@Pointcut("execution(Object repository.*.save(Object)) && args(object)")
-    public void pointcutGetDate(Object object){}
-
-    @Before("pointcutGetDate(object)")
-    public void beforePointcutGetDate(Object object) {
-        if(object instanceof Employee) {
-            Employee employee = (Employee) object;
-            Employee emp = employeeRepository.findEmployeeByFirstname(employee.getFirstname());
-            if(emp == null) {
-
-                //nu e in baza de date
-                System.out.println("Obiectul nu sa inregistrat getDate!");
-            } else {
-
-                //e in baza de date
-                System.out.println("Obiectul " + emp.getFirstname() + " a fost creat " + auditingInterface.getCreatedDateTime() +
-                        " si modificat " + auditingInterface.getModifiedDateTime());
-            }
-        }
-    }*/
-
-    /*@After("pointcutGetDate(object)")
-    public void afterPointcutGetDate(Object object) {
-        if(object instanceof Employee) {
-            DateRegistration dateRegistration = null;
-            Employee employee = (Employee) object;
-            Employee emp = employeeRepository.findEmployeeByFirstname(employee.getFirstname());
-            if(emp == null) {
-
-                //nu e in baza de date
-                System.out.println("Obiectul nu sa inregistrat!");
-            } else {
-
-                //e in baza de date
-                dateRegistration = dateRegistrationRepository.findOne(emp.getEmployee_id());
-                System.out.println(dateRegistration.getObject_createdDate() + " " +
-                    dateRegistration.getObject_modifiedDate());
-            }
-        }
-    }*/
-
-    /*
-    *
+    * When you want to make a save/update entity in database!
     * */
     @Pointcut("execution(Object repository.*.save(Object)) && args(object)")
     public void pointcutSetDate(Object object){}
 
+    /*
+    * Check if the entity is in database
+    *   if so:
+    *     only update the time modified, cause is about an update
+    *   else:
+    *     set the create time and modified time
+    * */
     @Before("pointcutSetDate(object)")
     public void beforePointcutSetDate(Object object) {
         if(object instanceof Employee) {

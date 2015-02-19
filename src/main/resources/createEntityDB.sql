@@ -55,7 +55,7 @@ CREATE TABLE DateRegistration(
   id SERIAL NOT NULL,
   object_ID INTEGER NOT NULL,
   object_type VARCHAR(30) NOT NULL ,
-  object_CreatedDate DATE,
-  object_ModifiedDate DATE,
+  object_CreatedDate TIMESTAMP,
+  object_ModifiedDate TIMESTAMP,
   PRIMARY KEY (id)
 );
