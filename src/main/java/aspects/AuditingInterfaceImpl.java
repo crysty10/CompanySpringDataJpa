@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 /**
  * Created by Cristian.Dumitru on 2/18/2015.
  */
-@Component
+//@Component
 public class AuditingInterfaceImpl implements AuditingInterface {
 
     private LocalDateTime createDateTime;
@@ -36,7 +36,4 @@ public class AuditingInterfaceImpl implements AuditingInterface {
 
         this.createDateTime = localDateTime;
     }
-
-    //@Pointcut("execution(* repository.EmployeeRepository.save(..)) && args(localDateTime)")
-    //private void pointcutSave(LocalDateTime localDateTime) {}
 }

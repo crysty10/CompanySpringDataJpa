@@ -17,34 +17,37 @@ public class EmployeeAspect {
     @Pointcut("execution(* repository.EmployeeRepository.findEmployeeByFirstname(..))")
     private void pointcutBeforeFindEmployee() {}
 
-    /*
-    * Actions before the execution of the pointcut!
-    * */
-    @Before("pointcutBeforeFindEmployee()")
-    private void beforeFindEmployee() {
-        System.out.println("Now we are going to find an employee by firstname:");
-    }
-
-    /*
-    * Actions after the execution of the pointcut!
-    * */
-    @After("pointcutBeforeFindEmployee()")
-    private void afterFindEmployee() {
-        System.out.println("The aspect went well!");
-    }
+//    /*
+//    * Actions before the execution of the pointcut!
+//    * */
+//    @Before("pointcutBeforeFindEmployee()")
+//    private void beforeFindEmployee() {
+//        System.out.println("Now we are going to find an employee by firstname:");
+//    }
+//
+//    /*
+//    * Actions after the execution of the pointcut!
+//    * */
+//    @After("pointcutBeforeFindEmployee()")
+//    private void afterFindEmployee() {
+//        System.out.println("The aspect went well!");
+//    }
 
     /*
     * Actions that are executed "around" the pointcut!
     * It uses ProceedingJoinPoint method proceed() to support around advice!
     * */
-    /*@Around("pointcutBeforeFindEmployee()")
-    private void doSomething(ProceedingJoinPoint pjp){
+    @Around("pointcutBeforeFindEmployee()")
+    private Object doSomething(ProceedingJoinPoint pjp){
+        Object object = null;
         try {
             System.out.println("Now we are going to find an employee by firstname:");
-            pjp.proceed();
+            object = pjp.proceed();
             System.out.println("The aspect went well!");
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
-    }*/
+
+        return object;
+    }
 }

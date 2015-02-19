@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 /**
  * Created by Cristian.Dumitru on 2/19/2015.
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class AuditingIntroducer {
 
     @DeclareParents(value = "domain.*", defaultImpl = AuditingInterfaceImpl.class)

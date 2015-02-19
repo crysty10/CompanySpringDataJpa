@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Repository
 public interface EmployeeRepository extends
-        JpaRepository<Employee, Long>, AuditingInterface {
+        JpaRepository<Employee, Long> {
 
     /*
     * Get one employee by first name!
