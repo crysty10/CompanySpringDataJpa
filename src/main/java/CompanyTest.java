@@ -6,18 +6,18 @@ import domain.Employee;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import repository.AddressRepository;
 import repository.DepartmentRepository;
 import repository.CarRepository;
-import repository.DepartmentRepository;
 import repository.EmployeeRepository;
 
 import javax.inject.Inject;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -45,6 +45,7 @@ public class CompanyTest {
 
     @Before
     public void setUp() throws Exception {
+
 
         /*Department dept = new Department("IT Solutions");
         deptRepo.save(dept);
@@ -204,5 +205,17 @@ public class CompanyTest {
                 System.out.println(car.getCarName() + " " + car.getCarModel());
             }
         }
+    }
+
+    @Test
+    public void testModifiedTime() {
+
+        //Employee employee = new Employee("Bogdan", "I.", (double)1500);
+        Employee employee = new Employee("Bogdan", "I.", (double)1500);
+        //Department department = deptRepo.findByDeptname("IT Solutions");
+        //employee.setDepartment(department);
+        empRepo.save(employee);
+        //System.out.println(employee.getCreateDateTime());
+        //System.out.println(employee.getModifiedDateTime());
     }
 }

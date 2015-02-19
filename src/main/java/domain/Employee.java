@@ -1,5 +1,9 @@
 package domain;
 
+import aspects.AuditingInterface;
+import aspects.AuditingInterfaceImpl;
+
+import javax.inject.Inject;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

@@ -2,6 +2,7 @@ package config;
 
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -22,24 +23,35 @@ import javax.sql.DataSource;
 @EnableAspectJAutoProxy
 @ComponentScan({"repository", "aspects"})
 @PropertySource("classpath:/jpaConnection.properties")
+@EnableJpaAuditing
+//@ActiveProfiles(profiles = "withProp")
 public class CompanyConfig {
 
     @Inject
     Environment env;
 
     @Bean
-//    @Profile("dev")
+    //@Profile("withProp")
     public DataSource dataSource() {
+
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
         dataSource.setDriverClass(org.postgresql.Driver.class);
-
-        /*dataSource.setUsername("postgres");
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/Company");
-        dataSource.setPassword("admin");*/
-
         dataSource.setUsername(env.getProperty("dataSource.username"));
         dataSource.setUrl(env.getProperty("dataSource.url"));
         dataSource.setPassword(env.getProperty("dataSource.password"));
+
+        return dataSource;
+    }
+
+    @Bean
+    //@Profile("withoutProp")
+    public DataSource newDataSource() {
+
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+        dataSource.setDriverClass(org.postgresql.Driver.class);
+        dataSource.setUsername("postgres");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/Company");
+        dataSource.setPassword("admin");
 
         return dataSource;
     }
