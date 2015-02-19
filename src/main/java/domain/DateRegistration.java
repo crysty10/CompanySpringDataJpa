@@ -3,6 +3,10 @@ package domain;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created by Florin.Cojocaru on 2/19/2015.
@@ -17,16 +21,17 @@ public class DateRegistration {
     @SequenceGenerator(name = "date_seq", sequenceName = "dateregistration_id_seq", initialValue = 1, allocationSize = 1)
     @Column(name = "id", unique = true)
     private Long date_id;
-    private Long object_id;
+    @Column(name = "object_id")
+    private Long objectId;
     private String object_type;
-    private DateTime object_createdDate;
-    private DateTime object_modifiedDate;
+    private Timestamp object_createdDate;
+    private Timestamp object_modifiedDate;
 
     public DateRegistration() {};
     
 
-    public DateRegistration(Long object_id, String object_type, DateTime object_createdDate, DateTime object_modifiedDate) {
-        this.object_id = object_id;
+    public DateRegistration(Long objectId, String object_type, Timestamp object_createdDate, Timestamp object_modifiedDate) {
+        this.objectId = objectId;
         this.object_type = object_type;
         this.object_createdDate = object_createdDate;
         this.object_modifiedDate = object_modifiedDate;
@@ -40,12 +45,12 @@ public class DateRegistration {
         this.date_id = date_id;
     }
 
-    public Long getObject_id() {
-        return object_id;
+    public Long getObjectId() {
+        return objectId;
     }
 
-    public void setObject_id(Long object_id) {
-        this.object_id = object_id;
+    public void setObjectId(Long objectId) {
+        this.objectId = objectId;
     }
 
     public String getObject_type() {
@@ -56,22 +61,19 @@ public class DateRegistration {
         this.object_type = object_type;
     }
 
-    public DateTime getObject_createdDate() {
+    public Timestamp getObject_createdDate() {
         return object_createdDate;
     }
 
-    public void setObject_createdDate(DateTime object_createdDate) {
+    public void setObject_createdDate(Timestamp object_createdDate) {
         this.object_createdDate = object_createdDate;
     }
 
-    public DateTime getObject_modifiedDate() {
+    public Timestamp getObject_modifiedDate() {
         return object_modifiedDate;
     }
 
-    public void setObject_modifiedDate(DateTime object_modifiedDate) {
+    public void setObject_modifiedDate(Timestamp object_modifiedDate) {
         this.object_modifiedDate = object_modifiedDate;
     }
-
-    //object_ID , object_type, object_CreatedDate, object_ModifiedDate
-
 }

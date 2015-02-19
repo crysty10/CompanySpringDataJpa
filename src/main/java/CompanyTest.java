@@ -218,4 +218,15 @@ public class CompanyTest {
         //System.out.println(employee.getCreateDateTime());
         //System.out.println(employee.getModifiedDateTime());
     }
+
+    @Test
+    public void testSaveUpdateWithAuditableAspectWTF(){
+
+        Employee employee = empRepo.findEmployeeByFirstname("Mihaela");
+        //Department department = deptRepo.findByDeptname("IT Solutions");
+        employee.setSalary((double)1300);
+        //Employee employee = new Employee("Florin", "C.", (double)1500);
+        empRepo.save(employee);
+    }
+
 }

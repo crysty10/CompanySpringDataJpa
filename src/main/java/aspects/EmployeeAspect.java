@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 /**
  * Created by Cristian.Dumitru on 2/18/2015.
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class EmployeeAspect {
 
     /*

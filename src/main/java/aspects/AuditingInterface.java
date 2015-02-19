@@ -2,6 +2,9 @@ package aspects;
 
 import domain.Employee;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
@@ -10,9 +13,9 @@ import java.time.ZonedDateTime;
  */
 public interface AuditingInterface {
 
-    public LocalDateTime getModifiedDateTime();
-    public void setModifiedDateTime(LocalDateTime localDateTime);
+    public Timestamp getModifiedDateTime();
+    public void setModifiedDateTime(Timestamp localDateTime);
 
-    public LocalDateTime getCreatedDateTime();
-    public void setCreatedDateTime(LocalDateTime localDateTime);
+    public Timestamp getCreatedDateTime();
+    public void setCreatedDateTime(Timestamp localDateTime);
 }
