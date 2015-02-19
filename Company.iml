@@ -69,5 +69,6 @@
     <orderEntry type="library" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-test:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: postgresql:postgresql:9.1-901-1.jdbc4" level="project" />
+    <orderEntry type="library" name="Maven: joda-time:joda-time:2.5" level="project" />
   </component>
 </module>
