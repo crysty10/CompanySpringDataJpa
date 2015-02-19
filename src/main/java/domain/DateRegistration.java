@@ -23,6 +23,7 @@ public class DateRegistration {
     private DateTime object_modifiedDate;
 
     public DateRegistration() {};
+    
 
     public DateRegistration(Long object_id, String object_type, DateTime object_createdDate, DateTime object_modifiedDate) {
         this.object_id = object_id;
