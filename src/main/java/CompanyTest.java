@@ -222,11 +222,13 @@ public class CompanyTest {
     @Test
     public void testSaveUpdateWithAuditableAspectWTF(){
 
-        //Employee employee = empRepo.findEmployeeByFirstname("Mihaela");
+        /*Employee employee = empRepo.findEmployeeByFirstname("Daniel");
         //Department department = deptRepo.findByDeptname("IT Solutions");
-        //employee.setSalary((double)1350);
-        Employee employee = new Employee("Daniel", "P.", (double)1500);
-        empRepo.save(employee);
+        employee.setSalary((double)1350);
+        //Employee employee = new Employee("Daniel", "P.", (double)1500);
+        empRepo.save(employee);*/
+        Car car = new Car("VW", "Golf V");
+        carRepo.save(car);
     }
 
 }

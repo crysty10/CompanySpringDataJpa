@@ -1,5 +1,8 @@
 package domain;
 
+import aspects.AuditingInterface;
+import aspects.AuditingInterfaceImpl;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.ArrayList;
