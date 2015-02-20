@@ -5,6 +5,8 @@ CREATE TABLE Employee (
   lastname VARCHAR(30) NOT NULL,
   salary DOUBLE PRECISION NOT NULL,
   dep_ID INTEGER REFERENCES Department(dep_ID),
+  employeeCreatedDate TIMESTAMP NOT NULL,
+  employeeModifiedDate TIMESTAMP NOT NULL,
   PRIMARY KEY (emp_ID)
 );
 
@@ -18,6 +20,8 @@ CREATE TABLE Address(
   apartment INT,
   locality TEXT NOT NULL,
   country TEXT NOT NULL,
+  addressCreatedDate TIMESTAMP NOT NULL,
+  addressModifiedDate TIMESTAMP NOT NULL,
   PRIMARY KEY (add_ID)
 );
 
@@ -26,6 +30,8 @@ CREATE TABLE Car(
   car_ID SERIAL NOT NULL,
   car_name TEXT NOT NULL,
   car_model CHAR(5) NOT NULL,
+  carCreatedDate TIMESTAMP NOT NULL,
+  carModifiedDate TIMESTAMP NOT NULL,
   PRIMARY KEY (car_ID)
 );
 
@@ -33,6 +39,8 @@ CREATE TABLE Car(
 CREATE TABLE Department (
   dep_ID SERIAL NOT NULL,
   deptname VARCHAR(30) NOT NULL,
+  deptCreatedDate TIMESTAMP NOT NULL,
+  deptModifiedDate TIMESTAMP NOT NULL,
   PRIMARY KEY (dep_ID)
 );
 
@@ -54,8 +62,8 @@ CREATE TABLE Employee_Address(
 CREATE TABLE DateRegistration(
   id SERIAL NOT NULL,
   object_ID INTEGER NOT NULL,
-  object_type VARCHAR(30) NOT NULL ,
-  object_CreatedDate TIMESTAMP,
+  object_type VARCHAR(30) NOT NULL,
+  actionType VARCHAR(30) NOT NULL,
   object_ModifiedDate TIMESTAMP,
   PRIMARY KEY (id)
 );

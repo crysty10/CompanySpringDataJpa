@@ -1,6 +1,7 @@
 package domain;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,6 +26,12 @@ public class Car {
 
     @Column(nullable = false, name = "car_model")
     private String carModel;
+
+    @Column(nullable = false)
+    private Timestamp carCreatedDate;
+
+    @Column(nullable = false)
+    private Timestamp carModifiedDate;
 
     @ManyToMany(mappedBy = "cars")
     private List<Employee> employees = new ArrayList<Employee>();
@@ -75,4 +82,19 @@ public class Car {
         this.car_id = car_id;
     }
 
+    public Timestamp getCarCreatedDate() {
+        return carCreatedDate;
+    }
+
+    public void setCarCreatedDate(Timestamp carCreatedDate) {
+        this.carCreatedDate = carCreatedDate;
+    }
+
+    public Timestamp getCarModifiedDate() {
+        return carModifiedDate;
+    }
+
+    public void setCarModifiedDate(Timestamp carModifiedDate) {
+        this.carModifiedDate = carModifiedDate;
+    }
 }

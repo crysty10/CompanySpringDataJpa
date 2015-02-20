@@ -222,10 +222,10 @@ public class CompanyTest {
     @Test
     public void testSaveUpdateWithAuditableAspectWTF(){
 
-        Employee employee = empRepo.findEmployeeByFirstname("Mihaela");
+        //Employee employee = empRepo.findEmployeeByFirstname("Mihaela");
         //Department department = deptRepo.findByDeptname("IT Solutions");
-        employee.setSalary((double)1300);
-        //Employee employee = new Employee("Florin", "C.", (double)1500);
+        //employee.setSalary((double)1350);
+        Employee employee = new Employee("Daniel", "P.", (double)1500);
         empRepo.save(employee);
     }
 

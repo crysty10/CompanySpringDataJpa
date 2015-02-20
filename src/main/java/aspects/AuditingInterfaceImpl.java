@@ -1,19 +1,22 @@
 package aspects;
 
 import org.springframework.stereotype.Component;
-
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.sql.Date;
-import java.time.LocalDateTime;
 
 /**
  * Created by Cristian.Dumitru on 2/18/2015.
  */
 @Component
 public class AuditingInterfaceImpl implements AuditingInterface {
+    /*
+    * Class that store the timestamp of an object when it's saved or
+    * updated in the database; and implements the methods that help
+    * you to get or set the values.
+    * */
 
+    //create date property
     private Timestamp createDateTime;
+    //modified date property
     private Timestamp modifiedDateTime;
 
     @Override

@@ -10,7 +10,11 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class AuditingIntroducer {
+    /**
+     * Adding new functionality around the objects methods. Concept known as
+     * introduction(4.3.4 from Spring in action 3rd edition).
+     * */
 
-    @DeclareParents(value = "domain.*", defaultImpl = AuditingInterfaceImpl.class)
+     @DeclareParents(value = "domain.*", defaultImpl = AuditingInterfaceImpl.class)
     public static AuditingInterface auditingInterface;
 }
