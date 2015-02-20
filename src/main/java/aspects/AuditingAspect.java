@@ -38,11 +38,21 @@ public class AuditingAspect {
     @Inject
     private AuditRepository auditRepository;
 
+    @Pointcut("execution(* repository.*.save(Object)) && args(object)")
+    public void anyDatabasePersist(Object object){}
 
-    @AfterReturning(pointcut = "execution(Object repository.*.save(Object))", returning = "object")
-    public void afterReturningPointcutSetDate(Object object) {
+    @Before("anyDatabasePersist(persistableObject)")
+    public void beforeSaving(Object persistableObject) {
+        Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
+        AuditingInterface auditableObject = (AuditingInterface) persistableObject;
+        auditableObject.setModifiedDateTime(timestamp);
+        auditableObject.setCreatedDateTime(timestamp);
+    }
 
-        if(object == null) {
+    @AfterReturning(value = "anyDatabasePersist(persistedObject)", returning = "persistedObject")
+    public void afterReturningPointcutSetDate(Object persistedObject) {
+
+        if(persistedObject == null) {
 
             try {
                 throw new AuditingException("Something went wrong when you saved the entity!");
@@ -51,9 +61,9 @@ public class AuditingAspect {
             }
         } else {
 
-            if (object instanceof Employee) {
+            if (persistedObject instanceof Employee) {
 
-                Employee employee = (Employee) object;
+                Employee employee = (Employee) persistedObject;
                 Audit audit = auditRepository.findByObjectId(employee.getEmployee_id());
                 if (audit == null) {
                     //SAVE
@@ -80,9 +90,9 @@ public class AuditingAspect {
                     audit.setAction("UPDATE");
                     auditRepository.save(audit);
                 }
-            } else if (object instanceof Car) {
+            } else if (persistedObject instanceof Car) {
 
-                Car car = (Car) object;
+                Car car = (Car) persistedObject;
                 Audit audit = auditRepository.findByObjectId(car.getCar_id());
                 if (audit == null) {
                     //SAVE

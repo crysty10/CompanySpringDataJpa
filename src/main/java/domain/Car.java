@@ -16,6 +16,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Car")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Car {
 
     @Id
@@ -29,12 +30,6 @@ public class Car {
 
     @Column(nullable = false, name = "car_model")
     private String carModel;
-
-    @Column(nullable = false)
-    private Timestamp carCreatedDate;
-
-    @Column(nullable = false)
-    private Timestamp carModifiedDate;
 
     @ManyToMany(mappedBy = "cars")
     private List<Employee> employees = new ArrayList<Employee>();
@@ -83,21 +78,5 @@ public class Car {
 
     public void setCar_id(long car_id) {
         this.car_id = car_id;
-    }
-
-    public Timestamp getCarCreatedDate() {
-        return carCreatedDate;
-    }
-
-    public void setCarCreatedDate(Timestamp carCreatedDate) {
-        this.carCreatedDate = carCreatedDate;
-    }
-
-    public Timestamp getCarModifiedDate() {
-        return carModifiedDate;
-    }
-
-    public void setCarModifiedDate(Timestamp carModifiedDate) {
-        this.carModifiedDate = carModifiedDate;
     }
 }

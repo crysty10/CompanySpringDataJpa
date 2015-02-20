@@ -2,6 +2,7 @@ package aspects;
 
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import java.sql.Timestamp;
 
@@ -18,8 +19,10 @@ public class AuditingInterfaceImpl implements AuditingInterface {
     * */
 
     //create date property
+    @Column(name = "createdDate")
     private Timestamp createDateTime;
     //modified date property
+    @Column(name = "modifiedDate")
     private Timestamp modifiedDateTime;
 
     @Override
