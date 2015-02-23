@@ -74,6 +74,7 @@ public class AuditingAspect {
             if (audit == null) {
                 //SAVE
 
+                
                 Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
                 auditingInterface.setCreatedDateTime(timestamp);
                 auditingInterface.setModifiedDateTime(timestamp);
