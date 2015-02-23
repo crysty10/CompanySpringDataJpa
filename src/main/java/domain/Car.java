@@ -1,14 +1,8 @@
 package domain;
 
-import aspects.AuditingInterface;
-import aspects.AuditingInterfaceImpl;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by Florin.Cojocaru on 2/17/2015.
@@ -17,13 +11,13 @@ import java.util.Set;
 @Entity
 @Table(name = "Car")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Car {
+public class Car implements Identifiable<Long> {
 
     @Id
     @GeneratedValue(generator = "car_seq")
     @SequenceGenerator(name = "car_seq", sequenceName = "car_car_id_seq", allocationSize = 1)
     @Column(name = "car_id", nullable = false)
-    private Long car_id;
+    private Long id;
 
     @Column(nullable = false, name = "car_name")
     private String carName;
@@ -43,6 +37,11 @@ public class Car {
 
     }
 
+    @Override
+    public Long getId() {
+        return this.id;
+    }
+
     public List<Employee> getEmployees() {
         return employees;
     }
@@ -51,14 +50,8 @@ public class Car {
         this.employees = employees;
     }
 
-    public void setCar_id(Long car_id) {
-        this.car_id = car_id;
-    }
 
-    public Long getCar_id() {
 
-        return car_id;
-    }
 
     public String getCarName() {
         return carName;
@@ -76,7 +69,9 @@ public class Car {
         this.carModel = carModel;
     }
 
-    public void setCar_id(long car_id) {
-        this.car_id = car_id;
+    public void setId(long id) {
+        this.id = id;
     }
+
+
 }

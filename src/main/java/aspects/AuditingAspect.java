@@ -1,10 +1,13 @@
 package aspects;
 
 import domain.Audit;
-import domain.Car;
-import domain.Employee;
+import domain.Identifiable;
 import exceptions.AuditingException;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 import repository.AuditRepository;
 import repository.EmployeeRepository;
@@ -32,6 +35,8 @@ public class AuditingAspect {
     @Inject
     private EmployeeRepository employeeRepository;
 
+
+
     /*
     * Get the methods that helps you to save, update the timestamps of an object.
     * */
@@ -39,10 +44,12 @@ public class AuditingAspect {
     private AuditRepository auditRepository;
 
     @Pointcut("execution(* repository.*.save(Object)) && args(object)")
-    public void anyDatabasePersist(Object object){}
+    public void anyDatabasePersist(Object object){
+
+    }
 
     @Before("anyDatabasePersist(persistableObject)")
-    public void beforeSaving(Object persistableObject) {
+    public void beforeSaving(JoinPoint joinPoint, Object persistableObject) {
         Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
         AuditingInterface auditableObject = (AuditingInterface) persistableObject;
         auditableObject.setModifiedDateTime(timestamp);
@@ -50,9 +57,10 @@ public class AuditingAspect {
     }
 
     @AfterReturning(value = "anyDatabasePersist(persistedObject)", returning = "persistedObject")
-    public void afterReturningPointcutSetDate(Object persistedObject) {
+    public void afterReturningPointcutSetDate(JoinPoint joinPoint, Object persistedObject) {
 
-        if(persistedObject == null) {
+
+        if (persistedObject == null) {
 
             try {
                 throw new AuditingException("Something went wrong when you saved the entity!");
@@ -60,8 +68,36 @@ public class AuditingAspect {
                 e.printStackTrace();
             }
         } else {
+            @SuppressWarnings("unchecked")
+            Identifiable<Long> o = (Identifiable<Long>) persistedObject;
+            Audit audit = auditRepository.findByObjectId(o.getId());
+            if (audit == null) {
+                //SAVE
 
-            if (persistedObject instanceof Employee) {
+                Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
+                auditingInterface.setCreatedDateTime(timestamp);
+                auditingInterface.setModifiedDateTime(timestamp);
+
+                audit = new Audit();
+                audit.setObjectId(o.getId());
+                audit.setObjectType(o.getClass().getTypeName());
+                //audit.setObject_createdDate(auditingInterface.getCreatedDateTime());
+                audit.setAction("SAVE");
+                audit.setModifiedDate(auditingInterface.getModifiedDateTime());
+
+                auditRepository.save(audit);
+            } else {
+                //UPDATE
+
+                Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
+                auditingInterface.setModifiedDateTime(timestamp);
+
+                audit.setModifiedDate(auditingInterface.getModifiedDateTime());
+                audit.setAction("UPDATE");
+                auditRepository.save(audit);
+            }
+
+            /*if (persistedObject instanceof Employee) {
 
                 Employee employee = (Employee) persistedObject;
                 Audit audit = auditRepository.findByObjectId(employee.getEmployee_id());
@@ -121,6 +157,6 @@ public class AuditingAspect {
                 }
             }
             //same to the others
+        }*/
         }
-    }
-}
+    }}

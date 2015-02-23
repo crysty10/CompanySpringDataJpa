@@ -8,7 +8,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "audit")
-public class Audit {
+public class Audit implements Identifiable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "audit_seq")
@@ -37,9 +37,7 @@ public class Audit {
         this.modifiedDate = modifiedDate;
     }
 
-    public Long getId() {
-        return id;
-    }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -75,5 +73,10 @@ public class Audit {
 
     public void setModifiedDate(Timestamp modifiedDate) {
         this.modifiedDate = modifiedDate;
+    }
+
+    @Override
+    public Long getId() {
+        return this.id;
     }
 }

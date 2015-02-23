@@ -31,7 +31,7 @@ public interface EmployeeRepository extends
     /*
     * Get one employee by last name, using a query!
     * */
-    @Query("select emp from Employee emp where emp.lastname = :lastname")
+    @Query("select emp from Employee As emp where emp.lastname = :lastname")
     Employee findEmployeeByLastname(@Param("lastname")String lastname);
 
     /*

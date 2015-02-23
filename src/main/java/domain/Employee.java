@@ -1,9 +1,5 @@
 package domain;
 
-import aspects.AuditingInterface;
-import aspects.AuditingInterfaceImpl;
-
-import javax.inject.Inject;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +9,15 @@ import java.util.List;
  */
 @Entity
 @Table(name = "Employee")
-public class Employee {
+public class Employee implements Identifiable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "emp_seq")
     @SequenceGenerator(name = "emp_seq", sequenceName = "employee_emp_id_seq", initialValue = 1, allocationSize = 1)
-    @Column(name = "emp_id", unique = true)
-    private Long employee_id;
+    @Column(name = "emp_id", unique = true, nullable = false)
+    private Long id;
+
+
     private String firstname;
     private String lastname;
     private Double salary;
@@ -65,12 +63,10 @@ public class Employee {
         this.addressList = addressList;
     }
 
-    public Long getEmployee_id() {
-        return employee_id;
-    }
+
 
     public void setEmployee_id(Long employee_id) {
-        this.employee_id = employee_id;
+        this.id = employee_id;
     }
 
     public String getFirstname() {
@@ -108,7 +104,7 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "employee_id=" + employee_id +
+                "employee_id=" + id +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", salary=" + salary +
@@ -116,5 +112,10 @@ public class Employee {
                 ", addressList=" + addressList +
                 ", cars=" + cars +
                 '}';
+    }
+
+    @Override
+    public Long getId() {
+        return this.id;
     }
 }

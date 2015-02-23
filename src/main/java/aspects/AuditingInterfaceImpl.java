@@ -26,7 +26,7 @@ public class AuditingInterfaceImpl implements AuditingInterface {
     private Timestamp modifiedDateTime;
 
     @Override
-    public Timestamp getModifiedDateTime() {
+         public Timestamp getModifiedDateTime() {
 
         return modifiedDateTime;
     }

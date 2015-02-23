@@ -1,20 +1,17 @@
 import config.CompanyConfig;
 import domain.Address;
-import domain.Department;
 import domain.Car;
+import domain.Department;
 import domain.Employee;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import repository.AddressRepository;
-import repository.DepartmentRepository;
 import repository.CarRepository;
+import repository.DepartmentRepository;
 import repository.EmployeeRepository;
 
 import javax.inject.Inject;
@@ -45,6 +42,7 @@ public class CompanyTest {
 
     @Before
     public void setUp() throws Exception {
+
 
 
         /*Department dept = new Department("IT Solutions");

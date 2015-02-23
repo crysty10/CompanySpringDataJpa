@@ -20,6 +20,11 @@ public class EmployeeAddress implements Serializable {
 
     public EmployeeAddress() {}
 
+    public EmployeeAddress(Long emp_id, Long add_id) {
+        this.emp_id = emp_id;
+        this.add_id = add_id;
+    }
+
     public Long getEmp_id() {
         return emp_id;
     }

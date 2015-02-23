@@ -7,14 +7,14 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "Department")
-public class Department {
+public class Department implements Identifiable<Long> {
 
 
     @Id
     @GeneratedValue(generator = "dept_seq")
     @SequenceGenerator(name = "dept_seq", sequenceName = "department_dep_id_seq", allocationSize = 1)
     @Column(name = "dep_id")
-    private Long department_id;
+    private Long id;
     private String deptname;
 
     public Department() {}
@@ -23,12 +23,8 @@ public class Department {
         this.deptname = deptname;
     }
 
-    public Long getDepartment_id() {
-        return department_id;
-    }
-
     public void setDepartment_id(Long department_id) {
-        this.department_id = department_id;
+        this.id = department_id;
     }
 
     public String getDeptname() {
@@ -37,5 +33,10 @@ public class Department {
 
     public void setDeptname(String deptname) {
         this.deptname = deptname;
+    }
+
+    @Override
+    public Long getId() {
+        return this.id;
     }
 }

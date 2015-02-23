@@ -7,13 +7,13 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "Address")
-public class Address {
+public class Address implements Identifiable<Long> {
 
     @Id
     @GeneratedValue(generator = "add_seq")
     @SequenceGenerator(name = "add_seq", sequenceName = "address_add_id_seq", initialValue = 1, allocationSize = 1)
     @Column(name = "add_id")
-    private Long address_id;
+    private Long id;
 
     @Column(nullable = false)
     private String street;
@@ -49,12 +49,10 @@ public class Address {
         this.country = country;
     }
 
-    public Long getAddress_id() {
-        return address_id;
-    }
 
-    public void setAddress_id(Long address_id) {
-        this.address_id = address_id;
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getStreet() {
@@ -111,5 +109,10 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public Long getId() {
+        return this.id;
     }
 }
