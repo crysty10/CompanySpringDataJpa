@@ -1,5 +1,6 @@
 package config;
 
+import aspects.AuditableAspect;
 import aspects.AuditingIntroducer;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
@@ -90,8 +91,8 @@ public class CompanyConfig {
     }
 
     @Bean
-    public AuditingIntroducer auditingIntroducer() {
-        return new AuditingIntroducer();
+    public AuditableAspect auditableAspect() {
+        return AuditableAspect.aspectOf();
     }
 
 }

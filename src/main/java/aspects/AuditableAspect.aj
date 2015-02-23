@@ -15,12 +15,12 @@ public aspect AuditableAspect {
     //@Inject
     //private AuditRepository auditRepository;
 
+
     public AuditableAspect(){}
 
-    pointcut anyMethod(Object object):
-            execution(Object repository.*.save(Object)) && args(object);
+    pointcut anyRepositoryMethod(Object object): execution(Object repository.*.save(Object)) && args(object);
 
-    before(Object persistableObject): anyMethod(persistableObject) {
+    before(Object persistableObject): anyRepositoryMethod(persistableObject) {
 
         System.out.println("I'm in before!!!");
         Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());

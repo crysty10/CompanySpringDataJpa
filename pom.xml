@@ -17,25 +17,34 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>
                 <version>1.7</version>
+                <configuration>
+                    <complianceLevel>1.7</complianceLevel>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
                             <goal>compile</goal>
-                            <!-- use this goal to weave all your main classes -->
                             <goal>test-compile</goal>
-                            <!-- use this goal to weave all your test classes -->
                         </goals>
-                        <configuration>
-                            <source>1.7</source>
-                            <target>1.7</target>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -94,6 +103,7 @@
         <!-- use UTF-8 for everything -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--<project.build.java.target>1.6</project.build.java.target>-->
     </properties>
 
 </project>

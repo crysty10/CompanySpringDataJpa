@@ -9,5 +9,5 @@ public aspect AuditableIntroducer {
 
     public AuditableIntroducer() {}
 
-    declare parents : Car extends AuditableImpl;
+    declare parents : Identifiable extends Auditable;
 }
