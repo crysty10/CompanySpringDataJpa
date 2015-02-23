@@ -37,16 +37,14 @@ public interface EmployeeRepository extends
     /*
     * Get all the addresses of an employee, employee searched by first name!
     * */
-    @Query("select add from Address add, Employee emp, EmployeeAddress empAdd " +
-            "where emp.employee_id = empAdd.emp_id and add.address_id = empAdd.add_id and emp.firstname = :firstname")
-    List<Address> findEmployeeAddressByFirstname(@Param("firstname") String firstname);
+//    @Query("select add from Address add, Employee emp, EmployeeAddress empAdd " +
+//            "where emp.employee_id = empAdd.emp_id and add.address_id = empAdd.add_id and emp.firstname = :firstname")
+//    List<Address> findEmployeeAddressByFirstname(@Param("firstname") String firstname);
 
     /*
     * Get all the cars of an employee, employee searched by salary!
     * */
-    @Query("SELECT cars FROM Car cars, Employee emp, Employee_Car empCar " +
-           "WHERE emp.employee_id = empCar.employee_id AND cars.car_id = empCar.car_id AND emp.salary = :salary")
-    List<Car> findEmployeeCarBySalary(@Param("salary") Double salary);
-
-
+//    @Query("SELECT cars FROM Car cars, Employee emp, Employee_Car empCar " +
+//           "WHERE emp.employee_id = empCar.employee_id AND cars.car_id = empCar.car_id AND emp.salary = :salary")
+//    List<Car> findEmployeeCarBySalary(@Param("salary") Double salary);
 }

@@ -35,8 +35,6 @@ public class AuditingAspect {
     @Inject
     private EmployeeRepository employeeRepository;
 
-
-
     /*
     * Get the methods that helps you to save, update the timestamps of an object.
     * */
@@ -44,8 +42,8 @@ public class AuditingAspect {
     private AuditRepository auditRepository;
 
     @Pointcut("execution(* repository.*.save(Object)) && args(object)")
-    public void anyDatabasePersist(Object object){
-
+    public Object anyDatabasePersist(Object object){
+        return object;
     }
 
     @Before("anyDatabasePersist(persistableObject)")
@@ -56,7 +54,7 @@ public class AuditingAspect {
         auditableObject.setCreatedDateTime(timestamp);
     }
 
-    @AfterReturning(value = "anyDatabasePersist(persistedObject)", returning = "persistedObject")
+    @AfterReturning(value = "anyDatabasePersist(Object)", returning = "persistedObject")
     public void afterReturningPointcutSetDate(JoinPoint joinPoint, Object persistedObject) {
 
 

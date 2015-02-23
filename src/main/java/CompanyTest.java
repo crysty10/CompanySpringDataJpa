@@ -181,29 +181,29 @@ public class CompanyTest {
         assertTrue("Problems with getCars()!", employee.getCars().size() > 0);
     }
 
-    @Test
-    public void testWithQueryLazy() {
-
-        Employee employee = empRepo.findEmployeeByFirstname("Cristian");
-        List<Address> addresses = empRepo.findEmployeeAddressByFirstname(employee.getFirstname());
-        for(Address address : addresses) {
-            System.out.println(address.getCountry());
-        }
-        assertTrue("Nop!!", addresses.size() > 0);
-    }
-
-    @Test
-    public void testFindEmployeeCarBySalary() {
-
-        List<Employee> employee = empRepo.findAllEmployeesBySalary(1500);
-        for (Employee e : employee) {
-            List<Car> cars = empRepo.findEmployeeCarBySalary(e.getSalary());
-            for (Car car : cars) {
-                //assertEquals("Wrong car", car.getCarName(), "BMW");
-                System.out.println(car.getCarName() + " " + car.getCarModel());
-            }
-        }
-    }
+//    @Test
+//    public void testWithQueryLazy() {
+//
+//        Employee employee = empRepo.findEmployeeByFirstname("Cristian");
+//        List<Address> addresses = empRepo.findEmployeeAddressByFirstname(employee.getFirstname());
+//        for(Address address : addresses) {
+//            System.out.println(address.getCountry());
+//        }
+//        assertTrue("Nop!!", addresses.size() > 0);
+//    }
+//
+//    @Test
+//    public void testFindEmployeeCarBySalary() {
+//
+//        List<Employee> employee = empRepo.findAllEmployeesBySalary(1500);
+//        for (Employee e : employee) {
+//            List<Car> cars = empRepo.findEmployeeCarBySalary(e.getSalary());
+//            for (Car car : cars) {
+//                //assertEquals("Wrong car", car.getCarName(), "BMW");
+//                System.out.println(car.getCarName() + " " + car.getCarModel());
+//            }
+//        }
+//    }
 
     @Test
     public void testModifiedTime() {

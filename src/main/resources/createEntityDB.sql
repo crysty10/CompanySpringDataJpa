@@ -59,11 +59,11 @@ CREATE TABLE Employee_Address(
 );
 
 /*Create table for saving DateTime for every created object or modified object*/
-CREATE TABLE DateRegistration(
+CREATE TABLE Audit(
   id SERIAL NOT NULL,
-  object_ID INTEGER NOT NULL,
-  object_type VARCHAR(30) NOT NULL,
-  actionType VARCHAR(30) NOT NULL,
-  object_ModifiedDate TIMESTAMP,
+  objectID INTEGER NOT NULL,
+  objectType VARCHAR(30) NOT NULL,
+  action VARCHAR(30) NOT NULL,
+  modifiedDate TIMESTAMP,
   PRIMARY KEY (id)
 );
