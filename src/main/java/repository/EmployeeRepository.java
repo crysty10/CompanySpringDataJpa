@@ -1,8 +1,5 @@
 package repository;
 
-import aspects.AuditingInterface;
-import domain.Address;
-import domain.Car;
 import domain.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

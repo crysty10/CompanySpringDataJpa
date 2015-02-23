@@ -1,4 +1,4 @@
-package aspects;
+package domain;
 
 import domain.Employee;
 
@@ -16,7 +16,7 @@ import java.time.ZonedDateTime;
 * This interface offers you the functionality to set and get
 * the timestamp of an object.
 * */
-public interface AuditingInterface {
+public interface Auditable {
 
     /*
     * Methods that gives you the created time or modified time,

@@ -1,14 +1,5 @@
-/*Create table Employee*/
-CREATE TABLE Employee (
-  emp_ID SERIAL NOT NULL,
-  firstname VARCHAR(30) NOT NULL,
-  lastname VARCHAR(30) NOT NULL,
-  salary DOUBLE PRECISION NOT NULL,
-  dep_ID INTEGER REFERENCES Department(dep_ID),
-  employeeCreatedDate TIMESTAMP NOT NULL,
-  employeeModifiedDate TIMESTAMP NOT NULL,
-  PRIMARY KEY (emp_ID)
-);
+/*PgaAdmin III*/
+/*DB name: Company*/
 
 /*Create table Address*/
 CREATE TABLE Address(
@@ -42,6 +33,18 @@ CREATE TABLE Department (
   deptCreatedDate TIMESTAMP NOT NULL,
   deptModifiedDate TIMESTAMP NOT NULL,
   PRIMARY KEY (dep_ID)
+);
+
+/*Create table Employee*/
+CREATE TABLE Employee (
+  emp_ID SERIAL NOT NULL,
+  firstname VARCHAR(30) NOT NULL,
+  lastname VARCHAR(30) NOT NULL,
+  salary DOUBLE PRECISION NOT NULL,
+  dep_ID INTEGER REFERENCES Department(dep_ID),
+  employeeCreatedDate TIMESTAMP NOT NULL,
+  employeeModifiedDate TIMESTAMP NOT NULL,
+  PRIMARY KEY (emp_ID)
 );
 
 /*Create table for relation Employee Car*/

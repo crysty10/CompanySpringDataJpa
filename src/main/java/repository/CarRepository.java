@@ -1,7 +1,7 @@
 package repository;
 
 
-import aspects.AuditingInterface;
+import domain.Auditable;
 import domain.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -24,4 +24,5 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     * Get all cars by the car name!
     * */
     List<Car> findAllCarByCarName(String carName);
+
 }

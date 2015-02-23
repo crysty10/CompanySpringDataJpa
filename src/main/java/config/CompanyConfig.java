@@ -1,5 +1,6 @@
 package config;
 
+import aspects.AuditingIntroducer;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -21,7 +22,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableJpaRepositories(basePackages = "repository")
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy//(proxyTargetClass = true)
 @ComponentScan({"repository", "aspects"})
 @PropertySource("classpath:/jpaConnection.properties")
 @EnableJpaAuditing
@@ -91,4 +92,10 @@ public class CompanyConfig {
     public PlatformTransactionManager transactionManager() {
         return new JpaTransactionManager(entityManagerFactory().getObject());
     }
+
+    @Bean
+    public AuditingIntroducer auditingIntroducer() {
+        return new AuditingIntroducer();
+    }
+
 }

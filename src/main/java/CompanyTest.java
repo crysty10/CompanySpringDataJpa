@@ -1,8 +1,5 @@
 import config.CompanyConfig;
-import domain.Address;
-import domain.Car;
-import domain.Department;
-import domain.Employee;
+import domain.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,8 +39,6 @@ public class CompanyTest {
 
     @Before
     public void setUp() throws Exception {
-
-
 
         /*Department dept = new Department("IT Solutions");
         deptRepo.save(dept);
@@ -226,6 +221,7 @@ public class CompanyTest {
         //Employee employee = new Employee("Daniel", "P.", (double)1500);
         empRepo.save(employee);*/
         Car car = new Car("VW", "Golf V");
+        Auditable auditable = (Auditable) car;
         carRepo.save(car);
     }
 

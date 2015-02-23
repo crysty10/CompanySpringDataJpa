@@ -34,7 +34,6 @@ public class Car implements Identifiable<Long> {
     public Car(String carName, String carModel) {
         this.carName = carName;
         this.carModel = carModel;
-
     }
 
     @Override
@@ -49,9 +48,6 @@ public class Car implements Identifiable<Long> {
     public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
-
-
-
 
     public String getCarName() {
         return carName;
@@ -72,6 +68,4 @@ public class Car implements Identifiable<Long> {
     public void setId(long id) {
         this.id = id;
     }
-
-
 }

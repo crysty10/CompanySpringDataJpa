@@ -1,6 +1,4 @@
-package aspects;
-
-import org.springframework.stereotype.Component;
+package domain;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -9,9 +7,8 @@ import java.sql.Timestamp;
 /**
  * Created by Cristian.Dumitru on 2/18/2015.
  */
-@Component
 @MappedSuperclass
-public class AuditingInterfaceImpl implements AuditingInterface {
+public class AuditableImpl implements Auditable {
     /*
     * Class that store the timestamp of an object when it's saved or
     * updated in the database; and implements the methods that help
