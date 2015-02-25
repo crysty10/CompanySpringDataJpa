@@ -24,20 +24,4 @@ public class EmployeeAddress implements Serializable {
         this.emp_id = emp_id;
         this.add_id = add_id;
     }
-
-    public Long getEmp_id() {
-        return emp_id;
-    }
-
-    public void setEmp_id(Long emp_id) {
-        this.emp_id = emp_id;
-    }
-
-    public Long getAdd_id() {
-        return add_id;
-    }
-
-    public void setAdd_id(Long add_id) {
-        this.add_id = add_id;
-    }
 }

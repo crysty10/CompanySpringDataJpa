@@ -46,6 +46,7 @@ public class CompanyConfig implements LoadTimeWeavingConfigurer {
 //        dataSource.setUsername(env.getProperty("dataSource.username"));
 //        dataSource.setUrl(env.getProperty("dataSource.url"));
 //        dataSource.setPassword(env.getProperty("dataSource.password"));
+
         dataSource.setUsername("postgres");
         dataSource.setPassword("admin");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/Company");

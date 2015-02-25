@@ -12,12 +12,11 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "employee_car")
-public class Employee_Car implements Serializable{
+public class Employee_Car implements Serializable {
 
     @Id
     @Column(name = "emp_id")
     private Long employee_id;
-
 
     @Id
     @Column(name = "car_id")
@@ -29,7 +28,4 @@ public class Employee_Car implements Serializable{
         this.employee_id = employee_id;
         this.car_id = car_id;
     }
-
-    Employee_Car emp_car = new Employee_Car();
-
 }

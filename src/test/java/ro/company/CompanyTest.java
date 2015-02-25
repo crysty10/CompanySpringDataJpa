@@ -224,7 +224,7 @@ public class CompanyTest {
         //Employee employee = employeeService.findEmployeeByFirstname("Daniel");
         //Department department = deptRepo.findByDeptname("IT Solutions");
         //employee.setSalary((double)1350);
-        Employee employee = new Employee("Daniela", "P.", (double)1500);
+        Employee employee = new Employee("Jan", "P.", (double)1500);
         //Auditable auditable = (Auditable) employee;
         employeeService.addEmployee(employee);
         //Car car = new Car("VW", "Golf V");

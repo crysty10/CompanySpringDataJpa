@@ -14,9 +14,10 @@ public aspect AuditableIntroducer {
 }
 
 /*TODO:
-* Resolve all the warnings or errors that we get at run!
+* Resolve all the warnings or errors that we get at runtime!
+* See how to use all the entities in AuditableIntroducer to extends AuditableImpl!
 * Debug why with @Aspect, from package springaop, doesn't work!
 * Create service for all the entities!
 * Rename the functions to CRUD, from service!
-* Clean up  the code!
+* Clean up the code!
 * ...*/

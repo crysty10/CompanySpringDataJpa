@@ -17,7 +17,6 @@ public class Employee implements Identifiable<Long> {
     @Column(name = "emp_id", unique = true, nullable = false)
     private Long id;
 
-
     private String firstname;
     private String lastname;
     private Double salary;
