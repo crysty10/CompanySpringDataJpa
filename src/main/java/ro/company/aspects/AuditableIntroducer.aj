@@ -12,3 +12,11 @@ public aspect AuditableIntroducer {
      * */
     declare parents : ro.company.domain.Employee extends ro.company.domain.AuditableImpl;
 }
+
+/*TODO:
+* Resolve all the warnings or errors that we get at run!
+* Debug why with @Aspect, from package springaop, doesn't work!
+* Create service for all the entities!
+* Rename the functions to CRUD, from service!
+* Clean up  the code!
+* ...*/
