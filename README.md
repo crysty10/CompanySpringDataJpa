@@ -9,7 +9,7 @@ To work:
   Add to VM Options, this parameter:
     -ea -javaagent:\**pathTo**\spring-instrument-4.1.4.RELEASE.jar
     
-    
+  
 What i've done..
     - i have created services for every entity
     - i have implemented pointcut for methods which starts with "delete"
