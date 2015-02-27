@@ -1,7 +1,5 @@
 package ro.company.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 import ro.company.domain.Audit;
 import ro.company.repository.AuditRepository;
@@ -30,3 +28,4 @@ public class AuditServiceImpl implements AuditService {
         return auditRepository.findByObjectId(id);
     }
 }
+

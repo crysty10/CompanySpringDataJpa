@@ -13,18 +13,19 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
+
     @Inject
     private EmployeeRepository employeeRepository;
 
     @Override
-    public Employee addEmployee(Employee employee) {
+    public Employee createEmployee(Employee employee) {
 
         return employeeRepository.save(employee);
     }
 
     @Override
     public Employee getEmployeeById(Long id) {
-        return null;
+        return employeeRepository.findOne(id);
     }
 
     @Override

@@ -12,8 +12,7 @@ CREATE TABLE Address(
   locality TEXT NOT NULL,
   country TEXT NOT NULL,
   createdDate TIMESTAMP,
-  modifiedDate TIMESTAMP,
-  PRIMARY KEY (add_ID)
+  modifiedDate TIMESTAMP, PRIMARY KEY (add_ID)
 );
 
 /*Create table Car*/

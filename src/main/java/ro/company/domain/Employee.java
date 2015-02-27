@@ -62,8 +62,6 @@ public class Employee implements Identifiable<Long> {
         this.addressList = addressList;
     }
 
-
-
     public void setEmployee_id(Long employee_id) {
         this.id = employee_id;
     }

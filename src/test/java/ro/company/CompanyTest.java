@@ -1,30 +1,22 @@
 package ro.company;
 
-import ro.company.config.CompanyConfig;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import ro.company.domain.Auditable;
+import ro.company.config.CompanyConfig;
 import ro.company.domain.Employee;
-import ro.company.repository.AddressRepository;
-import ro.company.repository.CarRepository;
-import ro.company.repository.DepartmentRepository;
 import ro.company.service.EmployeeService;
 
 import javax.inject.Inject;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
  */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CompanyConfig.class, loader = AnnotationConfigContextLoader.class)
 public class CompanyTest {
@@ -34,10 +26,10 @@ public class CompanyTest {
 
 //    @Inject
 //    private AddressRepository addressRepo;
-//
+////
 //    @Inject
 //    private DepartmentRepository deptRepo;
-//
+////
 //    @Inject
 //    private CarRepository carRepo;
 
@@ -46,67 +38,67 @@ public class CompanyTest {
     @Before
     public void setUp() throws Exception {
 
-        /*Department dept = new Department("IT Solutions");
-        deptRepo.save(dept);
-        Employee emp = new Employee("Bogdan", "I.", (double)1500);
-        emp.setDepartment(dept);
-        employeeService.save(emp);*/
-        /*Employee emp2 = new Employee("Alex", "C.", (double)1500);
-        List<Address> addresses = addressRepo.findAllByCountry("Romania");
-        emp2.setAddressList(addresses);
-        employeeService.save(emp2);*/
+//        Department dept = new Department("IT Solutions");
+//        deptRepo.save(dept);
+        //Employee emp = new Employee("Bogdan", "I.", (double)1500);
+//        emp.setDepartment(dept);
+      //  employeeService.createEmployee(emp);
+//        Employee emp2 = new Employee("Alex", "C.", (double)1500);
+//        List<Address> addresses = addressRepo.findAllByCountry("Romania");
+//        emp2.setAddressList(addresses);
+//        employeeService.createEmployee(emp2);
 
-        /*Employee employee = employeeService.findEmployeeByFirstname("Alex");
-        Department department = deptRepo.findByDeptname("IT Solutions");
-        employee.setDepartment(department);
-        employeeService.save(employee);*/
+//        Employee employee = employeeService.getEmployeeById(1L);
+//        Department department = deptRepo.findByDeptname("IT Solutions");
+//        employee.setDepartment(department);
+//        employeeService.createEmployee(employee);
 
-        /*Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
-        addressRepo.save(adress);
-        Department dept = new Department("IT Solutions");
-        deptRepo.save(dept);
-        Department dept1 = new Department("Human Resource");
-        deptRepo.save(dept1);
-        Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
-        employeeService.save(emp);
-        addressRepo.save(adress);
-        Address address = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
-        addressRepo.save(address);*/
-        /*Car car = new Car("BMW", "X5");
-        Car car1 = new Car("Audi", "R8");
-        Car car2 = new Car("BMW", "C302");
-        carRepo.save(car);
-        carRepo.save(car1);
-        carRepo.save(car2);*/
-
-        /*Employee emp = new Employee("Cristian", "D.", (double)1500);
-        Department department = deptRepo.findByDeptname("IT Solutions");
-        emp.setDepartment(department);
-        List<Car> carList = carRepo.findAllCarByCarName("BMW");
-        List<Address> addressList = addressRepo.findAllByCountry("Romania");
-        emp.setCars(carList);
-        emp.setAddressList(addressList);
-        employeeService.save(emp);*/
-
-        /*Employee emp = employeeService.findEmployeeByFirstname("Cristian");
-        emp.setDepartment(department);
-        employeeService.save(emp);
-        employeeService.setDepartmentFor(emp.getFirstname(), department.getDepartment_id());*/
-
-        /*Address address1 = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
-        addressRepo.save(address1);
-        Address address2 = new Address("Mihai Bravu",12,"C12",4,100,"Bucuresti","Romania");
-        addressRepo.save(address2);
-        Address address3 = new Address("Foametei",13,"X12",4,100,"Ploiesti","Romania");
-        addressRepo.save(address3);*/
+//        Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
+//        addressRepo.save(adress);
+//        Department dept1 = new Department("IT Solutions");
+//        deptRepo.save(dept1);
+//        Department dept2 = new Department("Human Resource");
+//        deptRepo.save(dept2);
+//        Address adress1 = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
+//        employeeService.save(emp);
+//        addressRepo.save(adress1);
+//        Address address = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
+//        addressRepo.save(address);
+//        Car car = new Car("BMW", "X5");
+//        Car car1 = new Car("Audi", "R8");
+//        Car car2 = new Car("BMW", "C302");
+//        carRepo.save(car);
+//        carRepo.save(car1);
+//        carRepo.save(car2);
+//
+//        Employee emp1 = new Employee("Cristian", "D.", (double)1500);
+//        Department department1 = deptRepo.findByDeptname("IT Solutions");
+//        emp1.setDepartment(department1);
+//        List<Car> carList = carRepo.findAllCarByCarName("BMW");
+//        List<Address> addressList = addressRepo.findAllByCountry("Romania");
+//        emp.setCars(carList);
+//        emp.setAddressList(addressList);
+//        employeeService.save(emp);
+//
+//        Employee emp = employeeService.findEmployeeByFirstname("Cristian");
+//        emp.setDepartment(department);
+//        employeeService.save(emp);
+//        employeeService.setDepartmentFor(emp.getFirstname(), department.getDepartment_id());
+//
+//        Address address1 = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
+//        addressRepo.save(address1);
+//        Address address2 = new Address("Mihai Bravu",12,"C12",4,100,"Bucuresti","Romania");
+//        addressRepo.save(address2);
+//        Address address3 = new Address("Foametei",13,"X12",4,100,"Ploiesti","Romania");
+//        addressRepo.save(address3);
     }
 
 //    @Test
 //    public void testFindEmployeeBySomething() {
 //
-//        ro.company.domain.Employee employee = employeeService.findEmployeeByFirstname("Cristian");
+//        Employee employee = employeeService.getEmployeeById(1L);
 //        System.out.println("The employee: " + employee.getFirstname() + " " + employee.getLastname());
-//        Assert.assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
+//        Assert.assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Bogdan");
 //    }
 //
 //    @Test
@@ -225,8 +217,12 @@ public class CompanyTest {
         //Department department = deptRepo.findByDeptname("IT Solutions");
         //employee.setSalary((double)1350);
         Employee employee = new Employee("Jan", "P.", (double)1500);
-        //Auditable auditable = (Auditable) employee;
-        employeeService.addEmployee(employee);
+       // Auditable auditable = (Auditable) employee;
+        employee = employeeService.createEmployee(employee);
+
+//        System.out.println("First name : " + employee.getFirstname() + " Last name : " + employee.getLastname());
+//        Employee em = employeeService.getEmployeeById(employee.getId());
+//        System.out.println("First name2 : " + em.getFirstname() + " Last name2 : " + em.getLastname() );
         //Car car = new Car("VW", "Golf V");
         //Auditable auditable = (Auditable) car;
         //carRepo.save(car);
