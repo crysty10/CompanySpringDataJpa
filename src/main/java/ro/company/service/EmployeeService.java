@@ -9,13 +9,18 @@ import java.util.List;
  */
 public interface EmployeeService {
 
+    //CREATE OR UPDATE
     Employee createEmployee(Employee employee);
 
-    Employee getEmployeeById(Long id);
+    //READ
+    Employee findEmployeeById(Long id);
+    List<Employee> findAllEmployees();
 
-    List<Employee> getAllEmployees();
+    //DELETE
+    void deleteEmployee(Employee e);
 
-    void deleteEmployee(Long id);
 
-    Employee updateEmployee(Employee employee);
+
+
+
 }

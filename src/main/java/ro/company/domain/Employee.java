@@ -9,6 +9,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "Employee")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Employee implements Identifiable<Long> {
 
     @Id

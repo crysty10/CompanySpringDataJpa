@@ -67,7 +67,7 @@ public class AuditableAspect {
                 audit = new Audit();
                 audit.setObjectId(obj.getId());
                 audit.setObjectType(obj.getClass().getTypeName());
-                audit.setAction("SAVE");
+                audit.setAction("CREATE");
                 audit.setModifiedDate(auditableObject.getModifiedDateTime());
             } else {
                 //UPDATE
@@ -79,4 +79,33 @@ public class AuditableAspect {
             auditService.createAudit(audit);
         }
     }
+
+
+
+    @Pointcut("execution(* *.delete*(..)) && within(ro.company.service.*) && !within(ro.company.service.AuditService+) && args(object)")
+    public void anyDelete(Object object) {}
+
+    @Before("anyDelete(persistableObject)")
+    public void beforeDeleting(Object persistableObject) {Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
+
+        @SuppressWarnings("unchecked")
+        Identifiable<Long> obj1 = (Identifiable<Long>) persistableObject;
+        Audit audit = auditService.findAuditById(obj1.getId());
+        if (audit.getId() == null){
+            System.out.println("Object doesn't exist!");
+        }
+        else{
+
+            System.out.println("Prepare entity " + audit.getObjectType().substring(18) + " for deleting!");
+        }
+        //DELETE
+        Auditable auditableObject1 = (Auditable) persistableObject;
+        audit.setModifiedDate(auditableObject1.getModifiedDateTime());
+        audit.setAction("DELETE");
+        auditService.createAudit(audit);
+
+
+    }
+
 }
+

@@ -5,6 +5,7 @@ import ro.company.domain.Audit;
 import ro.company.repository.AuditRepository;
 
 import javax.inject.Inject;
+import java.util.List;
 
 /**
  * Created by Cristian.Dumitru on 2/25/2015.
@@ -26,6 +27,19 @@ public class AuditServiceImpl implements AuditService {
     public Audit findAuditById(Long id) {
 
         return auditRepository.findByObjectId(id);
+    }
+
+    @Override
+    public List<Audit> findAllAudits() {
+
+        return auditRepository.findAll();
+    }
+
+    @Override
+    public void deleteAudit(Long id) {
+
+        auditRepository.delete(id);
+
     }
 }
 

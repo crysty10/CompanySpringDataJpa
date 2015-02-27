@@ -25,6 +25,9 @@ public class CompanyTest {
     private EmployeeService employeeService;
 
 //    @Inject
+//    private CarService carService;
+
+//    @Inject
 //    private AddressRepository addressRepo;
 ////
 //    @Inject
@@ -216,13 +219,22 @@ public class CompanyTest {
         //Employee employee = employeeService.findEmployeeByFirstname("Daniel");
         //Department department = deptRepo.findByDeptname("IT Solutions");
         //employee.setSalary((double)1350);
-        Employee employee = new Employee("Jan", "P.", (double)1500);
-       // Auditable auditable = (Auditable) employee;
-        employee = employeeService.createEmployee(employee);
-
-//        System.out.println("First name : " + employee.getFirstname() + " Last name : " + employee.getLastname());
-//        Employee em = employeeService.getEmployeeById(employee.getId());
-//        System.out.println("First name2 : " + em.getFirstname() + " Last name2 : " + em.getLastname() );
+        //Department department = new Department("IT");
+        Employee employee = new Employee("Florin", "I.", (double)5060);
+        //Car car = new Car("BMW","X7");
+        //Auditable auditable = (Auditable) employee;
+        //Employee emp1 = employeeService.findEmployeeById(45L);
+        //emp1.setDepartment(department);
+         Employee emp =  employeeService.createEmployee(employee);
+        //Car car1 = carService.createCar(car);
+//          Employee emp = employeeService.findEmployeeById(5L);
+//          employeeService.deleteEmployee(emp);
+//          System.out.println("Entity was deleted!");
+        //emp.setDepartment(new Department("IT"));
+        //employeeService.createEmployee(emp);
+        //System.out.println("First name : " + employee.getFirstname() + " Last name : " + employee.getLastname());
+        //Employee em = employeeService.getEmployeeById(employee.getId());
+        //System.out.println("First name2 : " + em.getFirstname() + " Last name2 : " + em.getLastname() );
         //Car car = new Car("VW", "Golf V");
         //Auditable auditable = (Auditable) car;
         //carRepo.save(car);

@@ -16,10 +16,10 @@ public class AuditableImpl implements Auditable {
     * */
 
     //create date property
-    @Column(name = "createdDate")
+    @Column(name = "createddate")
     private Timestamp createDateTime;
     //modified date property
-    @Column(name = "modifiedDate")
+    @Column(name = "modifieddate")
     private Timestamp modifiedDateTime;
 
     @Override
