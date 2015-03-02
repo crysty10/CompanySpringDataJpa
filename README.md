@@ -19,9 +19,9 @@ What i've done..
 
 Updates...
 
-    modify all interfaces/services from service to work with entities properties
-    add AuditableAnnotation to give at runtime the MappedSuperClass to all entities
-    modify Audit, adding more constraints to find any object in database
+    - modify all interfaces/services from service to work with entities properties
+    - add AuditableAnnotation to give at runtime the MappedSuperClass to all entities
+    - modify Audit, adding more constraints to find any object in database
 
 TODO's...
 
