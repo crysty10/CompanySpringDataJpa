@@ -30,7 +30,6 @@ import javax.sql.DataSource;
 @EnableJpaAuditing
 @EnableTransactionManagement
 @EnableLoadTimeWeaving
-//@ActiveProfiles(profiles = "withProp")
 public class CompanyConfig implements LoadTimeWeavingConfigurer {
 
     @Inject
