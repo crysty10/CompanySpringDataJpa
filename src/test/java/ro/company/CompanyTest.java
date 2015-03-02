@@ -12,9 +12,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ro.company.config.CompanyConfig;
-import ro.company.domain.Department;
 import ro.company.domain.Employee;
-import ro.company.service.DepartmentService;
 import ro.company.service.EmployeeService;
 
 import javax.inject.Inject;
