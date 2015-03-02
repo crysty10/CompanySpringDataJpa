@@ -22,7 +22,7 @@ public class Employee implements Identifiable<Long> {
     private String lastname;
     private Double salary;
 
-    @OneToOne(fetch = FetchType.LAZY, targetEntity = Department.class)
+    @OneToOne(fetch = FetchType.LAZY, targetEntity = Department.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "dep_id")
     private Department department;
 

@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import ro.company.config.CompanyConfig;
+import ro.company.domain.Department;
 import ro.company.domain.Employee;
 import ro.company.service.EmployeeService;
 
@@ -216,27 +217,22 @@ public class CompanyTest {
     @Test
     public void testSaveUpdateWithAuditableAspectWTF(){
 
-        //Employee employee = employeeService.findEmployeeByFirstname("Daniel");
-        //Department department = deptRepo.findByDeptname("IT Solutions");
-        //employee.setSalary((double)1350);
-        //Department department = new Department("IT");
-       // Employee employee = new Employee("Florin", "I.", (double)5060);
-        //Car car = new Car("BMW","X7");
-        //Auditable auditable = (Auditable) employee;
-        //Employee emp1 = employeeService.findEmployeeById(45L);
-        //emp1.setDepartment(department);
-        // Employee emp =  employeeService.createEmployee(employee);
-        //Car car1 = carService.createCar(car);
-          Employee emp = employeeService.findEmployeeById(12L);
-          employeeService.deleteEmployee(emp);
-          System.out.println("Entity was deleted!");
-        //emp.setDepartment(new Department("IT"));
-        //employeeService.createEmployee(emp);
-        //System.out.println("First name : " + employee.getFirstname() + " Last name : " + employee.getLastname());
-        //Employee em = employeeService.getEmployeeById(employee.getId());
-        //System.out.println("First name2 : " + em.getFirstname() + " Last name2 : " + em.getLastname() );
-        //Car car = new Car("VW", "Golf V");
-        //Auditable auditable = (Auditable) car;
-        //carRepo.save(car);
+
+//        Employee employee = new Employee("Florin", "I.", (double)5060);
+//        Employee emp =  employeeService.createEmployee(employee);
+//        System.out.println("\nEntity was created!\n");
+
+        Employee emp1 = employeeService.findEmployeeById(16L);
+        Department department = new Department("IT");
+        emp1.setDepartment(department);
+        Employee emp2 = employeeService.createEmployee(emp1);
+        System.out.println("\nEntity was updated!\n");
+//
+//        Employee emp2 = employeeService.findEmployeeById(15L);
+//        employeeService.deleteEmployee(emp2);
+//        System.out.println("\nEntity was deleted!\n");
+
+
+
     }
 }

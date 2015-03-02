@@ -42,7 +42,7 @@ public aspect AuditableAspect {
     after(Object object) returning(Object persistedObject): anyDatabasePersist(object) {
         if (persistedObject == null) {
             try {
-                throw new AuditingException("Something went wrong when you saved the entity!");
+                throw new AuditingException("\nSomething went wrong when you saved the entity!\n");
             } catch (AuditingException e) {
                throw new RuntimeException(e.getCause());
             }
@@ -63,6 +63,9 @@ public aspect AuditableAspect {
             } else {
                 //UPDATE
                 Auditable auditableObject = (Auditable) persistedObject;
+                audit = new Audit();
+                audit.setObjectId(obj.getId());
+                audit.setObjectType(obj.getClass().getTypeName());
                 audit.setModifiedDate(auditableObject.getModifiedDateTime());
                 audit.setAction("UPDATE");
 
@@ -77,23 +80,33 @@ public aspect AuditableAspect {
 
     before(Object persistableObject): anyDelete(persistableObject) {
 
+        Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
         @SuppressWarnings("unchecked")
         Identifiable<Long> obj1 = (Identifiable<Long>) persistableObject;
         Audit audit = auditService.findAuditById(obj1.getId());
         if (audit.getId() == null){
             System.out.println("Object doesn't exist!");
         }
-        else{
+        else {
 
-            System.out.println("Prepare entity " + audit.getObjectType().substring(18) + " for deleting!");
+            System.out.println("\n Prepare entity " + audit.getObjectType().substring(18) + " for deleting! \n");
+
+            //DELETE
+            Auditable auditableObject1 = (Auditable) persistableObject;
+            audit = new Audit();
+            audit.setObjectId(obj1.getId());
+            audit.setObjectType(obj1.getClass().getTypeName());
+            audit.setAction("DELETE");
+            auditableObject1.setModifiedDateTime(timestamp);
+            audit.setModifiedDate(auditableObject1.getModifiedDateTime());
+
+
+
+
+            auditService.createAudit(audit);
+
+
         }
-        //DELETE
-        Auditable auditableObject1 = (Auditable) persistableObject;
-        audit.setModifiedDate(auditableObject1.getModifiedDateTime());
-        audit.setAction("DELETE");
-        auditService.createAudit(audit);
-
-
     }
 }
 
