@@ -23,7 +23,6 @@ import javax.inject.Inject;
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CompanyConfig.class, loader = AnnotationConfigContextLoader.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
