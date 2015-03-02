@@ -1,5 +1,7 @@
 package ro.company.domain;
 
+import ro.company.annotation.AuditableAnnotation;
+
 import javax.persistence.*;
 
 /**
@@ -7,6 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "Address")
+@AuditableAnnotation
 public class Address implements Identifiable<Long> {
 
     @Id

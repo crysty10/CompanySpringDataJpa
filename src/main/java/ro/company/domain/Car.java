@@ -1,5 +1,7 @@
 package ro.company.domain;
 
+import ro.company.annotation.AuditableAnnotation;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "Car")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@AuditableAnnotation
 public class Car implements Identifiable<Long> {
 
     @Id

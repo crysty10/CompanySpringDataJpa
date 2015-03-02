@@ -54,7 +54,5 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteEmployee(Employee employee) {
 
         employeeRepository.delete(employee);
-
     }
-
 }
