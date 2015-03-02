@@ -21,6 +21,8 @@ import ro.company.service.DepartmentService;
 import ro.company.service.EmployeeService;
 
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
@@ -82,7 +84,7 @@ public class CompanyTest {
     }
 
     @Test
-//    @Ignore
+    @Ignore
     public void testCDeleteWithAuditableAspectWTF(){
 
         Employee employee = employeeService.findEmployeeByFirstnameAndLastname("John", "B.");
@@ -96,5 +98,28 @@ public class CompanyTest {
 
         Address address = addressService.findAddressByLocalityAndStreet("Turnu-Magurele", "Florilor");
         addressService.deleteAddress(address);
+    }
+
+    @Test
+    public void testMultipleFunctionality() {
+
+        Car car = new Car("Audi", "A6");
+        carService.createCar(car);
+
+        Department department = new Department("CTI");
+        departmentService.createDepartment(department);
+
+        Address address = new Address("Blvd. Unirii", 22,"E1", 10, 45, "Bucuresti", "Romania");
+        addressService.createAddress(address);
+
+        Employee employee = new Employee("John", "Travolta", (double)100000);
+        employee.setDepartment(department);
+        List<Address> addressList = new ArrayList<Address>();
+        addressList.add(address);
+        employee.setAddressList(addressList);
+        List<Car> carList = new ArrayList<Car>();
+        carList.add(car);
+        employee.setCars(carList);
+        employeeService.createEmployee(employee);
     }
 }

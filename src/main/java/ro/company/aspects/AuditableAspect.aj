@@ -34,7 +34,6 @@ public aspect AuditableAspect {
             && within(ro.company.service.*) && !within(ro.company.service.AuditService+) && args(object);
 
     before(Object persistableObject): anyDatabasePersist(persistableObject) {
-        System.out.println("Sunt aici!!");
         Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
         Auditable auditableObject = (Auditable) persistableObject;
         auditableObject.setModifiedDateTime(timestamp);
@@ -51,7 +50,7 @@ public aspect AuditableAspect {
         } else {
             @SuppressWarnings("unchecked")
             Identifiable<Long> obj = (Identifiable<Long>) persistedObject;
-            Audit audit = auditService.findAuditById(obj.getId());
+            Audit audit = auditService.findAuditByObjectIdAndObjectType(obj.getId(), obj.getClass().getTypeName().substring(18));
             Auditable auditableObject = (Auditable) persistedObject;
 
             if (audit == null) {

@@ -11,4 +11,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface AuditRepository extends JpaRepository<Audit, Long> {
 
     Audit findByObjectId(Long objectId);
+
+    Audit findAuditByObjectIdAndObjectType(Long objectId, String objectType);
 }

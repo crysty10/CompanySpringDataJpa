@@ -13,7 +13,7 @@ public interface AuditService {
     Audit createAudit(Audit audit);
 
     //READ
-    Audit findAuditById(Long id);
+    Audit findAuditByObjectIdAndObjectType(Long objectId, String objectType);
     List<Audit> findAllAudits();
 
     //DELETE

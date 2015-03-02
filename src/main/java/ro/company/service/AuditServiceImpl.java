@@ -24,10 +24,11 @@ public class AuditServiceImpl implements AuditService {
     }
 
     @Override
-    public Audit findAuditById(Long id) {
+    public Audit findAuditByObjectIdAndObjectType(Long objectId, String objectType) {
 
-        return auditRepository.findByObjectId(id);
+        return auditRepository.findAuditByObjectIdAndObjectType(objectId, objectType);
     }
+
 
     @Override
     public List<Audit> findAllAudits() {
