@@ -7,7 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import ro.company.config.CompanyConfig;
-import ro.company.domain.Department;
 import ro.company.domain.Employee;
 import ro.company.service.EmployeeService;
 
@@ -222,15 +221,15 @@ public class CompanyTest {
 //        Employee emp =  employeeService.createEmployee(employee);
 //        System.out.println("\nEntity was created!\n");
 
-        Employee emp1 = employeeService.findEmployeeById(16L);
-        Department department = new Department("IT");
-        emp1.setDepartment(department);
-        Employee emp2 = employeeService.createEmployee(emp1);
-        System.out.println("\nEntity was updated!\n");
+//        Employee emp1 = employeeService.findEmployeeById(16L);
+//        Department department = new Department("IT");
+//        emp1.setDepartment(department);
+//        Employee emp2 = employeeService.createEmployee(emp1);
+//        System.out.println("\nEntity was updated!\n");
 //
-//        Employee emp2 = employeeService.findEmployeeById(15L);
-//        employeeService.deleteEmployee(emp2);
-//        System.out.println("\nEntity was deleted!\n");
+        Employee emp2 = employeeService.findEmployeeById(16L);
+        employeeService.deleteEmployee(emp2);
+        System.out.println("\nEntity was deleted!\n");
 
 
 

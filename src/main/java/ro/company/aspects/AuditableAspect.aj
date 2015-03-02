@@ -83,30 +83,22 @@ public aspect AuditableAspect {
         Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
         @SuppressWarnings("unchecked")
         Identifiable<Long> obj1 = (Identifiable<Long>) persistableObject;
-        Audit audit = auditService.findAuditById(obj1.getId());
-        if (audit.getId() == null){
-            System.out.println("Object doesn't exist!");
-        }
-        else {
 
-            System.out.println("\n Prepare entity " + audit.getObjectType().substring(18) + " for deleting! \n");
 
             //DELETE
             Auditable auditableObject1 = (Auditable) persistableObject;
-            audit = new Audit();
+            Audit audit = new Audit();
+            System.out.println("\n Prepare entity " + obj1.getClass().getTypeName().substring(18) + " for deleting! \n");
             audit.setObjectId(obj1.getId());
             audit.setObjectType(obj1.getClass().getTypeName());
             audit.setAction("DELETE");
             auditableObject1.setModifiedDateTime(timestamp);
             audit.setModifiedDate(auditableObject1.getModifiedDateTime());
 
-
-
-
             auditService.createAudit(audit);
 
 
-        }
     }
 }
+
 
