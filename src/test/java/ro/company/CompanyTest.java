@@ -220,14 +220,14 @@ public class CompanyTest {
         //Department department = deptRepo.findByDeptname("IT Solutions");
         //employee.setSalary((double)1350);
         //Department department = new Department("IT");
-        //Employee employee = new Employee("Florin", "I.", (double)5060);
+       // Employee employee = new Employee("Florin", "I.", (double)5060);
         //Car car = new Car("BMW","X7");
         //Auditable auditable = (Auditable) employee;
         //Employee emp1 = employeeService.findEmployeeById(45L);
         //emp1.setDepartment(department);
         // Employee emp =  employeeService.createEmployee(employee);
         //Car car1 = carService.createCar(car);
-          Employee emp = employeeService.findEmployeeById(9L);
+          Employee emp = employeeService.findEmployeeById(12L);
           employeeService.deleteEmployee(emp);
           System.out.println("Entity was deleted!");
         //emp.setDepartment(new Department("IT"));

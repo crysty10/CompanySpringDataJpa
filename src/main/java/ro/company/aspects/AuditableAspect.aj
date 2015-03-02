@@ -1,7 +1,5 @@
 package ro.company.aspects;
 
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.beans.factory.annotation.Configurable;
 import ro.company.domain.Audit;
 import ro.company.domain.Auditable;
@@ -74,11 +72,10 @@ public aspect AuditableAspect {
         }
 
     }
-    @Pointcut("execution(* *.delete*(..)) && within(ro.company.service.*) && !within(ro.company.service.AuditService+) && args(object)")
-    public void anyDelete(Object object) {}
 
-    @Before("anyDelete(persistableObject)")
-    public void beforeDeleting(Object persistableObject) {Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
+    pointcut anyDelete(Object object):execution(* *.delete*(..)) && within(ro.company.service.*) && !within(ro.company.service.AuditService+) && args(object);
+
+    before(Object persistableObject): anyDelete(persistableObject) {
 
         @SuppressWarnings("unchecked")
         Identifiable<Long> obj1 = (Identifiable<Long>) persistableObject;
@@ -99,3 +96,4 @@ public aspect AuditableAspect {
 
     }
 }
+
