@@ -18,9 +18,9 @@ What i've done..
     @Delete, overwriting row with that registration
 
 Updates...
-    - modify all interfaces/services from service to work with entities properties
-    - add AuditableAnnotation to give at runtime the MappedSuperClass to all entities
-    - modify Audit, adding more constraints to find any object in database
+    modify all interfaces/services from service to work with entities properties
+    add AuditableAnnotation to give at runtime the MappedSuperClass to all entities
+    modify Audit, adding more constraints to find any object in database
 
 TODO's...
     - make sure that Save and Update datetime aren't the same in before pointcut
