@@ -19,7 +19,7 @@ What i've done..
     Doesn't work to set createddate and modifieddate in DB
     @Delete, overwriting row with that registration
 
-Updates...
+Updates(03/02/2015)...
 
     - modify all interfaces/services from service to work with entities properties
     - add AuditableAnnotation to give at runtime the MappedSuperClass to all entities
