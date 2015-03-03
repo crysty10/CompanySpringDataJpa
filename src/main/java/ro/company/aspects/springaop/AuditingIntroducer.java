@@ -19,8 +19,8 @@
 //     * Adding new functionality around the objects methods. Concept known as
 //     * introduction(4.3.4 from Spring in action 3rd edition).
 //     */
-//    @DeclareParents(value = "ro.company.domain.Employee", defaultImpl = AuditableImpl.class)
-//    @Embedded
+//    //@DeclareParents(value = "ro.company.domain.Employee", defaultImpl = AuditableImpl.class)
+//    @DeclareParents(value = "ro.company.domain.Identifiable+", defaultImpl = AuditableImpl.class)
 //    public static Auditable auditable;
 //
 //    /**

@@ -57,8 +57,7 @@ public aspect AuditableAspect {
         } else {
             @SuppressWarnings("unchecked")
             Identifiable<Long> obj = (Identifiable<Long>) persistedObject;
-            //Audit audit = auditService.findByObjectIdAndObjectType(obj.getId(), obj.getClass().getTypeName().substring(18));
-            Audit audit = auditService.findFirstByObjectId(obj.getId());
+            Audit audit = auditService.findFirstByObjectIdAndObjectType(obj.getId(), obj.getClass().getTypeName());
             Auditable auditableObject = (Auditable) persistedObject;
 
             if (audit == null) {

@@ -24,15 +24,27 @@ public class AuditServiceImpl implements AuditService {
     }
 
     @Override
-    public Audit findByObjectIdAndObjectType(Long objectId, String objectType) {
+    public Audit findFirstByObjectIdAndObjectType(Long objectId, String objectType) {
 
-        return auditRepository.findByObjectIdAndObjectType(objectId, objectType);
+        return auditRepository.findFirstByObjectIdAndObjectType(objectId, objectType);
     }
 
     @Override
     public Audit findFirstByObjectId(Long objectId) {
 
         return auditRepository.findFirstByObjectId(objectId);
+    }
+
+    @Override
+    public Audit findAuditByObjectIdAndAction(Long objectId, String action) {
+
+        return auditRepository.findAuditByObjectIdAndAction(objectId, action);
+    }
+
+    @Override
+    public Audit findAuditByObjectIdAndObjectTypeAndAction(Long objectId, String objectType, String action) {
+
+        return auditRepository.findAuditByObjectIdAndObjectTypeAndAction(objectId, objectType, action);
     }
 
 

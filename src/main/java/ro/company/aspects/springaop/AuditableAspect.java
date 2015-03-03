@@ -16,8 +16,8 @@
 //import java.time.LocalDateTime;
 //
 ///**
-// * Created by Cristian.Dumitru on 2/24/2015.
-// */
+//* Created by Cristian.Dumitru on 2/24/2015.
+//*/
 //@Aspect
 //@Configurable(preConstruction = true, dependencyCheck = true)
 //public class AuditableAspect {
@@ -46,12 +46,16 @@
 //
 //    @Before("anyDatabasePersist(persistableObject)")
 //    public void beforeSaving(Object persistableObject) {
-//        System.out.println("Sunt aici!!");
-//
 //        Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
 //        Auditable auditableObject = (Auditable) persistableObject;
-//        auditableObject.setModifiedDateTime(timestamp);
-//        auditableObject.setCreatedDateTime(timestamp);
+//        if(auditableObject.getCreatedDateTime() != null) {
+//            //UPDATE
+//            auditableObject.setModifiedDateTime(timestamp);
+//        } else {
+//            //CREATE
+//            auditableObject.setModifiedDateTime(timestamp);
+//            auditableObject.setCreatedDateTime(timestamp);
+//        }
 //    }
 //
 //    @AfterReturning(value = "anyDatabasePersist(Object)", returning = "persistedObject")
@@ -65,10 +69,10 @@
 //        } else {
 //            @SuppressWarnings("unchecked")
 //            Identifiable<Long> obj = (Identifiable<Long>) persistedObject;
-//            Audit audit = null;
+//            Audit audit = auditService.findFirstByObjectId(obj.getId());
 //            Auditable auditableObject = (Auditable) persistedObject;
 //
-//            if (auditService.findAuditById(obj.getId()) == null) {
+//            if (audit == null) {
 //                //SAVE
 //                audit = new Audit();
 //                audit.setObjectId(obj.getId());
