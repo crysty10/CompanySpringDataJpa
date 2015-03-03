@@ -44,4 +44,12 @@ public class Department implements Identifiable<Long>, Serializable {
     public Long getId() {
         return this.id;
     }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", deptname='" + deptname + '\'' +
+                '}';
+    }
 }

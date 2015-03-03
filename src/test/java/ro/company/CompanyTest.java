@@ -105,16 +105,16 @@ public class CompanyTest {
     @Ignore
     public void testMultipleFunctionality() {
 
-        Car car = new Car("Audi", "A6");
+        Car car = new Car("Kia", "Cee'd");
         carService.createCar(car);
 
-        Department department = new Department("CTI");
+        Department department = new Department("ACS");
         departmentService.createDepartment(department);
 
-        Address address = new Address("Blvd. Unirii", 22,"E1", 10, 45, "Bucuresti", "Romania");
+        Address address = new Address("Blvd. Mihai Bravu", 5,"C14", 9, 4, "Bucuresti", "Romania");
         addressService.createAddress(address);
 
-        Employee employee = new Employee("John", "Travolta", (double)100000);
+        Employee employee = new Employee("Jason", "J.", (double)100000);
         employee.setDepartment(department);
         List<Address> addressList = new ArrayList<Address>();
         addressList.add(address);
@@ -144,7 +144,7 @@ public class CompanyTest {
     @Test
     @Ignore
     public void testIfSerializableObjectWork() {
-        Audit audit = auditService.findFirstByObjectIdAndObjectType(3L, "ro.company.domain.Employee");
+        Audit audit = auditService.findFirstByObjectIdAndObjectType(6L, "ro.company.domain.Employee");
         ByteArrayInputStream bis = new ByteArrayInputStream(audit.getObjectSerializable());
         ObjectInput in = null;
 

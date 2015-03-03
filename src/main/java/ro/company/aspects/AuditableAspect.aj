@@ -97,8 +97,6 @@ public aspect AuditableAspect {
 
     before(Object persistableObject): anyDelete(persistableObject) {
 
-        System.out.println("I'm in before delete");
-
         Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
 
         @SuppressWarnings("unchecked")

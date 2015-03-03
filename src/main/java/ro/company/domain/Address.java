@@ -116,6 +116,20 @@ public class Address implements Identifiable<Long>, Serializable {
     }
 
     @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", street_nr=" + street_nr +
+                ", building='" + building + '\'' +
+                ", floor=" + floor +
+                ", apartment=" + apartment +
+                ", locality='" + locality + '\'' +
+                ", country='" + country + '\'' +
+                '}';
+    }
+
+    @Override
     public Long getId() {
         return this.id;
     }

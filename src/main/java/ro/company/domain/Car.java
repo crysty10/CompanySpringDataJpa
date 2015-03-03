@@ -73,4 +73,14 @@ public class Car implements Identifiable<Long>, Serializable {
     public void setId(long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", carName='" + carName + '\'' +
+                ", carModel='" + carModel + '\'' +
+                ", employees=" + employees +
+                '}';
+    }
 }
