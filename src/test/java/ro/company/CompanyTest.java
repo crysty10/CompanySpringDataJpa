@@ -128,7 +128,7 @@ public class CompanyTest {
     public void testUpdateVsSaveCreatedTimeModifiedTime() {
 
         Employee employee = employeeService.findEmployeeByFirstnameAndLastname("John", "Travolta");
-        employee.setSalary((double)15080);
+        employee.setSalary((double)15085);
         employeeService.createEmployee(employee);
     }
 }

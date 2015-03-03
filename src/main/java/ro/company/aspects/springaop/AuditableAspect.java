@@ -22,12 +22,13 @@
 //@Configurable(preConstruction = true, dependencyCheck = true)
 //public class AuditableAspect {
 //
+//    @Inject
 //    private AuditService auditService;
 //
-//    @Inject
+//    /*@Inject
 //    public void setAuditService(AuditService auditService) {
 //        this.auditService = auditService;
-//    }
+//    }*/
 //
 //    public AuditableAspect() {
 //    }
