@@ -3,6 +3,7 @@ package ro.company.domain;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,9 @@ import java.util.List;
 @Entity
 @Table(name = "Employee")
 @AuditableAnnotation
-public class Employee implements Identifiable<Long> {
+public class Employee implements Identifiable<Long>, Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "emp_seq")

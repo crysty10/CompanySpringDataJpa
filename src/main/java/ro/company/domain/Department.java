@@ -3,6 +3,7 @@ package ro.company.domain;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
@@ -10,8 +11,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Department")
 @AuditableAnnotation
-public class Department implements Identifiable<Long> {
+public class Department implements Identifiable<Long>, Serializable {
 
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(generator = "dept_seq")

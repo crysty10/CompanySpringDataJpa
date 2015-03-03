@@ -11,16 +11,14 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ro.company.config.CompanyConfig;
-import ro.company.domain.Address;
-import ro.company.domain.Car;
-import ro.company.domain.Department;
-import ro.company.domain.Employee;
-import ro.company.service.AddressService;
-import ro.company.service.CarService;
-import ro.company.service.DepartmentService;
-import ro.company.service.EmployeeService;
+import ro.company.domain.*;
+import ro.company.service.*;
 
 import javax.inject.Inject;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +42,9 @@ public class CompanyTest {
 
     @Inject
     private AddressService addressService;
+
+    @Inject
+    private AuditService auditService;
 
     @Test
     @Ignore
@@ -125,10 +126,36 @@ public class CompanyTest {
     }
 
     @Test
+    @Ignore
     public void testUpdateVsSaveCreatedTimeModifiedTime() {
 
         Employee employee = employeeService.findEmployeeByFirstnameAndLastname("John", "Travolta");
         employee.setSalary((double)15085);
         employeeService.createEmployee(employee);
+    }
+
+    @Test
+    @Ignore
+    public void testSaveUpdateDeleteWithSerializable() {
+        Employee employee = new Employee("Johnny", "Bravo", (double)1605);
+        employeeService.createEmployee(employee);
+    }
+
+    @Test
+    @Ignore
+    public void testIfSerializableObjectWork() {
+        Audit audit = auditService.findFirstByObjectIdAndObjectType(3L, "ro.company.domain.Employee");
+        ByteArrayInputStream bis = new ByteArrayInputStream(audit.getObjectSerializable());
+        ObjectInput in = null;
+
+        try {
+            in = new ObjectInputStream(bis);
+            Employee employee = (Employee)in.readObject();
+            System.out.println("Merge?: " + employee);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,13 +1,19 @@
 package ro.company.aspects;
 
+import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
 import org.springframework.beans.factory.annotation.Configurable;
 import ro.company.domain.Audit;
 import ro.company.domain.Auditable;
 import ro.company.domain.Identifiable;
+import ro.company.domain.util.ObjectSerializer;
 import ro.company.exceptions.AuditingException;
 import ro.company.service.AuditService;
 
 import javax.inject.Inject;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -60,12 +66,15 @@ public aspect AuditableAspect {
             Audit audit = auditService.findFirstByObjectIdAndObjectType(obj.getId(), obj.getClass().getTypeName());
             Auditable auditableObject = (Auditable) persistedObject;
 
+            byte[] objectSerializable = ObjectSerializer.objectToByteStream(obj);
+
             if (audit == null) {
                 //CREATE
                 audit = new Audit();
                 audit.setObjectId(obj.getId());
                 audit.setObjectType(obj.getClass().getTypeName());
                 audit.setAction("CREATE");
+                audit.setObjectSerializable(objectSerializable);
                 audit.setModifiedDate(auditableObject.getModifiedDateTime());
             } else {
                 //UPDATE
@@ -73,6 +82,7 @@ public aspect AuditableAspect {
                 audit.setObjectId(obj.getId());
                 audit.setObjectType(obj.getClass().getTypeName());
                 audit.setAction("UPDATE");
+                audit.setObjectSerializable(objectSerializable);
                 audit.setModifiedDate(auditableObject.getModifiedDateTime());
             }
             auditService.createAudit(audit);
@@ -93,11 +103,13 @@ public aspect AuditableAspect {
 
         @SuppressWarnings("unchecked")
         Identifiable<Long> object = (Identifiable<Long>) persistableObject;
+        byte[] objectSerializable = ObjectSerializer.objectToByteStream(object);
         //DELETE
         Audit audit = new Audit();
         audit.setObjectId(object.getId());
         audit.setObjectType(object.getClass().getTypeName());
         audit.setAction("DELETE");
+        audit.setObjectSerializable(objectSerializable);
         audit.setModifiedDate(timestamp);
         auditService.createAudit(audit);
     }
