@@ -101,6 +101,7 @@ public class CompanyTest {
     }
 
     @Test
+    @Ignore
     public void testMultipleFunctionality() {
 
         Car car = new Car("Audi", "A6");
@@ -120,6 +121,14 @@ public class CompanyTest {
         List<Car> carList = new ArrayList<Car>();
         carList.add(car);
         employee.setCars(carList);
+        employeeService.createEmployee(employee);
+    }
+
+    @Test
+    public void testUpdateVsSaveCreatedTimeModifiedTime() {
+
+        Employee employee = employeeService.findEmployeeByFirstnameAndLastname("John", "Travolta");
+        employee.setSalary((double)15020);
         employeeService.createEmployee(employee);
     }
 }

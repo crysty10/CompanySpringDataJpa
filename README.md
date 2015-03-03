@@ -23,6 +23,6 @@ Updates...
     modify Audit, adding more constraints to find any object in database
 
 TODO's...
-    - make sure that Save and Update datetime aren't the same in before pointcut
+    - make sure that Save and Update datetime aren't the same in before pointcut (DONE)
     - try to resolve the same situation with AOP
     - ask Bogdan for more TODO :))

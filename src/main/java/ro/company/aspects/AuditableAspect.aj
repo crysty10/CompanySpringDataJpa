@@ -34,10 +34,17 @@ public aspect AuditableAspect {
             && within(ro.company.service.*) && !within(ro.company.service.AuditService+) && args(object);
 
     before(Object persistableObject): anyDatabasePersist(persistableObject) {
+
         Timestamp timestamp = Timestamp.valueOf(LocalDateTime.now());
         Auditable auditableObject = (Auditable) persistableObject;
-        auditableObject.setModifiedDateTime(timestamp);
-        auditableObject.setCreatedDateTime(timestamp);
+        if(auditableObject.getCreatedDateTime() != null) {
+            //UPDATE
+            auditableObject.setModifiedDateTime(timestamp);
+        } else {
+            //CREATE
+            auditableObject.setModifiedDateTime(timestamp);
+            auditableObject.setCreatedDateTime(timestamp);
+        }
     }
 
     after(Object object) returning(Object persistedObject): anyDatabasePersist(object) {
@@ -50,7 +57,8 @@ public aspect AuditableAspect {
         } else {
             @SuppressWarnings("unchecked")
             Identifiable<Long> obj = (Identifiable<Long>) persistedObject;
-            Audit audit = auditService.findAuditByObjectIdAndObjectType(obj.getId(), obj.getClass().getTypeName().substring(18));
+            //Audit audit = auditService.findByObjectIdAndObjectType(obj.getId(), obj.getClass().getTypeName().substring(18));
+            Audit audit = auditService.findFirstByObjectId(obj.getId());
             Auditable auditableObject = (Auditable) persistedObject;
 
             if (audit == null) {
