@@ -58,7 +58,7 @@ public aspect AuditableAspect {
             try {
                 throw new AuditingException("Something went wrong when you saved the entity!");
             } catch (AuditingException e) {
-                throw new RuntimeException(e.getCause());
+                throw new RuntimeException("Something went wrong with the AFTER advice!", e);
             }
         } else {
             @SuppressWarnings("unchecked")

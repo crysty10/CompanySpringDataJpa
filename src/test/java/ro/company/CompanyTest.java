@@ -48,7 +48,7 @@ public class CompanyTest {
 
     @Test
     @Ignore
-    public void testACreateWithAuditableAspectWTF(){
+    public void testACreateWithAuditableAspect(){
 
         Employee employee = new Employee("John", "B.", (double)5050);
         employeeService.createEmployee(employee);
@@ -65,7 +65,7 @@ public class CompanyTest {
 
     @Test
     @Ignore
-    public void testBUpdateWithAuditableAspectWTF(){
+    public void testBUpdateWithAuditableAspect(){
 
         Employee employee = employeeService.findEmployeeByFirstnameAndLastname("John", "B.");
         employee.setSalary((double)4000);
@@ -86,7 +86,7 @@ public class CompanyTest {
 
     @Test
     @Ignore
-    public void testCDeleteWithAuditableAspectWTF(){
+    public void testCDeleteWithAuditableAspect(){
 
         Employee employee = employeeService.findEmployeeByFirstnameAndLastname("John", "B.");
         employeeService.deleteEmployee(employee);
