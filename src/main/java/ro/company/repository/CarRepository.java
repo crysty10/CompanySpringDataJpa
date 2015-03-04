@@ -23,5 +23,4 @@ public interface CarRepository extends JpaRepository<Car, Long> {
     * Get all cars by the car name!
     * */
     List<Car> findAllCarByCarName(String carName);
-
 }

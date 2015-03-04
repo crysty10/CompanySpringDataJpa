@@ -1,19 +1,36 @@
 # CompanySpringDataJpa
-TODO:
-  1. every entity table must have 2 more columns: createDate, modifiedDate
-  2. add connection between those 2 new columns and those from AuditingInterfaceImpl
-  3. complete @AfterReturning for every entity
-  4. will see moew TODO's in future :))
+Updates(04/02/2015)...
 
-To work:
-  Add to VM Options, this parameter:
-    -ea -javaagent:\**pathTo**\spring-instrument-4.1.4.RELEASE.jar
-    
-  
+    - make sure that Save and Update datetime aren't the same in before pointcut
+    - change audit, adding serializable objects to database
+    - some tests that prove it's working
+
+TODO:
+
+    - try to resolve the same situation with AOP
+    - ask Bogdan for more TODO :))
+
+Updates(03/02/2015)...
+
+    - modify all interfaces/services from service to work with entities properties
+    - add AuditableAnnotation to give at runtime the MappedSuperClass to all entities
+    - modify Audit, adding more constraints to find any object in database
+
 What i've done..
+
     - i have created services for every entity
     - i have implemented pointcut for methods which starts with "delete"
-    
-    Doesn't work to set createddate and modifieddate in DB
-    @Delete, overwriting row with that registration
+    - doesn't work to set createddate and modifieddate in DB @Delete, overwriting row with that registration
 
+TODO:
+
+    - every entity table must have 2 more columns: createDate, modifiedDate
+    - add connection between those 2 new columns and those from AuditingInterfaceImpl
+    - complete @AfterReturning for every entity
+    - will see more TODO's in future :))
+
+To work:
+
+    Add to VM Options, this parameter:
+      - ea -javaagent:\**pathTo**\spring-instrument-4.1.4.RELEASE.jar
+      - where pathTo represents the location of spring-instrument into your host

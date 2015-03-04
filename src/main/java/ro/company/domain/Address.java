@@ -1,13 +1,19 @@
 package ro.company.domain;
 
+import ro.company.annotation.AuditableAnnotation;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Florin.Cojocaru on 2/17/2015.
  */
 @Entity
 @Table(name = "Address")
-public class Address implements Identifiable<Long> {
+@AuditableAnnotation
+public class Address implements Identifiable<Long>, Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(generator = "add_seq")
@@ -107,6 +113,20 @@ public class Address implements Identifiable<Long> {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", street='" + street + '\'' +
+                ", street_nr=" + street_nr +
+                ", building='" + building + '\'' +
+                ", floor=" + floor +
+                ", apartment=" + apartment +
+                ", locality='" + locality + '\'' +
+                ", country='" + country + '\'' +
+                '}';
     }
 
     @Override

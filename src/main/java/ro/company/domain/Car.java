@@ -1,6 +1,9 @@
 package ro.company.domain;
 
+import ro.company.annotation.AuditableAnnotation;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +13,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "Car")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Car implements Identifiable<Long> {
+@AuditableAnnotation
+public class Car implements Identifiable<Long>, Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(generator = "car_seq")
@@ -67,5 +72,15 @@ public class Car implements Identifiable<Long> {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", carName='" + carName + '\'' +
+                ", carModel='" + carModel + '\'' +
+                ", employees=" + employees +
+                '}';
     }
 }
