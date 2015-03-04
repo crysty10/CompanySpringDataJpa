@@ -137,14 +137,14 @@ public class CompanyTest {
     @Test
     @Ignore
     public void testSaveUpdateDeleteWithSerializable() {
-        Employee employee = new Employee("Johnny", "Bravo", (double)1605);
+        Employee employee = new Employee("Liam", "N.", (double)1605);
         employeeService.createEmployee(employee);
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void testIfSerializableObjectWork() {
-        Audit audit = auditService.findFirstByObjectIdAndObjectType(6L, "ro.company.domain.Employee");
+        Audit audit = auditService.findFirstByObjectIdAndObjectType(7L, "ro.company.domain.Employee");
         ByteArrayInputStream bis = new ByteArrayInputStream(audit.getObjectSerializable());
         ObjectInput in = null;
 
