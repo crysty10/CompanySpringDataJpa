@@ -28,7 +28,6 @@ public interface EmployeeRepository extends
     * */
     List<Employee> findAllEmployeesBySalary(double salary);
 
-
     Employee findEmployeeByFirstnameAndLastname(String firsname, String lastname);
 
     /*

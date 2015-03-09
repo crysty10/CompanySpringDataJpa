@@ -16,6 +16,12 @@ import java.sql.Timestamp;
  */
 public class ObjectSerializer {
 
+    /**
+     * Serialize an entity into/when saving into AUDIT table.
+     *
+     * @param object - the object to be serialized.
+     * @return - the object serialized.
+     */
     public static byte[] objectToByteStream(Object object) {
 
         final int objectSize = (int) ObjectSizeCalculator.getObjectSize(object);

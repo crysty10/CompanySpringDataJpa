@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 //import ro.company.aspects.AuditableIntroducer;
 
 import javax.inject.Inject;
@@ -25,11 +26,12 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = "ro.company.repository")
 @EnableAspectJAutoProxy//(proxyTargetClass = true)
-@ComponentScan({"ro.company.repository", "ro.company.aspects", "ro.company.service"})
+@ComponentScan(value = {"ro.company.repository", "ro.company.aspects", "ro.company.service", "ro.company"},
+    excludeFilters =  {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)})
 //@PropertySource("classpath:/resources/jpaConnection.properties")
 @EnableJpaAuditing
 @EnableTransactionManagement
-@EnableLoadTimeWeaving
+//@EnableLoadTimeWeaving
 public class CompanyConfig implements LoadTimeWeavingConfigurer {
 
     @Inject
