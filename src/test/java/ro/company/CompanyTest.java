@@ -142,7 +142,7 @@ public class CompanyTest {
     }
 
     @Test
-//    @Ignore
+    @Ignore
     public void testIfSerializableObjectWork() {
         Audit audit = auditService.findFirstByObjectIdAndObjectType(7L, "ro.company.domain.Employee");
         ByteArrayInputStream bis = new ByteArrayInputStream(audit.getObjectSerializable());
