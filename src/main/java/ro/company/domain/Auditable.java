@@ -18,11 +18,13 @@ public interface Auditable {
     * table DateRegistration.
     * */
     public Timestamp getModifiedDateTime();
+
     public Timestamp getCreatedDateTime();
 
     /*
     * Methods used to set the timestamp of an object.
     * */
     public void setModifiedDateTime(Timestamp localDateTime);
+
     public void setCreatedDateTime(Timestamp localDateTime);
 }

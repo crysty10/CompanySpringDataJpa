@@ -1,7 +1,6 @@
 package ro.company.domain;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.MappedSuperclass;
 import java.sql.Timestamp;
 

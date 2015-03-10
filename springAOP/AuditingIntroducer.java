@@ -1,4 +1,4 @@
-//package ro.company.aspects.springaop;
+//package springaop;
 //
 //import org.aspectj.lang.annotation.Aspect;
 //import org.aspectj.lang.annotation.DeclareParents;

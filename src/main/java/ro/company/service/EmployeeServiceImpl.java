@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by Cristian.Dumitru on 2/25/2015.
  */
+
 @Service
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService {
@@ -19,8 +20,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Inject
     private EmployeeRepository employeeRepository;
 
-    @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
+    @Override
     public Employee createEmployee(Employee employee) {
 
         return employeeRepository.save(employee);
@@ -43,6 +44,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findAll();
     }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public boolean checkEmployeeExist(Long id) {
 

@@ -3,6 +3,7 @@ package ro.company.domain;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "Employee")
 @AuditableAnnotation
-public class Employee implements Identifiable<Long> {
+public class Employee implements Identifiable<Long>, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "emp_seq")
@@ -30,17 +31,18 @@ public class Employee implements Identifiable<Long> {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Employee_Address",
-                joinColumns = @JoinColumn(name = "emp_id"),
-                inverseJoinColumns = @JoinColumn(name = "add_id"))
+        joinColumns = @JoinColumn(name = "emp_id"),
+        inverseJoinColumns = @JoinColumn(name = "add_id"))
     private List<Address> addressList = new ArrayList<Address>();
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Employee_Car",
-            joinColumns = @JoinColumn(name = "emp_id"),
-            inverseJoinColumns = @JoinColumn(name = "car_id"))
+        joinColumns = @JoinColumn(name = "emp_id"),
+        inverseJoinColumns = @JoinColumn(name = "car_id"))
     private List<Car> cars = new ArrayList<Car>();
 
-    public Employee(){}
+    public Employee() {
+    }
 
     public Employee(String firstname, String lastname, Double salary) {
 
@@ -104,14 +106,14 @@ public class Employee implements Identifiable<Long> {
     @Override
     public String toString() {
         return "Employee{" +
-                "employee_id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", salary=" + salary +
-                ", department=" + department +
-                ", addressList=" + addressList +
-                ", cars=" + cars +
-                '}';
+            "employee_id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", salary=" + salary +
+            ", department=" + department +
+            ", addressList=" + addressList +
+            ", cars=" + cars +
+            '}';
     }
 
     @Override

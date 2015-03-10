@@ -1,13 +1,16 @@
 package ro.company.aspects;
 
+import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
 import org.springframework.beans.factory.annotation.Configurable;
 import ro.company.domain.Audit;
 import ro.company.domain.Auditable;
 import ro.company.domain.Identifiable;
+import ro.company.domain.util.ObjectSerializer;
 import ro.company.exceptions.AuditingException;
 import ro.company.service.AuditService;
 
 import javax.inject.Inject;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
@@ -17,10 +20,30 @@ import java.time.LocalDateTime;
 @Configurable(preConstruction = true, dependencyCheck = true)
 public aspect AuditableAspect {
 
+    /*private Object deepClone(Auditable object) {
+
+        try {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(object);
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+            ObjectInputStream ois = new ObjectInputStream(bais);
+            return ois.readObject();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }*/
+
+
+
+
     private AuditService auditService;
 
     @Inject
     public void setAuditService(AuditService auditService) {
+
         this.auditService = auditService;
     }
 
@@ -60,6 +83,17 @@ public aspect AuditableAspect {
             Audit audit = auditService.findFirstByObjectIdAndObjectType(obj.getId(), obj.getClass().getTypeName());
             Auditable auditableObject = (Auditable) persistedObject;
 
+
+
+                byte[] objectSerialized = new byte[(int)ObjectSizeCalculator.getObjectSize(obj)];
+
+            try {
+                objectSerialized = ObjectSerializer.convert(obj);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
             if (audit == null) {
                 //CREATE
                 audit = new Audit();
@@ -67,6 +101,8 @@ public aspect AuditableAspect {
                 audit.setObjectType(obj.getClass().getTypeName());
                 audit.setAction("CREATE");
                 audit.setModifiedDate(auditableObject.getModifiedDateTime());
+                //audit.setObject(myObject)
+                audit.setObject(objectSerialized);
             } else {
                 //UPDATE
                 audit = new Audit();
@@ -74,6 +110,8 @@ public aspect AuditableAspect {
                 audit.setObjectType(obj.getClass().getTypeName());
                 audit.setAction("UPDATE");
                 audit.setModifiedDate(auditableObject.getModifiedDateTime());
+                audit.setObject(objectSerialized);
+
             }
             auditService.createAudit(audit);
         }

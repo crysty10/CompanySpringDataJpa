@@ -4,8 +4,6 @@ import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
-import org.springframework.instrument.classloading.LoadTimeWeaver;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -14,10 +12,12 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-//import ro.company.aspects.AuditableIntroducer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
+
+//import ro.company.aspects.AuditableIntroducer;
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
@@ -25,12 +25,12 @@ import javax.sql.DataSource;
 @Configuration
 @EnableJpaRepositories(basePackages = "ro.company.repository")
 @EnableAspectJAutoProxy//(proxyTargetClass = true)
-@ComponentScan({"ro.company.repository", "ro.company.aspects", "ro.company.service"})
+@ComponentScan(value = {"ro.company.repository", "ro.company.aspects", "ro.company.service"}, excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)})
 //@PropertySource("classpath:/resources/jpaConnection.properties")
 @EnableJpaAuditing
 @EnableTransactionManagement
-@EnableLoadTimeWeaving
-public class CompanyConfig implements LoadTimeWeavingConfigurer {
+//@EnableLoadTimeWeaving(aspectjWeaving = EnableLoadTimeWeaving.AspectJWeaving.ENABLED)
+public class CompanyConfig { //implements LoadTimeWeavingConfigurer {
 
     @Inject
     Environment env;
@@ -94,8 +94,8 @@ public class CompanyConfig implements LoadTimeWeavingConfigurer {
         return new JpaTransactionManager(entityManagerFactory().getObject());
     }
 
-    @Override
+    /*@Override
     public LoadTimeWeaver getLoadTimeWeaver() {
         return new InstrumentationLoadTimeWeaver();
-    }
+    }*/
 }

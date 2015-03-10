@@ -3,6 +3,7 @@ package ro.company.domain;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Florin.Cojocaru on 2/17/2015.
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Address")
 @AuditableAnnotation
-public class Address implements Identifiable<Long> {
+public class Address implements Identifiable<Long>, Serializable {
 
     @Id
     @GeneratedValue(generator = "add_seq")
@@ -39,7 +40,8 @@ public class Address implements Identifiable<Long> {
     @Column(nullable = false)
     private String country;
 
-    public Address() {}
+    public Address() {
+    }
 
     public Address(String street, Integer street_nr, String building, Integer floor, Integer apartment, String locality, String country) {
 

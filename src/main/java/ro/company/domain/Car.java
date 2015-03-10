@@ -3,6 +3,7 @@ package ro.company.domain;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "Car")
 @AuditableAnnotation
-public class Car implements Identifiable<Long> {
+public class Car implements Identifiable<Long>, Serializable {
 
     @Id
     @GeneratedValue(generator = "car_seq")

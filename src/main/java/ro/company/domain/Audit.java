@@ -27,14 +27,33 @@ public class Audit implements Identifiable<Long> {
 
     private Timestamp modifiedDate;
 
-    public Audit() {};
+
+//    @Column(name = "Object", unique = false, nullable = false, length = 100000)
+//    private Object object;
+
+    public byte[] getObject() {
+        return object;
+    }
+
+    public void setObject(byte[] object) {
+        this.object = object;
+    }
+
+    @Column(name = "Object", unique = false, nullable = false, length = 100000)
+    private byte[] object;
+
+    public Audit() {
+    }
+
+    ;
 
 
-    public Audit(Long objectId, String objectType, String action, Timestamp modifiedDate) {
+    public Audit(Long objectId, String objectType, String action, Timestamp modifiedDate, byte[] object) {
         this.objectId = objectId;
         this.objectType = objectType;
         this.action = action;
         this.modifiedDate = modifiedDate;
+        this.object = object;
     }
 
     public void setId(Long id) {
@@ -72,6 +91,15 @@ public class Audit implements Identifiable<Long> {
     public void setModifiedDate(Timestamp modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
+
+//    public Object getObject() {
+//        return object;
+//    }
+//
+//    public void setObject(Object object) {
+//        this.object = object;
+//    }
+
 
     @Override
     public Long getId() {

@@ -22,7 +22,8 @@ public class Employee_Car implements Serializable {
     @Column(name = "car_id")
     private Long car_id;
 
-    public Employee_Car() {}
+    public Employee_Car() {
+    }
 
     public Employee_Car(Long employee_id, Long car_id) {
         this.employee_id = employee_id;
