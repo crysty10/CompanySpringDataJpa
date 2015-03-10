@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AuditableAnnotation
 public class Department implements Identifiable<Long>, Serializable {
 
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(generator = "dept_seq")
@@ -43,5 +44,13 @@ public class Department implements Identifiable<Long>, Serializable {
     @Override
     public Long getId() {
         return this.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", deptname='" + deptname + '\'' +
+                '}';
     }
 }

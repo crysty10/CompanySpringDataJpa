@@ -2,6 +2,8 @@
 Updates(04/02/2015)...
 
     - make sure that Save and Update datetime aren't the same in before pointcut
+    - change audit, adding serializable objects to database
+    - some tests that prove it's working
 
 TODO:
 
