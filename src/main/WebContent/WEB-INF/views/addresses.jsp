@@ -10,9 +10,6 @@
 <html>
 <head>
     <title>Addresses</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="<c:url value='/resources/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -20,7 +17,6 @@
     <small>You can update data as well!</small>
 </h1>
 <c:forEach items="${addressList}" var="address">
-    <%--<li id="address_<c:out value='address.id'/>">--%>
     <div class="row" style="text-align: center;">
         <div class="col-md-1">
             <c:out value="${address.id}"/>
@@ -47,17 +43,14 @@
             <c:out value="${address.country}"/>
         </div>
         <div class="col-md-2">
-            <%--<input type="button" value="UPDATE" onclick="history.go(-1);return true;"/>--%>
             <button type="button" class="btn btn-danger">UPDATE</button>
         </div>
     </div>
-    <%--</li>--%>
 </c:forEach>
 <div class="row" style="text-align: center;">
     <div class="col-md-10"></div>
     <div class="col-md-2">
-        <%--<input type="button" value="GO BACK" onclick="history.go(-1);return true;"/>--%>
-        <button type="button" class="btn btn-primary" onclick="history.go(-1);return true;">BACK</button>
+        <button type="button" class="btn btn-primary" onclick="">BACK</button>
     </div>
 </div>
 </body>

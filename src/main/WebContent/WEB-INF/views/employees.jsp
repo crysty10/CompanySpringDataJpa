@@ -10,38 +10,44 @@
 <html>
 <head>
     <title>Employee</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-<h1>All the Company employees! <small>You can update data as well!</small></h1>
+<h1>All the Company employees!
+    <small>You can update data as well!</small>
+</h1>
 <c:forEach items="${employeeList}" var="employee">
-    <%--<li id="employee_<c:out value='employee.id'/>">--%>
-        <div class="row" style="text-align: center;">
-            <div class="col-md-2">
-                <c:out value="${employee.id}"/>
-            </div>
-            <div class="col-md-2">
-                <c:out value="${employee.firstname}"/>
-            </div>
-            <div class="col-md-2">
-                <c:out value="${employee.lastname}"/>
-            </div>
-            <div class="col-md-2">
-                <c:out value="${employee.salary}"/>
-            </div>
-            <div class="col-md-2">
-                <%--<input type="button" value="UPDATE" onclick="history.go(-1);return true;"/>--%>
-                <button type="button" class="btn btn-danger">UPDATE</button>
-            </div>
+    <div class="row" style="text-align: center;">
+        <div class="col-md-2">
+            <c:out value="${employee.id}"/>
         </div>
-    <%--</li>--%>
+        <div class="col-md-2">
+            <c:out value="${employee.firstname}"/>
+        </div>
+        <div class="col-md-2">
+            <c:out value="${employee.lastname}"/>
+        </div>
+        <div class="col-md-2">
+            <c:out value="${employee.salary}"/>
+        </div>
+        <div class="col-md-2">
+            <input type="button" value="UPDATE" name="updateEmployee"/>
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="DELETE" name="deleteEmployee"/>
+        </div>
+    </div>
 </c:forEach>
 <div class="row" style="text-align: center;">
     <div class="col-md-8"></div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-primary" onclick="history.go(-1);return true;">BACK</button>
+        <button type="button" class="btn btn-primary" onclick="goToUpdate()">BACK</button>
     </div>
+    <script type="text/javascript">
+        function goToUpdate() {
+            window.location = '/employees';
+        }
+    </script>
 </div>
 </body>
 </html>

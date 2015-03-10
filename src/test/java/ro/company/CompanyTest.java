@@ -171,39 +171,39 @@ public class CompanyTest {
 //            e.printStackTrace();
 //        }
 //    }
-
-    @Test
-    @Ignore
-    public void testHomePage() throws Exception {
-        CompanyController controller = new CompanyController();
-        MockMvc mockMvc =
-                standaloneSetup(controller).build();
-        mockMvc.perform(get("/"))
-                .andExpect(view().name("home"));
-    }
-
-    @Test
-    @Ignore
-    public void shouldShowRecentSpittles() throws Exception {
-        List<Employee> expectedEmployees = createEmployeeList();
-        EmployeeService mockRepository = mock(EmployeeService.class);
-        EmployeeController controller = new EmployeeController(mockRepository);
-        MockMvc mockMvc = standaloneSetup(controller)
-                .setSingleView(
-                        new InternalResourceView("/WEB-INF/views/employees.jsp"))
-                .build();
-        when(mockRepository.findAllEmployees()).thenReturn(expectedEmployees);
-        mockMvc.perform(get("/employees")).andExpect(view().name("employees"))
-                .andExpect(model().attributeExists("employeeList"))
-                .andExpect(model().attribute("employeeList",
-                        hasItems(expectedEmployees.toArray())));
-    }
-
-    private List<Employee> createEmployeeList() {
-        List<Employee> employeeList = employeeService.findAllEmployees();
-        for(Employee emp : employeeList) {
-            System.out.println(emp.getFirstname());
-        }
-        return employeeList;
-    }
+//
+//    @Test
+//    @Ignore
+//    public void testHomePage() throws Exception {
+//        CompanyController controller = new CompanyController();
+//        MockMvc mockMvc =
+//                standaloneSetup(controller).build();
+//        mockMvc.perform(get("/"))
+//                .andExpect(view().name("home"));
+//    }
+//
+//    @Test
+//    @Ignore
+//    public void shouldShowRecentSpittles() throws Exception {
+//        List<Employee> expectedEmployees = createEmployeeList();
+//        EmployeeService mockRepository = mock(EmployeeService.class);
+//        EmployeeController controller = new EmployeeController(mockRepository);
+//        MockMvc mockMvc = standaloneSetup(controller)
+//                .setSingleView(
+//                        new InternalResourceView("/WEB-INF/views/employees.jsp"))
+//                .build();
+//        when(mockRepository.findAllEmployees()).thenReturn(expectedEmployees);
+//        mockMvc.perform(get("/employees")).andExpect(view().name("employees"))
+//                .andExpect(model().attributeExists("employeeList"))
+//                .andExpect(model().attribute("employeeList",
+//                        hasItems(expectedEmployees.toArray())));
+//    }
+//
+//    private List<Employee> createEmployeeList() {
+//        List<Employee> employeeList = employeeService.findAllEmployees();
+//        for(Employee emp : employeeList) {
+//            System.out.println(emp.getFirstname());
+//        }
+//        return employeeList;
+//    }
 }

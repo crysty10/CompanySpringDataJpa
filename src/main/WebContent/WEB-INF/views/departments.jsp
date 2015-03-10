@@ -10,9 +10,6 @@
 <html>
 <head>
     <title>Department</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="<c:url value='/resources/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -20,7 +17,6 @@
     <small>You can update data as well!</small>
 </h1>
 <c:forEach items="${departmentList}" var="dept">
-    <%--<li id="dept_<c:out value='dept.id'/>">--%>
     <div class="row" style="text-align: center;">
         <div class="col-md-2">
             <c:out value="${dept.id}"/>
@@ -29,11 +25,9 @@
             <c:out value="${dept.deptname}"/>
         </div>
         <div class="col-md-2">
-            <%--<input type="button" value="UPDATE" onclick="history.go(-1);return true;"/>--%>
             <button type="button" class="btn btn-danger">UPDATE</button>
         </div>
     </div>
-    <%--</li>--%>
 </c:forEach>
 <div class="row" style="text-align: center;">
     <div class="col-md-4"></div>
