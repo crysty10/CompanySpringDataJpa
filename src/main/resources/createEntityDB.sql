@@ -1,6 +1,7 @@
 /*PgaAdmin III*/
 /*DB name: Company*/
 
+
 /*Create table Address*/
 CREATE TABLE Address(
   add_ID SERIAL NOT NULL,
