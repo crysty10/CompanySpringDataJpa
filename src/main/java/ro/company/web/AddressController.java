@@ -3,6 +3,7 @@ package ro.company.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import ro.company.service.AddressService;
 
 import javax.inject.Inject;
@@ -21,6 +22,7 @@ public class AddressController {
         this.addressService = addressService;
     }
 
+    @RequestMapping(method = RequestMethod.GET)
     public String addresses(Model model) {
 
         model.addAttribute("addressList", addressService.findAllAddresses());

@@ -13,13 +13,28 @@
     <link rel="stylesheet"
           type="text/css"
           href="<c:url value='/resources/style.css'/>">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Welcome to your Company project homepage!</h1>
-<a href="<c:url value='/employees' />">Employees</a> |
-<a href="<c:url value='/departments' />">Departments</a> |
-<a href="<c:url value='/cars' />">Cars</a> |
-<a href="<c:url value='/addresses' />">Address</a> |
-<a href="<c:url value='/audit' />">Audit</a>
+<h1>Welcome to your Company project homepage
+    <small>Developed by DCG and CFA!</small>
+</h1>
+<div class="row" style="text-align: center;">
+    <div class="col-md-2">
+        <a href="<c:url value='/employees' />">Show employees</a>
+    </div>
+    <div class="col-md-2">
+        <a href="<c:url value='/departments' />">Show departments</a>
+    </div>
+    <div class="col-md-2">
+        <a href="<c:url value='/cars' />">Show cars</a>
+    </div>
+    <div class="col-md-2">
+        <a href="<c:url value='/addresses' />">Show addresses</a>
+    </div>
+    <div class="col-md-2">
+        Show audit
+    </div>
+</div>
 </body>
 </html>
