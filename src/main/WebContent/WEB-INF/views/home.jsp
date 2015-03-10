@@ -10,7 +10,7 @@
     <style>
         body {
             background-image: url(http://rexohome.com/wp-content/uploads/2011/04/The-Architecture-Design-of-Blaas-General-Partnership-570x405.jpg);
-            background-size: 100%;
+            background-size: auto;
             font-family: sans-serif;
             color: white;
         }

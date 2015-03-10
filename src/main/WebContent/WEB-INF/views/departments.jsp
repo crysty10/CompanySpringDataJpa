@@ -4,7 +4,7 @@
     <head>
         <style>
             body {
-                background-image: url(http://www.ahisd.net/images/departments%20wordle1.jpg);
+                background: url(http://www.ahisd.net/images/departments%20wordle1.jpg) no-repeat;
                 background-size: 100%;
                 font-family: sans-serif;
                 color: black;

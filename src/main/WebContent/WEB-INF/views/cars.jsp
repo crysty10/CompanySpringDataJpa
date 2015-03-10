@@ -4,8 +4,8 @@
     <head>
         <style>
             body {
-                background-image: url(http://betterparts.org/images/audi-a7-01.jpg);
-                background-size: 100%;
+                background: url(http://betterparts.org/images/audi-a7-01.jpg) no-repeat;
+                background-size: contain;
                 font-family: sans-serif;
                 color: white;
             }

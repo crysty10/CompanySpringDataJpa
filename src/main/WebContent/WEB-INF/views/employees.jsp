@@ -4,8 +4,9 @@
     <head>
         <style>
             body {
-                background-image: url(http://businessgross.com/wp-content/uploads/2013/05/Employee.png);
                 background-size: 100%;
+                background: url(http://businessgross.com/wp-content/uploads/2013/05/Employee.png) no-repeat;
+
                 font-family: sans-serif;
                 color: black;
             }

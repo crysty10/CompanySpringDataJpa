@@ -4,7 +4,7 @@
     <head>
         <style>
             body {
-                background-image: url(http://s3.germany.travel/media/content/gut_zu_wissen_1/bundeslaender/nordrhein_westfalen/header_NRW_Aggertalsperre-im-Bergischen-Land-Naturarena-Bergisches-Land-GmbH.jpg);
+                background: url(http://s3.germany.travel/media/content/gut_zu_wissen_1/bundeslaender/nordrhein_westfalen/header_NRW_Aggertalsperre-im-Bergischen-Land-Naturarena-Bergisches-Land-GmbH.jpg) no-repeat;
                 background-size: 100%;
                 font-family: sans-serif;
                 color: black;
