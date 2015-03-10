@@ -14,9 +14,10 @@ public interface AddressService {
 
     //READ
     Address findAddressById(Long id);
+    Address findAddressByLocalityAndStreet(String locality, String street);
     List<Address> findAllAddresses();
 
     //DELETE
-    void deleteAddress(Long id);
+    void deleteAddress(Address address);
 }
 

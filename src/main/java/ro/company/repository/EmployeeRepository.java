@@ -23,13 +23,12 @@ public interface EmployeeRepository extends
     * */
     Employee findEmployeeByFirstname(String firstname);
 
-
-    //Employee save(Auditable auditable);
-
     /*
     * Get all employees with the same salary!
     * */
     List<Employee> findAllEmployeesBySalary(double salary);
+
+    Employee findEmployeeByFirstnameAndLastname(String firsname, String lastname);
 
     /*
     * Get one employee by last name, using a query!

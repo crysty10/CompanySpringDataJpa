@@ -67,6 +67,7 @@ CREATE TABLE Audit(
   objectID INTEGER NOT NULL,
   objectType VARCHAR(30) NOT NULL,
   action VARCHAR(30) NOT NULL,
+  objectSerializable BYTEA NOT NULL,
   modifiedDate TIMESTAMP,
   PRIMARY KEY (id)
 );

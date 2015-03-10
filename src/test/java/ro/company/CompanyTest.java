@@ -1,237 +1,209 @@
 package ro.company;
 
-import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.view.InternalResourceView;
 import ro.company.config.CompanyConfig;
-import ro.company.domain.Employee;
-import ro.company.service.EmployeeService;
+import ro.company.domain.*;
+import ro.company.service.*;
+import ro.company.web.CompanyController;
+import ro.company.web.EmployeeController;
 
 import javax.inject.Inject;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+import static org.hamcrest.core.IsCollectionContaining.hasItems;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
  */
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CompanyConfig.class, loader = AnnotationConfigContextLoader.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class CompanyTest {
 
     @Inject
     private EmployeeService employeeService;
 
-//    @Inject
-//    private CarService carService;
+    @Inject
+    private CarService carService;
 
-//    @Inject
-//    private AddressRepository addressRepo;
-////
-//    @Inject
-//    private DepartmentRepository deptRepo;
-////
-//    @Inject
-//    private CarRepository carRepo;
+    @Inject
+    private DepartmentService departmentService;
 
+    @Inject
+    private AddressService addressService;
 
+    @Inject
+    private AuditService auditService;
 
-    @Before
-    public void setUp() throws Exception {
-
-//        Department dept = new Department("IT Solutions");
-//        deptRepo.save(dept);
-        //Employee emp = new Employee("Bogdan", "I.", (double)1500);
-//        emp.setDepartment(dept);
-      //  employeeService.createEmployee(emp);
-//        Employee emp2 = new Employee("Alex", "C.", (double)1500);
-//        List<Address> addresses = addressRepo.findAllByCountry("Romania");
-//        emp2.setAddressList(addresses);
-//        employeeService.createEmployee(emp2);
-
-//        Employee employee = employeeService.getEmployeeById(1L);
-//        Department department = deptRepo.findByDeptname("IT Solutions");
-//        employee.setDepartment(department);
+//    @Test
+//    @Ignore
+//    public void testACreateWithAuditableAspect(){
+//
+//        Employee employee = new Employee("John", "B.", (double)5050);
 //        employeeService.createEmployee(employee);
-
-//        Address adress = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
-//        addressRepo.save(adress);
-//        Department dept1 = new Department("IT Solutions");
-//        deptRepo.save(dept1);
-//        Department dept2 = new Department("Human Resource");
-//        deptRepo.save(dept2);
-//        Address adress1 = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
-//        employeeService.save(emp);
-//        addressRepo.save(adress1);
-//        Address address = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
-//        addressRepo.save(address);
-//        Car car = new Car("BMW", "X5");
-//        Car car1 = new Car("Audi", "R8");
-//        Car car2 = new Car("BMW", "C302");
-//        carRepo.save(car);
-//        carRepo.save(car1);
-//        carRepo.save(car2);
 //
-//        Employee emp1 = new Employee("Cristian", "D.", (double)1500);
-//        Department department1 = deptRepo.findByDeptname("IT Solutions");
-//        emp1.setDepartment(department1);
-//        List<Car> carList = carRepo.findAllCarByCarName("BMW");
-//        List<Address> addressList = addressRepo.findAllByCountry("Romania");
-//        emp.setCars(carList);
-//        emp.setAddressList(addressList);
-//        employeeService.save(emp);
+//        Car car = new Car("BMW", "320");
+//        carService.createCar(car);
 //
-//        Employee emp = employeeService.findEmployeeByFirstname("Cristian");
-//        emp.setDepartment(department);
-//        employeeService.save(emp);
-//        employeeService.setDepartmentFor(emp.getFirstname(), department.getDepartment_id());
+//        Department department = new Department("IT Solutions");
+//        departmentService.createDepartment(department);
 //
-//        Address address1 = new Address("Florilor",1,"D12",4,100,"Timisoara","Romania");
-//        addressRepo.save(address1);
-//        Address address2 = new Address("Mihai Bravu",12,"C12",4,100,"Bucuresti","Romania");
-//        addressRepo.save(address2);
-//        Address address3 = new Address("Foametei",13,"X12",4,100,"Ploiesti","Romania");
-//        addressRepo.save(address3);
-    }
-
-//    @Test
-//    public void testFindEmployeeBySomething() {
-//
-//        Employee employee = employeeService.getEmployeeById(1L);
-//        System.out.println("The employee: " + employee.getFirstname() + " " + employee.getLastname());
-//        Assert.assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Bogdan");
+//        Address address = new Address("Florilor",2,"D12",1,45,"Turnu-Magurele","Romania");
+//        addressService.createAddress(address);
 //    }
 //
 //    @Test
-//    public void testFindAddressBySomething() {
+//    @Ignore
+//    public void testBUpdateWithAuditableAspect(){
 //
-//        ro.company.domain.Address adress = addressRepo.findBylocality("Turnu-Magurele");
-//        Assert.assertEquals("Wrong locality", adress.getLocality(), "Turnu-Magurele");
+//        Employee employee = employeeService.findEmployeeByFirstnameAndLastname("John", "B.");
+//        employee.setSalary((double)4000);
+//        employeeService.createEmployee(employee);
+//
+//        Car car = carService.getCarByCarName("BMW");
+//        car.setCarModel("520");
+//        carService.createCar(car);
+//
+//        Department department = departmentService.getDepartmentByDeptname("IT Solutions");
+//        department.setDeptname("IT");
+//        departmentService.createDepartment(department);
+//
+//        Address address = addressService.findAddressByLocalityAndStreet("Turnu-Magurele", "Florilor");
+//        address.setApartment(22);
+//        addressService.createAddress(address);
 //    }
 //
 //    @Test
-//    public void testFindAllAddressesByStreet() {
-//        List<ro.company.domain.Address> address = addressRepo.findByStreet("Florilor");
-//        for (ro.company.domain.Address a : address) {
-//            Assert.assertEquals("Wrong street", a.getStreet(), "Florilor");
+//    @Ignore
+//    public void testCDeleteWithAuditableAspect(){
+//
+//        Employee employee = employeeService.findEmployeeByFirstnameAndLastname("John", "B.");
+//        employeeService.deleteEmployee(employee);
+//
+//        Car car = carService.getCarByCarName("BMW");
+//        carService.deleteCar(car);
+//
+//        Department department = departmentService.getDepartmentByDeptname("IT");
+//        departmentService.deleteDepartment(department);
+//
+//        Address address = addressService.findAddressByLocalityAndStreet("Turnu-Magurele", "Florilor");
+//        addressService.deleteAddress(address);
+//    }
+//
+//    @Test
+//    @Ignore
+//    public void testMultipleFunctionality() {
+//
+//        Car car = new Car("Kia", "Cee'd");
+//        carService.createCar(car);
+//
+//        Department department = new Department("ACS");
+//        departmentService.createDepartment(department);
+//
+//        Address address = new Address("Blvd. Mihai Bravu", 5,"C14", 9, 4, "Bucuresti", "Romania");
+//        addressService.createAddress(address);
+//
+//        Employee employee = new Employee("Jason", "J.", (double)100000);
+//        employee.setDepartment(department);
+//        List<Address> addressList = new ArrayList<Address>();
+//        addressList.add(address);
+//        employee.setAddressList(addressList);
+//        List<Car> carList = new ArrayList<Car>();
+//        carList.add(car);
+//        employee.setCars(carList);
+//        employeeService.createEmployee(employee);
+//    }
+//
+//    @Test
+//    @Ignore
+//    public void testUpdateVsSaveCreatedTimeModifiedTime() {
+//
+//        Employee employee = employeeService.findEmployeeByFirstnameAndLastname("John", "Travolta");
+//        employee.setSalary((double)15085);
+//        employeeService.createEmployee(employee);
+//    }
+//
+//    @Test
+//    @Ignore
+//    public void testSaveUpdateDeleteWithSerializable() {
+//        Employee employee = new Employee("Liam", "N.", (double)1605);
+//        employeeService.createEmployee(employee);
+//    }
+//
+//    @Test
+//    @Ignore
+//    public void testIfSerializableObjectWork() {
+//        Audit audit = auditService.findFirstByObjectIdAndObjectType(7L, "ro.company.domain.Employee");
+//        ByteArrayInputStream bis = new ByteArrayInputStream(audit.getObjectSerializable());
+//        ObjectInput in = null;
+//
+//        try {
+//            in = new ObjectInputStream(bis);
+//            Employee employee = (Employee)in.readObject();
+//            System.out.println("Merge?: " + employee);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (ClassNotFoundException e) {
+//            e.printStackTrace();
 //        }
-//    }
-//
-//    public void testFindEmployeeByLastnameWithQuery() {
-//        ro.company.domain.Employee employee = employeeService.findEmployeeByLastname("D.");
-//        Assert.assertEquals("You didn't get the wright employee!", employee.getFirstname(), "Cristian");
-//    }
-//
-//    @Test
-//    public void testFindAllEmployeesBySalary() {
-//        List<ro.company.domain.Employee> employeeList = employeeService.findAllEmployeesBySalary(1500);
-//        for (ro.company.domain.Employee employee : employeeList) {
-//            System.out.println("Employee name: " + employee.getFirstname());
-//        }
-//    }
-//
-//    @Test
-//    public void testFindAllByCountry() {
-//        List<ro.company.domain.Address> address = addressRepo.findAllByCountry("Romania");
-//        for (ro.company.domain.Address a : address) {
-//            Assert.assertEquals("Wrong country", a.getCountry(), "Romania");
-//        }
-//    }
-//
-//    @Test
-//    public void testFindAddressByApartment() {
-//
-//        ro.company.domain.Address adress = addressRepo.findByApartment(45);
-//        assertEquals("Wrong apartment", (long)adress.getApartment(), 45);
-//    }
-//
-//    @Test
-//    public void testFindDepartmentByDeptname() {
-//
-//        ro.company.domain.Department dept = deptRepo.findByDeptname("IT Solutions");
-//        Assert.assertEquals("Wrong department", dept.getDeptname(), "IT Solutions");
-//    }
-//
-//    @Test
-//    public void testFindByCarName() {
-//
-//        ro.company.domain.Car car = carRepo.findByCarName("BMW");
-//        Assert.assertEquals("Wrong CarName", car.getCarName(), "BMW");
-//    }
-//
-//    @Test
-//    public void testFindAllCarsByCarName() {
-//        List<ro.company.domain.Car> carList = carRepo.findAllCarByCarName("BMW");
-//        for(ro.company.domain.Car car : carList) {
-//            Assert.assertEquals("Wrong car", car.getCarName(), "BMW");
-//        }
-//    }
-//
-//    @Test
-//    public void testFindEmployeeWithAllAddress() {
-//
-//        ro.company.domain.Employee employee = employeeService.findEmployeeByFirstname("Cristian");
-//        assertTrue("Problems with getAddress()!", employee.getAddressList().size() > 0);
-//        assertTrue("Problems with getCars()!", employee.getCars().size() > 0);
-//    }
-//
-////    @Test
-////    public void testWithQueryLazy() {
-////
-////        Employee employee = employeeService.findEmployeeByFirstname("Cristian");
-////        List<Address> addresses = employeeService.findEmployeeAddressByFirstname(employee.getFirstname());
-////        for(Address address : addresses) {
-////            System.out.println(address.getCountry());
-////        }
-////        assertTrue("Nop!!", addresses.size() > 0);
-////    }
-////
-////    @Test
-////    public void testFindEmployeeCarBySalary() {
-////
-////        List<Employee> employee = employeeService.findAllEmployeesBySalary(1500);
-////        for (Employee e : employee) {
-////            List<Car> cars = employeeService.findEmployeeCarBySalary(e.getSalary());
-////            for (Car car : cars) {
-////                //assertEquals("Wrong car", car.getCarName(), "BMW");
-////                System.out.println(car.getCarName() + " " + car.getCarModel());
-////            }
-////        }
-////    }
-//
-//    @Test
-//    public void testModifiedTime() {
-//
-//        //Employee employee = new Employee("Bogdan", "I.", (double)1500);
-//        ro.company.domain.Employee employee = new ro.company.domain.Employee("Bogdan", "I.", (double)1500);
-//        //Department department = deptRepo.findByDeptname("IT Solutions");
-//        //employee.setDepartment(department);
-//        employeeService.save(employee);
-//        //System.out.println(employee.getCreateDateTime());
-//        //System.out.println(employee.getModifiedDateTime());
 //    }
 
     @Test
-    public void testSaveUpdateWithAuditableAspectWTF(){
+    @Ignore
+    public void testHomePage() throws Exception {
+        CompanyController controller = new CompanyController();
+        MockMvc mockMvc =
+                standaloneSetup(controller).build();
+        mockMvc.perform(get("/"))
+                .andExpect(view().name("home"));
+    }
 
+    @Test
+    @Ignore
+    public void shouldShowRecentSpittles() throws Exception {
+        List<Employee> expectedEmployees = createEmployeeList();
+        EmployeeService mockRepository = mock(EmployeeService.class);
+        EmployeeController controller = new EmployeeController(mockRepository);
+        MockMvc mockMvc = standaloneSetup(controller)
+                .setSingleView(
+                        new InternalResourceView("/WEB-INF/views/employees.jsp"))
+                .build();
+        when(mockRepository.findAllEmployees()).thenReturn(expectedEmployees);
+        mockMvc.perform(get("/employees")).andExpect(view().name("employees"))
+                .andExpect(model().attributeExists("employeeList"))
+                .andExpect(model().attribute("employeeList",
+                        hasItems(expectedEmployees.toArray())));
+    }
 
-//        Employee employee = new Employee("Florin", "I.", (double)5060);
-//        Employee emp =  employeeService.createEmployee(employee);
-//        System.out.println("\nEntity was created!\n");
-
-//        Employee emp1 = employeeService.findEmployeeById(16L);
-//        Department department = new Department("IT");
-//        emp1.setDepartment(department);
-//        Employee emp2 = employeeService.createEmployee(emp1);
-//        System.out.println("\nEntity was updated!\n");
-//
-        Employee emp2 = employeeService.findEmployeeById(16L);
-        employeeService.deleteEmployee(emp2);
-        System.out.println("\nEntity was deleted!\n");
-
-
-
+    private List<Employee> createEmployeeList() {
+        List<Employee> employeeList = employeeService.findAllEmployees();
+        for(Employee emp : employeeList) {
+            System.out.println(emp.getFirstname());
+        }
+        return employeeList;
     }
 }

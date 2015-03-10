@@ -1,0 +1,43 @@
+package ro.company.domain.util;
+
+import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
+import ro.company.domain.Audit;
+import ro.company.domain.Auditable;
+import ro.company.domain.Identifiable;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.sql.Timestamp;
+
+/**
+ * Created by Cristian.Dumitru on 3/3/2015.
+ */
+public class ObjectSerializer {
+
+    /**
+     * Serialize an entity into/when saving into AUDIT table.
+     *
+     * @param object - the object to be serialized.
+     * @return - the object serialized.
+     */
+    public static byte[] objectToByteStream(Object object) {
+
+        final int objectSize = (int) ObjectSizeCalculator.getObjectSize(object);
+        ByteArrayOutputStream bOutput =
+                new ByteArrayOutputStream(objectSize);
+        ObjectOutput objectOutput = null;
+        byte[] objectSerializable = new byte[objectSize];
+
+        try {
+            objectOutput = new ObjectOutputStream(bOutput);
+            objectOutput.writeObject(object);
+            objectSerializable = bOutput.toByteArray();
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to serialize!", e);
+        }
+
+        return objectSerializable;
+    }
+}

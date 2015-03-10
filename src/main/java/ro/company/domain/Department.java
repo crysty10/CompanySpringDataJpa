@@ -1,14 +1,19 @@
 package ro.company.domain;
 
+import ro.company.annotation.AuditableAnnotation;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
  */
 @Entity
 @Table(name = "Department")
-public class Department implements Identifiable<Long> {
+@AuditableAnnotation
+public class Department implements Identifiable<Long>, Serializable {
 
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(generator = "dept_seq")
@@ -38,5 +43,13 @@ public class Department implements Identifiable<Long> {
     @Override
     public Long getId() {
         return this.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", deptname='" + deptname + '\'' +
+                '}';
     }
 }

@@ -1,5 +1,8 @@
 package ro.company.service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import ro.company.domain.Car;
 import ro.company.repository.CarRepository;
 
@@ -9,12 +12,15 @@ import java.util.List;
 /**
  * Created by Florin.Cojocaru on 2/27/2015.
  */
+@Service
+@Transactional
 public class CarServiceImpl implements CarService {
 
     @Inject
     private CarRepository carRepository;
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Car createCar(Car car) {
 
         return carRepository.save(car);
@@ -27,15 +33,21 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public Car getCarByCarName(String carName) {
+
+        return carRepository.findByCarName(carName);
+    }
+
+    @Override
     public List<Car> getAllCars() {
 
         return carRepository.findAll();
     }
 
     @Override
-    public void deleteCar(Long id) {
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void deleteCar(Car car) {
 
-        carRepository.delete(id);
-
+        carRepository.delete(car);
     }
 }

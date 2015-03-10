@@ -17,7 +17,9 @@ public interface AddressRepository extends JpaRepository<Address, Long>  {
     /*
     * Get an address by the locality name!
     * */
-    Address findBylocality(String locality);
+    Address findByLocality(String locality);
+
+    Address findAddressByLocalityAndStreet(String locality, String street);
 
     /*
     * Get all addresses by the street name!

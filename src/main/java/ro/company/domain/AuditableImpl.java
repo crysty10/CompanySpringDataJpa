@@ -23,7 +23,7 @@ public class AuditableImpl implements Auditable {
     private Timestamp modifiedDateTime;
 
     @Override
-         public Timestamp getModifiedDateTime() {
+    public Timestamp getModifiedDateTime() {
 
         return modifiedDateTime;
     }

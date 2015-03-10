@@ -14,8 +14,9 @@ public interface DepartmentService {
 
     //READ
     Department getDepartmentById(Long id);
+    Department getDepartmentByDeptname(String deptname);
     List<Department> getAllDepartments();
 
     //DELETE
-    void deleteDepartment(Long id);
+    void deleteDepartment(Department department);
 }
