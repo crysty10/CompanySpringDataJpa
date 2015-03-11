@@ -33,7 +33,7 @@
         <a href="<c:url value='/addresses' />">Show addresses</a>
     </div>
     <div class="col-md-2">
-        Show audit
+        <a href="<c:url value='/audit' />">Show audit</a>
     </div>
 </div>
 </body>

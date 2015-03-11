@@ -2,6 +2,7 @@ package ro.company.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -9,6 +10,7 @@ import ro.company.domain.Employee;
 import ro.company.service.EmployeeService;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 /**
  * Created by Cristian.Dumitru on 3/9/2015.
@@ -24,11 +26,6 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    /**
-     * Show all the employees from company.
-     * @param model - used to save the the data from DB.
-     * @return - the views name.
-     */
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(Model model) {
 
@@ -37,10 +34,24 @@ public class EmployeeController {
     }
 
     /**
+     * Delete an employee from database.
+     *
+     * @param employee the employee you want to delete.
+     * @return redirect to all employees page to check if the action executed.
+     */
+    @RequestMapping(value = "/employees", method = RequestMethod.POST)
+    public String deleteEmployee(Employee employee) {
+
+        employeeService.deleteEmployee(employee);
+        return "redirect:/employees";
+    }
+
+    /**
      * Edit details about an employee.
-     * @param employeeId - the employee you want to update
-     * @param model - used to save the employee details.
-     * @return - name of the view.
+     *
+     * @param employeeId the employee you want to update
+     * @param model      used to save the employee details.
+     * @return name of the view.
      */
     @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.GET)
     public String updateEmployee(
@@ -53,19 +64,24 @@ public class EmployeeController {
 
     /**
      * Update an employee from database.
-     * @param employee - the entity to populate with data.
-     * @return - redirect to all employees page to check the result.
+     *
+     * @param employee the entity to populate with data.
+     * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
-    public String processUpdate(Employee employee) {
+    public String processUpdate(@Valid Employee employee, Errors errors) {
+        if (errors.hasErrors()) {
+            return "registerForm";
+        }
 
         employeeService.createEmployee(employee);
-        return "redirect:/employees";
+        return "redirect:/employees/" + employee.getId();
     }
 
     /**
      * Get the page for adding a new employee.
-     * @return - the name of the view.
+     *
+     * @return the name of the view.
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
     public String showRegistrationForm() {
@@ -75,25 +91,14 @@ public class EmployeeController {
 
     /**
      * Save an employee into the database.
-     * @param employee - the entity to populate with data.
-     * @return - redirect to all employees page to check the result.
+     *
+     * @param employee the entity to populate with data.
+     * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String saveEmployee(Employee employee) {
 
         employeeService.createEmployee(employee);
-        return "redirect:/employees";
-    }
-
-    /**
-     * Delete an employee from database.
-     * @param employee - the employee you want to delete.
-     * @return - redirect to all employees page to check if the action executed.
-     */
-    @RequestMapping(value = "/employees", method = RequestMethod.POST)
-    public String deleteEmployee(Employee employee) {
-
-        employeeService.deleteEmployee(employee);
         return "redirect:/employees";
     }
 }

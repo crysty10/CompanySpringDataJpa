@@ -3,6 +3,7 @@ package ro.company.domain;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,9 @@ public class Employee implements Identifiable<Long>, Serializable {
     @Column(name = "emp_id", unique = true, nullable = false)
     private Long id;
 
+    @Size(min=2, max=30)
     private String firstname;
+    @Size(min=2, max=30)
     private String lastname;
     private Double salary;
 

@@ -1,9 +1,9 @@
 <%--
-  Created by IntelliJ IDEA.
-  User: Cristian.Dumitru
-  Date: 3/9/2015
-  Time: 4:28 PM
-  To change this template use File | Settings | File Templates.
+Created by IntelliJ IDEA.
+User: Cristian.Dumitru
+Date: 3/9/2015
+Time: 4:28 PM
+To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -16,6 +16,7 @@
 <h1>All the Company employees!
     <small>You can update data as well!</small>
 </h1>
+<h3>You can <a href="<c:url value='/addEmployee'/>">add</a> a new employee</h3>
 <c:forEach items="${employeeList}" var="employee">
     <div class="row" style="text-align: center;">
         <div class="col-md-2">
@@ -35,19 +36,14 @@
         </div>
 
         <div class="col-md-2">
-            <input type="submit" value="DELETE" name="deleteEmployee"/>
+            <input type="submit" name="deleteEmployee" id="deleteEmployee" value="DELETE"/>
         </div>
     </div>
 </c:forEach>
 <div class="row" style="text-align: center;">
-    <div class="col-md-4">
-        <p>You can <a href="<c:url value='/addEmployee'/>">add</a> a new employee!</p>
-    </div>
-</div>
-<div class="row" style="text-align: center;">
     <div class="col-md-8"></div>
     <div class="col-md-2">
-        <input type="submit" name="backEmployee" value="back" onclick="<c:url value="/home"/>"/>
+        <button type="button" class="btn btn-primary" onclick="history.go(-1).init(); return true;">BACK</button>
     </div>
 </div>
 </body>
