@@ -24,6 +24,11 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
+    /**
+     * Show all the employees from company.
+     * @param model - used to save the the data from DB.
+     * @return - the views name.
+     */
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(Model model) {
 
@@ -33,6 +38,9 @@ public class EmployeeController {
 
     /**
      * Edit details about an employee.
+     * @param employeeId - the employee you want to update
+     * @param model - used to save the employee details.
+     * @return - name of the view.
      */
     @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.GET)
     public String updateEmployee(
@@ -43,6 +51,11 @@ public class EmployeeController {
         return "updateEmployee";
     }
 
+    /**
+     * Update an employee from database.
+     * @param employee - the entity to populate with data.
+     * @return - redirect to all employees page to check the result.
+     */
     @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
     public String processUpdate(Employee employee) {
 
@@ -51,7 +64,8 @@ public class EmployeeController {
     }
 
     /**
-     * Create a new entry into the database.
+     * Get the page for adding a new employee.
+     * @return - the name of the view.
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
     public String showRegistrationForm() {
@@ -59,6 +73,11 @@ public class EmployeeController {
         return "addEmployee";
     }
 
+    /**
+     * Save an employee into the database.
+     * @param employee - the entity to populate with data.
+     * @return - redirect to all employees page to check the result.
+     */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String saveEmployee(Employee employee) {
 
@@ -67,26 +86,14 @@ public class EmployeeController {
     }
 
     /**
-     * Delete an employee.
-     * */
-    @RequestMapping(value = "/employees", method = RequestMethod.POST, params = {"deleteEmployee"})
+     * Delete an employee from database.
+     * @param employee - the employee you want to delete.
+     * @return - redirect to all employees page to check if the action executed.
+     */
+    @RequestMapping(value = "/employees", method = RequestMethod.POST)
     public String deleteEmployee(Employee employee) {
 
         employeeService.deleteEmployee(employee);
         return "redirect:/employees";
     }
-
-    /**
-     * This method handle requests such as /employees/updateEmployee?employeeId=...
-     *
-     * @param employeeId - the id of the employee selected
-     * @param model - the holder of the employee result
-     * @return - the string that represents the view
-     */
-//    @RequestMapping(value = "/updateEmployee", method = RequestMethod.GET)
-//    public String updateEmployee(@RequestParam("employeeId") Long employeeId, Model model) {
-//
-//        model.addAttribute("employee", employeeService.findEmployeeById(employeeId));
-//        return "updateEmployee";
-//    }
 }

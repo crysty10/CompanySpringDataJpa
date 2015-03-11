@@ -171,17 +171,17 @@ public class CompanyTest {
 //            e.printStackTrace();
 //        }
 //    }
-//
-//    @Test
-//    @Ignore
-//    public void testHomePage() throws Exception {
-//        CompanyController controller = new CompanyController();
-//        MockMvc mockMvc =
-//                standaloneSetup(controller).build();
-//        mockMvc.perform(get("/"))
-//                .andExpect(view().name("home"));
-//    }
-//
+
+    @Test
+    @Ignore
+    public void testHomePage() throws Exception {
+        CompanyController controller = new CompanyController();
+        MockMvc mockMvc =
+                standaloneSetup(controller).build();
+        mockMvc.perform(get("/"))
+                .andExpect(view().name("home"));
+    }
+
 //    @Test
 //    @Ignore
 //    public void shouldShowRecentSpittles() throws Exception {

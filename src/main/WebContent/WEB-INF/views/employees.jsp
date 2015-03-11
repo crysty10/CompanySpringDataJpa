@@ -31,23 +31,24 @@
             <c:out value="${employee.salary}"/>
         </div>
         <div class="col-md-2">
-            <input type="button" value="UPDATE" name="updateEmployee"/>
+            <a href="<c:url value='/employees/${employee.id}' />">Update</a>
         </div>
+
         <div class="col-md-2">
             <input type="submit" value="DELETE" name="deleteEmployee"/>
         </div>
     </div>
 </c:forEach>
 <div class="row" style="text-align: center;">
+    <div class="col-md-4">
+        <p>You can <a href="<c:url value='/addEmployee'/>">add</a> a new employee!</p>
+    </div>
+</div>
+<div class="row" style="text-align: center;">
     <div class="col-md-8"></div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-primary" onclick="goToUpdate()">BACK</button>
+        <input type="submit" name="backEmployee" value="back" onclick="<c:url value="/home"/>"/>
     </div>
-    <script type="text/javascript">
-        function goToUpdate() {
-            window.location = '/employees';
-        }
-    </script>
 </div>
 </body>
 </html>

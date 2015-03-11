@@ -1,4 +1,16 @@
 # CompanySpringDataJpa
+TODO:
+
+    - try to resolve the same situation with AOP
+    - add same to all others entities
+    - try make Tomcat run with sprig-instrument jar
+
+Updates(11/03/2015)...
+
+    - add Spring MVC over the project
+    - you can see all the data about almost any entity
+    - you can update an employee, create an employee
+
 Updates(04/02/2015)...
 
     - make sure that Save and Update datetime aren't the same in before pointcut
