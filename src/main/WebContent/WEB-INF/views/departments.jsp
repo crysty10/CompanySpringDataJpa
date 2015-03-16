@@ -31,9 +31,11 @@
         <div class="col-md-2">
             <a href="<c:url value='/departments/${department.id}' />">Update</a>
         </div>
-        <div class="col-md-2">
-                <a href="<c:url value='/departments/${department.id}'/>">Delete</a>
-        </div>
+        <c:url var="deleteUrl" value="/departments/deleteDepartment"/>
+        <form id="${departmentFormId}" action="${deleteUrl}" method="POST">
+            <input id="employee" name="employee" type="hidden" value="${employee.id}"/>
+            <input type="submit" value="deleteee" onClick="return confirm('sure?')"/>
+        </form>
     </div>
 </c:forEach>
 <div class="row" style="text-align: center;">

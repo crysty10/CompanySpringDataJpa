@@ -39,13 +39,18 @@ To change this template use File | Settings | File Templates.
             <a href="<c:url value='/employees/${employee.id}' />">Update</a>
         </div>
 
-        <div class="col-md-2">
-                <%--<input type="submit" name = "deleteEmployee" id = "deleteEmployee" onclick="return confirm('Are you sure you want to delete this item?');" value="Delete"/>--%>
-                <%--<a href="<c:url value='/employees/${employee.id}'/>">Delete</a>--%>
-                <%--<input type="submit" name="deleteEmployee" id="deleteEmployee" value="DELETE"/>--%>
-                <%--<input type='button' onclick='confirmation(47)' value='Delete'>--%>
-                    <a href="<c:url value='/employees/${employee.id}'/>">Delete</a>
-        </div>
+        <%--<div class="col-md-2">--%>
+                <%--&lt;%&ndash;<input type="submit" name = "deleteEmployee" id = "deleteEmployee" onclick="return confirm('Are you sure you want to delete this item?');" value="Delete"/>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<a href="<c:url value='/employees/${employee.id}'/>">Delete</a>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<input type="submit" name="deleteEmployee" id="deleteEmployee" value="DELETE"/>&ndash;%&gt;--%>
+                <%--&lt;%&ndash;<input type='button' onclick='confirmation(47)' value='Delete'>&ndash;%&gt;--%>
+                    <%--<a href="<c:url value='/employees/${employee.id}'/>">Delete</a>--%>
+        <%--</div>--%>
+       <c:url var="deleteUrl" value="/employees/deleteEmployee"/>
+        <form id="${employeeFormId}" action="${deleteUrl}" method="POST">
+            <input id="employee" name="employee" type="hidden" value="${employee.id}"/>
+            <input type="submit" value="deleteee" onClick="return confirm('sure?')"/>
+        </form>
     </div>
 </c:forEach>
 <div class="row" style="text-align: center;">

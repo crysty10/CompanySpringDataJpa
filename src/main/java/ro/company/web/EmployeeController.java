@@ -2,15 +2,13 @@ package ro.company.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ro.company.domain.Employee;
 import ro.company.service.EmployeeService;
 
 import javax.inject.Inject;
-import javax.validation.Valid;
 
 /**
  * Created by Cristian.Dumitru on 3/9/2015.
@@ -39,18 +37,27 @@ public class EmployeeController {
     * *
      * Delete an employee from database.
      *
-     * @return redirect to all employees page to check if the action executed.
+     * @return redirect to all employees page to check if the action executed.*/
 
-    @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.GET)
-    public String deleteEmployee(
-        @PathVariable long employeeId, Model model) {
+//    @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.GET, params = "delete")
+//
+//    public String deleteEmployee(
+//        @PathVariable long employeeId) {
+//
+//        Employee employee = employeeService.findEmployeeById(employeeId);
+//        employeeService.deleteEmployee(employee);
+//        return "redirect:/employees";
+//    }
 
+    @RequestMapping(value = "/employees/deleteEmployee", method = RequestMethod.POST)
+    public String removeAd(@RequestParam("employee") long employeeId) {
         Employee employee = employeeService.findEmployeeById(employeeId);
-        model.addAttribute(employee);
-        return "deleteEmployee";
+        employeeService.deleteEmployee(employee);
+
+        return "redirect:/employees";
     }
 
-    @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
     public String processDelete(@Valid Employee employee) {
 
         employeeService.deleteEmployee(employee);
@@ -64,14 +71,14 @@ public class EmployeeController {
      * @param model      used to save the employee details.
      * @return name of the view.
      */
-    @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.GET)
-    public String updateEmployee(
-            @PathVariable long employeeId, Model model) {
-
-        Employee employee = employeeService.findEmployeeById(employeeId);
-        model.addAttribute(employee);
-        return "updateEmployee";
-    }
+//    @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.GET)
+//    public String updateEmployee(
+//            @PathVariable long employeeId, Model model) {
+//
+//        Employee employee = employeeService.findEmployeeById(employeeId);
+//        model.addAttribute(employee);
+//        return "updateEmployee";
+//    }
 
     /**
      * Update an employee from database.
@@ -79,15 +86,15 @@ public class EmployeeController {
      * @param employee the entity to populate with data.
      * @return redirect to all employees page to check the result.
      */
-    @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
-    public String processUpdate(@Valid Employee employee, Errors errors) {
-        if (errors.hasErrors()) {
-            return "registerForm";
-        }
-
-        employeeService.createEmployee(employee);
-        return "redirect:/employees/" + employee.getId() ;
-    }
+//    @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
+//    public String processUpdate(@Valid Employee employee, Errors errors) {
+//        if (errors.hasErrors()) {
+//            return "registerForm";
+//        }
+//
+//        employeeService.createEmployee(employee);
+//        return "redirect:/employees/" + employee.getId() ;
+//    }
 
     /**
      * Get the page for adding a new employee.
