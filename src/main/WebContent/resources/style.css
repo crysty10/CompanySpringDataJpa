@@ -1,10 +1,10 @@
-h1 {
-    color : red;
+h1, h3, p, a {
+    color : white;
     font-size: 16pt;
 }
 
 body {
-    background-image: url(http://www.californiapizzaclub.com/images/company_profile1.jpg);
+    background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
     background-size: 100%;
     font-family: sans-serif;
 }

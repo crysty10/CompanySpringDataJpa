@@ -11,13 +11,16 @@
 
 <head>
     <title>CompanySpringDataJpa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style>
+        h1, a, h1 > small {
+            color: white;
+        }
         body {
-            background-image: url(http://www.californiapizzaclub.com/images/company_profile1.jpg);
+            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
             background-size: 100%;
         }
     </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
 <h1>Welcome to your Company project homepage
@@ -37,7 +40,7 @@
         <a href="<c:url value='/addresss' />">Show addresses</a>
     </div>
     <div class="col-md-2">
-    <a href="<c:url value='/audit' />">Show audit</a>
+        <a href="<c:url value='/audit' />">Show audit</a>
     </div>
 </div>
 </body>

@@ -10,10 +10,17 @@
 <html>
 <head>
     <title>Add Address</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="<c:url value='/resources/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style>
+        h1, h3, a, p, span, small {
+            color : white;
+        }
+        body {
+            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
+            text-color : white;
+            background-size: 100%;
+        }
+    </style>
 </head>
 <body>
 

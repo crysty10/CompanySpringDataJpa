@@ -10,14 +10,20 @@
 <html>
 <head>
     <title>Update Employee</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="<c:url value='/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style>
+        h1, a, h1 > small {
+            color : white;
+        }
+        body {
+            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
+            background-size: 100%;
+        }
+    </style>
 </head>
 <body>
 <form method="POST">
-    <div class="row">
+    <div class="row" style="color:white;">
         <div class="col-md-2">
             <span>First name:</span>
         </div>
@@ -29,7 +35,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="color:white;">
         <div class="col-md-2">
             <span>Last name:</span>
         </div>
@@ -41,7 +47,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" style="color:white;">
         <div class="col-md-2">
             <span>Salary:</span>
         </div>

@@ -15,7 +15,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-//import ro.company.aspects.AuditableIntroducer;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
@@ -100,4 +99,9 @@ public class CompanyConfig implements LoadTimeWeavingConfigurer {
     public LoadTimeWeaver getLoadTimeWeaver() {
         return new InstrumentationLoadTimeWeaver();
     }
+
+//    @InitBinder("employee")
+//    protected void initBinder(WebDataBinder binder) {
+//        binder.setValidator(new EmployeeValidator());
+//    }
 }

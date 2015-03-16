@@ -19,6 +19,8 @@ public interface EmployeeRepository extends
     * */
     Employee findEmployeeByFirstname(String firstname);
 
+    Employee findEmployeeById(Long id);
+
     /*
     * Get all employees with the same salary!
     * */

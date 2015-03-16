@@ -10,17 +10,23 @@
 <html>
 <head>
     <title>Audit</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="<c:url value='/resources/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style>
+        h1, a, p, h1 > small {
+            color: white;
+        }
+        body {
+            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
+            background-size: 100%;
+        }
+    </style>
 </head>
 <body>
 <h1>Audit
-    <small>all the changes made to entities!</small>
+    <small>used to see all the changes made to every entities from database!</small>
 </h1>
 <c:forEach items="${auditList}" var="audit">
-    <div class="row" style="text-align: center;">
+    <div class="row" style="text-align: center; color:white;">
         <div class="col-md-2">
             <c:out value="${audit.id}"/>
         </div>
@@ -38,9 +44,11 @@
 
 <div class="row" style="text-align: center;">
     <div class="col-md-6"></div>
-    <button type="button" class="btn btn-primary"
-            onclick="window.location = '/Company'">Back to company
-    </button>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary"
+                onclick="window.location = '/Company'">Back to company
+        </button>
+    </div>
 </div>
 </body>
 </html>

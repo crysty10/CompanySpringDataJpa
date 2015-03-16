@@ -12,19 +12,22 @@ To change this template use File | Settings | File Templates.
     <title>Employee</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style>
+        h1, a, p, h1 > small, p > span {
+            color : white;
+        }
         body {
-            background-image: url(http://www.californiapizzaclub.com/images/company_profile1.jpg);
+            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
             background-size: 100%;
         }
     </style>
 </head>
 <body>
 <h1>All the Company employees!
-    <small> ----------------------- You can update data as well!</small>
+    <small> You can update data as well!</small>
 </h1>
 
 <c:forEach items="${employeeList}" var="employee">
-    <div class="row" style="text-align: center;">
+    <div class="row" style="text-align: center; color:white;">
         <div class="col-md-2">
             <c:out value="${employee.id}"/>
         </div>
@@ -38,15 +41,16 @@ To change this template use File | Settings | File Templates.
             <c:out value="${employee.salary}"/>
         </div>
         <div class="col-md-2">
-            <%--<a href="<c:url value='/employees/${employee.id}' />">Update</a>--%>
-            <input type="submit" value="Update" onclick="window.location = '/Company/employees/${employee.id}'"/>
+            <input style="color:black;" type="submit" value="Update" onclick="window.location = '/Company/employees/${employee.id}'"/>
+            <%--<a style="color:black;" href="<c:url value='/employees/${employee.id}' />">Update</a>--%>
+            <%--<input type="submit" value="Update" onclick="window.location = '/Company/employees/${employee.id}'"/>--%>
             <%--<c:url var="updateUrl" value="employees/${employee.id}"/>--%>
             <%--<form id="${employeeUpdateFormId}" action="${updateUrl}" method="POST">--%>
                 <%--<input id="updateEmployee" name="updateEmployee" type="hidden" value="/employees/${employee.id}"/>--%>
                 <%--<input type="submit" value="Update"/>--%>
             <%--</form>--%>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2" style="color:black;">
             <c:url var="deleteUrl" value="employees"/>
             <form id="${employeeFormId}" action="${deleteUrl}" method="POST">
                 <input id="employee" name="employee" type="hidden" value="${employee.id}"/>
@@ -64,6 +68,6 @@ To change this template use File | Settings | File Templates.
         </button>
     </div>
 </div>
-<p><span style="color: red; font-size: 200%"><a href="<c:url value='/addEmployee'/>">Add</a> a new employee</span></p>
+<p><span style="font-size: 200%"><a style="color:blue;" href="<c:url value='/addEmployee'/>">Add</a> a new employee</span></p>
 </body>
 </html>

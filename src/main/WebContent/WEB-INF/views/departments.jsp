@@ -10,18 +10,25 @@
 <html>
 <head>
     <title>Department</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="<c:url value='/resources/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style>
+        h1, a, p, h1 > small {
+            color: white;
+        }
+
+        body {
+            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
+            background-size: 100%;
+        }
+    </style>
 </head>
 <body>
 <h1>All the Company departments!
-    <small>                 You can update data as well!</small>
+    <small>You can update data as well!</small>
 </h1>
 
 <c:forEach items="${departmentList}" var="department">
-    <div class="row" style="text-align: center;">
+    <div class="row" style="text-align: center; color:white;">
         <div class="col-md-2">
             <c:out value="${department.id}"/>
         </div>
@@ -29,21 +36,26 @@
             <c:out value="${department.deptname}"/>
         </div>
         <div class="col-md-2">
-            <a href="<c:url value='/departments/${department.id}' />">Update</a>
+            <%--<a style="color:black;" href="<c:url value='/departments/${department.id}' />">Update</a>--%>
+            <input style="color:black;" type="submit" value="Update" onclick="window.location = '/Company/departments/${department.id}'"/>
         </div>
-        <c:url var="deleteUrl" value="/departments/deleteDepartment"/>
-        <form id="${departmentFormId}" action="${deleteUrl}" method="POST">
-            <input id="employee" name="employee" type="hidden" value="${employee.id}"/>
-            <input type="submit" value="deleteee" onClick="return confirm('sure?')"/>
-        </form>
+        <div class="col-md-2" style="color:black;">
+            <c:url var="deleteUrl" value="/departments/deleteDepartment"/>
+            <form id="${departmentFormId}" action="${deleteUrl}" method="POST">
+                <input id="employee" name="employee" type="hidden" value="${employee.id}"/>
+                <input type="submit" value="Delete" onClick="return confirm('sure?')"/>
+            </form>
+        </div>
     </div>
 </c:forEach>
 <div class="row" style="text-align: center;">
-    <div class="col-md-4"></div>
-    <button type="button" class="btn btn-primary"
-            onclick="window.location = '/Company'">Back to Company
-    </button>
+    <div class="col-md-6"></div>
+    <div class="col-md-2">
+        <button type="button" class="btn btn-primary"
+                onclick="window.location = '/Company'">Back to Company
+        </button>
+    </div>
 </div>
-<p><span style="color: red; font-size: 200%"><a href="<c:url value='/addDepartment'/>">Add</a> a new department</span></p>
+<p><span style="font-size: 200%"><a style="color:blue;" href="<c:url value='/addDepartment'/>">Add</a> a new department</span></p>
 </body>
 </html>

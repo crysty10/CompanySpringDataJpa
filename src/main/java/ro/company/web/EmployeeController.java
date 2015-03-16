@@ -2,11 +2,8 @@ package ro.company.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import ro.company.domain.Employee;
 import ro.company.service.EmployeeService;
 
@@ -50,7 +47,7 @@ public class EmployeeController {
     /**
      * Edit details about an employee.
      *
-     * @param employeeId the id of the employee you want to update
+     * @param employeeId the employee you want to update
      * @param model      used to save the employee details.
      * @return name of the view.
      */
@@ -70,13 +67,21 @@ public class EmployeeController {
      * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
-    public String processUpdate(Employee employee) {
-//        if (errors.hasErrors()) {
-//            return "registerForm";
-//        }
+    public String processUpdate(@ModelAttribute Employee employee, @PathVariable Long employeeId) {
 
+        Employee emp = employeeService.findEmployeeById(employeeId);
+        if(employee.getFirstname() == null) {
+            emp.setFirstname(emp.getFirstname());
+        }
+        if(employee.getLastname() == null) {
+            emp.setLastname(emp.getLastname());
+        }
+        if(employee.getSalary() == null) {
+            emp.setSalary(emp.getSalary());
+        }
+        employee.setEmployee_id(employeeId);
         employeeService.createEmployee(employee);
-        return "redirect:/employees" ;
+        return "redirect:/employees";
     }
 
     /**
@@ -85,7 +90,7 @@ public class EmployeeController {
      * @return the name of the view.
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
-    public String showRegistrationFormforEmployee() {
+    public String showRegistrationFormEmployee() {
 
         return "addEmployee";
     }
@@ -97,7 +102,10 @@ public class EmployeeController {
      * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
-    public String saveEmployee(Employee employee) {
+    public String saveEmployee(@Valid Employee employee, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            return "redirect:/home";
+        }
 
         employeeService.createEmployee(employee);
         return "redirect:/employees";
