@@ -1,20 +1,16 @@
 package ro.company.repository;
 
-import ro.company.domain.Audit;
-import ro.company.domain.Auditable;
-import ro.company.domain.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
+import ro.company.domain.Employee;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
  */
-@Repository
+
 public interface EmployeeRepository extends
         JpaRepository<Employee, Long> {
 

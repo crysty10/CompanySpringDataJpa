@@ -33,18 +33,29 @@ public class EmployeeController {
         return "employees";
     }
 
-    /**
+
+
+    /*
+    * *
      * Delete an employee from database.
      *
-     * @param employee the employee you want to delete.
      * @return redirect to all employees page to check if the action executed.
-     */
-    @RequestMapping(value = "/employees", method = RequestMethod.POST)
-    public String deleteEmployee(Employee employee) {
+
+    @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.GET)
+    public String deleteEmployee(
+        @PathVariable long employeeId, Model model) {
+
+        Employee employee = employeeService.findEmployeeById(employeeId);
+        model.addAttribute(employee);
+        return "deleteEmployee";
+    }
+
+    @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
+    public String processDelete(@Valid Employee employee) {
 
         employeeService.deleteEmployee(employee);
         return "redirect:/employees";
-    }
+    }*/
 
     /**
      * Edit details about an employee.
@@ -75,7 +86,7 @@ public class EmployeeController {
         }
 
         employeeService.createEmployee(employee);
-        return "redirect:/employees/" + employee.getId();
+        return "redirect:/employees/" + employee.getId() ;
     }
 
     /**
@@ -84,7 +95,7 @@ public class EmployeeController {
      * @return the name of the view.
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
-    public String showRegistrationForm() {
+    public String showRegistrationFormforEmployee() {
 
         return "addEmployee";
     }

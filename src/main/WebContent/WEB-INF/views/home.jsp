@@ -8,6 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <title>CompanySpringDataJpa</title>
     <link rel="stylesheet"
@@ -30,10 +31,10 @@
         <a href="<c:url value='/cars' />">Show cars</a>
     </div>
     <div class="col-md-2">
-        <a href="<c:url value='/addresses' />">Show addresses</a>
+        <a href="<c:url value='/addresss' />">Show addresses</a>
     </div>
     <div class="col-md-2">
-        <a href="<c:url value='/audit' />">Show audit</a>
+    <a href="<c:url value='/audit' />">Show audit</a>
     </div>
 </div>
 </body>

@@ -5,10 +5,14 @@
   Time: 11:26 AM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Audit</title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="<c:url value='/resources/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -34,9 +38,9 @@
 
 <div class="row" style="text-align: center;">
     <div class="col-md-6"></div>
-    <div class="col-md-2">
-        <button type="button" class="btn btn-primary" onclick="history.go(-1).init();return true;">BACK</button>
-    </div>
+    <button type="button" class="btn btn-primary"
+            onclick="window.location = '/Company'">Back to company
+    </button>
 </div>
 </body>
 </html>

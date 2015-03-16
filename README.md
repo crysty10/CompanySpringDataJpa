@@ -1,4 +1,12 @@
 # CompanySpringDataJpa
+
+(13/03/2015)...
+
+TODO:
+    
+    - try resolve updateEntity
+    - try resolve deleteEntity
+--------------------------------------------------
 TODO:
 
     - try to resolve the same situation with AOP
@@ -44,5 +52,5 @@ TODO:
 To work:
 
     Add to VM Options, this parameter:
-      - ea -javaagent:\**pathTo**\spring-instrument-4.1.4.RELEASE.jar
+      -ea -javaagent:\**pathTo**\spring-instrument-4.1.4.RELEASE.jar
       - where pathTo represents the location of spring-instrument into your host

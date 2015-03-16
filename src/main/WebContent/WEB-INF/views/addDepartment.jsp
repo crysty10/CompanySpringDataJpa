@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Add Employee</title>
+    <title>Add department</title>
     <link rel="stylesheet"
           type="text/css"
           href="<c:url value='/resources/style.css'/>">
@@ -21,40 +21,22 @@
 
     <div class="row">
         <div class="col-md-2">
-            <span>First name:</span>
+            <span>Department's name:</span>
         </div>
         <div class="col-md-2">
-            <input type="text" name="firstname">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Last name:</span>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="lastname">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Salary:</span>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="salary">
+            <input type="text" name="deptname">
         </div>
     </div>
     <div class="row">
         <div class="col-md-2">
         </div>
         <div class="col-md-2">
-            <input type="submit" name="addEmployeeButton" value="Register"/>
+            <input type="submit" name="addDepartmentButton" value="Register"/>
             <button type="button" class="btn btn-primary"
-                    onclick="window.location = '/Company/employees'">Back to employees
+                    onclick="window.location = '/Company/departments'">Back to departments
             </button>
         </div>
     </div>
-
-
 </form>
 
 </body>

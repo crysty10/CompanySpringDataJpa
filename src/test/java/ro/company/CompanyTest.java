@@ -1,7 +1,6 @@
 package ro.company;
 
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -11,27 +10,13 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.servlet.view.InternalResourceView;
 import ro.company.config.CompanyConfig;
-import ro.company.domain.*;
 import ro.company.service.*;
 import ro.company.web.CompanyController;
-import ro.company.web.EmployeeController;
 
 import javax.inject.Inject;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
-import static org.hamcrest.core.IsCollectionContaining.hasItems;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
@@ -60,7 +45,6 @@ public class CompanyTest {
     private AuditService auditService;
 
 //    @Test
-//    @Ignore
 //    public void testACreateWithAuditableAspect(){
 //
 //        Employee employee = new Employee("John", "B.", (double)5050);
@@ -173,7 +157,6 @@ public class CompanyTest {
 //    }
 
     @Test
-    @Ignore
     public void testHomePage() throws Exception {
         CompanyController controller = new CompanyController();
         MockMvc mockMvc =

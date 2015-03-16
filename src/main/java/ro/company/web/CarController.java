@@ -2,17 +2,21 @@ package ro.company.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ro.company.domain.Car;
 import ro.company.service.CarService;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 /**
  * Created by Cristian.Dumitru on 3/9/2015.
  */
 @Controller
-@RequestMapping("/cars")
+@RequestMapping("/")
 public class CarController {
 
     private CarService carService;
@@ -22,9 +26,36 @@ public class CarController {
         this.carService = carService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/cars",method = RequestMethod.GET)
     public String cars(Model model){
         model.addAttribute("carList", carService.getAllCars());
         return "cars";
+    }
+
+    @RequestMapping(value = "/addCar", method = RequestMethod.GET)
+    public String showRegistrationForm(){
+        return "addCar";
+    }
+
+    @RequestMapping(value = "/addCar", method = RequestMethod.POST)
+    public String saveCar(Car car) {
+        carService.createCar(car);
+        return "redirect:/cars";
+    }
+
+    @RequestMapping(value = "/cars/{carId}", method = RequestMethod.GET)
+    public String updateCar(@PathVariable long carId, Model model) {
+        Car car = carService.getCarById(carId);
+        model.addAttribute(car);
+        return "updateCar";
+    }
+
+    @RequestMapping(value="/cars/{carId}",method = RequestMethod.POST)
+    public String processUpdate(@Valid Car car, Errors errors){
+        if(errors.hasErrors()){
+            return "registerForm";
+        }
+        carService.createCar(car);
+        return "redirect:/cars/" + car.getId();
     }
 }

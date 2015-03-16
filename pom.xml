@@ -39,7 +39,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <outputDirectory>C:\Program Files\Maven\apache-tomcat-7.0.59\webapps</outputDirectory>
+                    <outputDirectory>G:\apache-tomcat-7.0.59\webapps</outputDirectory>
                     <warSourceDirectory>src/main/WebContent</warSourceDirectory>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>

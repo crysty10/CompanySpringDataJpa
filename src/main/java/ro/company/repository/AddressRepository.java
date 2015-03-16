@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Florin.Cojocaru on 2/17/2015.
  */
-@Repository
+
 public interface AddressRepository extends JpaRepository<Address, Long>  {
 
     /*

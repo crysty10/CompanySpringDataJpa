@@ -1,8 +1,5 @@
 //package ro.company.aspects;
 //
-//import ro.company.annotation.AuditableAnnotation;
-//import ro.company.domain.AuditableImpl;
-//
 ///**
 //* Created by Cristian.Dumitru on 2/23/2015.
 //*/

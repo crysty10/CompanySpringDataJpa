@@ -19,37 +19,68 @@
 <form method="POST">
     <div class="row">
         <div class="col-md-2">
-            <span>First name:</span>
+            <span>Street:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${employee.firstname}"/>
+            <c:out value="${address.street}"/>
         </div>
         <div class="col-md-2">
-            <input type="text" name="firstname">
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-2">
-            <span>Last name:</span>
-        </div>
-        <div class="col-md-2">
-            <c:out value="${employee.lastname}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="lastname">
+            <input type="text" name="street">
         </div>
     </div>
-
     <div class="row">
         <div class="col-md-2">
-            <span>Salary:</span>
+            <span>Street nr.:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${employee.salary}"/>
+            <c:out value="${address.street_nr}"/>
         </div>
         <div class="col-md-2">
-            <input type="text" name="salary">
+            <input type="text" name="street_nr">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <span>Building:</span>
+        </div>
+        <div class="col-md-2">
+            <c:out value="${address.building}"/>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="building">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <span>Floor:</span>
+        </div>
+        <div class="col-md-2">
+            <c:out value="${address.floor}"/>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="floor">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <span>Locality:</span>
+        </div>
+        <div class="col-md-2">
+            <c:out value="${address.locality}"/>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="locality">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <span>Country:</span>
+        </div>
+        <div class="col-md-2">
+            <c:out value="${address.country}"/>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="country">
         </div>
     </div>
 
@@ -58,7 +89,7 @@
         </div>
         <div class="col-md-2">
             <button type="button" class="btn btn-primary"
-                    onclick="window.location = '/Company/employees'">Back to employees
+                    onclick="window.location = '/Company/addresss'">Back to employees
             </button>
         </div>
         <div class="col-md-2">

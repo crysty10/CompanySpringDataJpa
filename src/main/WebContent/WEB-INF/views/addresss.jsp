@@ -10,12 +10,16 @@
 <html>
 <head>
     <title>Addresses</title>
+    <link rel="stylesheet"
+          type="text/css"
+          href="<c:url value='/resources/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
 <h1>All the Company employees addresses!
-    <small>You can update data as well!</small>
+    <small>                 You can update data as well!</small>
 </h1>
+
 <c:forEach items="${addressList}" var="address">
     <div class="row" style="text-align: center;">
         <div class="col-md-1">
@@ -33,9 +37,6 @@
         <div class="col-md-1">
             <c:out value="${address.floor}"/>
         </div>
-        <div class="col-md-1">
-            <c:out value="${address.apartment}"/>
-        </div>
         <div class="col-md-2">
             <c:out value="${address.locality}"/>
         </div>
@@ -43,15 +44,19 @@
             <c:out value="${address.country}"/>
         </div>
         <div class="col-md-2">
-            <button type="button" class="btn btn-danger">UPDATE</button>
+            <a href="<c:url value='/addresss/${address.id}' />">Update</a>
+        </div>
+        <div class="col-md-2">
+            <a href="<c:url value='/addresss/${address.id}'/>">Delete</a>
         </div>
     </div>
 </c:forEach>
 <div class="row" style="text-align: center;">
     <div class="col-md-10"></div>
-    <div class="col-md-2">
-        <button type="button" class="btn btn-primary" onclick="">BACK</button>
-    </div>
+    <button type="button" class="btn btn-primary"
+            onclick="window.location = '/Company'">Back to Company
+    </button>
 </div>
+<p><span style="color: red; font-size: 200%"><a href="<c:url value='/addAddress'/>">Add</a> a new address</span></p>
 </body>
 </html>

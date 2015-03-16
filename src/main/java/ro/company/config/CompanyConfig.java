@@ -25,7 +25,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableJpaRepositories(basePackages = "ro.company.repository")
-//@EnableAspectJAutoProxy//(proxyTargetClass = true)
+@EnableAspectJAutoProxy//(proxyTargetClass = true)
 @ComponentScan(value = {"ro.company.repository", "ro.company.aspects", "ro.company.service", "ro.company"},
     excludeFilters =  {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)})
 //@PropertySource("classpath:/resources/jpaConnection.properties")
