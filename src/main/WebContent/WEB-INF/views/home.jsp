@@ -11,9 +11,12 @@
 
 <head>
     <title>CompanySpringDataJpa</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="<c:url value='/resources/style.css'/>">
+    <style>
+        body {
+            background-image: url(http://www.californiapizzaclub.com/images/company_profile1.jpg);
+            background-size: 100%;
+        }
+    </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>

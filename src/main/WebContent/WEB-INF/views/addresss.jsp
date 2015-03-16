@@ -10,14 +10,17 @@
 <html>
 <head>
     <title>Addresses</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="<c:url value='/resources/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url(http://www.californiapizzaclub.com/images/company_profile1.jpg);
+            background-size: 100%;
+        }
+    </style>
 </head>
 <body>
 <h1>All the Company employees addresses!
-    <small>                 You can update data as well!</small>
+    <small> You can update data as well!</small>
 </h1>
 
 <c:forEach items="${addressList}" var="address">

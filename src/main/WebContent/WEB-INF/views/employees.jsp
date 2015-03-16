@@ -10,16 +10,18 @@ To change this template use File | Settings | File Templates.
 <html>
 <head>
     <title>Employee</title>
-    <link rel="stylesheet"
-          type="text/css"
-          href="<c:url value='/resources/style.css'/>">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url(http://www.californiapizzaclub.com/images/company_profile1.jpg);
+            background-size: 100%;
+        }
+    </style>
 </head>
 <body>
 <h1>All the Company employees!
-    <small>  -----------------------  You can update data as well!</small>
+    <small> ----------------------- You can update data as well!</small>
 </h1>
-
 
 <c:forEach items="${employeeList}" var="employee">
     <div class="row" style="text-align: center;">
@@ -36,25 +38,26 @@ To change this template use File | Settings | File Templates.
             <c:out value="${employee.salary}"/>
         </div>
         <div class="col-md-2">
-            <a href="<c:url value='/employees/${employee.id}' />">Update</a>
+            <%--<a href="<c:url value='/employees/${employee.id}' />">Update</a>--%>
+            <input type="submit" value="Update" onclick="window.location = '/Company/employees/${employee.id}'"/>
+            <%--<c:url var="updateUrl" value="employees/${employee.id}"/>--%>
+            <%--<form id="${employeeUpdateFormId}" action="${updateUrl}" method="POST">--%>
+                <%--<input id="updateEmployee" name="updateEmployee" type="hidden" value="/employees/${employee.id}"/>--%>
+                <%--<input type="submit" value="Update"/>--%>
+            <%--</form>--%>
         </div>
-
-        <%--<div class="col-md-2">--%>
-                <%--&lt;%&ndash;<input type="submit" name = "deleteEmployee" id = "deleteEmployee" onclick="return confirm('Are you sure you want to delete this item?');" value="Delete"/>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;<a href="<c:url value='/employees/${employee.id}'/>">Delete</a>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;<input type="submit" name="deleteEmployee" id="deleteEmployee" value="DELETE"/>&ndash;%&gt;--%>
-                <%--&lt;%&ndash;<input type='button' onclick='confirmation(47)' value='Delete'>&ndash;%&gt;--%>
-                    <%--<a href="<c:url value='/employees/${employee.id}'/>">Delete</a>--%>
-        <%--</div>--%>
-       <c:url var="deleteUrl" value="/employees/deleteEmployee"/>
-        <form id="${employeeFormId}" action="${deleteUrl}" method="POST">
-            <input id="employee" name="employee" type="hidden" value="${employee.id}"/>
-            <input type="submit" value="deleteee" onClick="return confirm('sure?')"/>
-        </form>
+        <div class="col-md-2">
+            <c:url var="deleteUrl" value="employees"/>
+            <form id="${employeeFormId}" action="${deleteUrl}" method="POST">
+                <input id="employee" name="employee" type="hidden" value="${employee.id}"/>
+                <input type="submit" value="Delete"
+                       onClick="return confirm('Are you sure you want to delete?')"/>
+            </form>
+        </div>
     </div>
 </c:forEach>
 <div class="row" style="text-align: center;">
-    <div class="col-md-8"></div>
+    <div class="col-md-10"></div>
     <div class="col-md-2">
         <button type="button" class="btn btn-primary"
                 onclick="window.location = '/Company'">Back to Company
