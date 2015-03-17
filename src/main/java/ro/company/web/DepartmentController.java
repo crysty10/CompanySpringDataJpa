@@ -3,9 +3,7 @@ package ro.company.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import ro.company.domain.Department;
 import ro.company.service.DepartmentService;
 
@@ -55,13 +53,15 @@ public class DepartmentController {
      * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/departments/{departmentId}", method = RequestMethod.POST)
-    public String processUpdate(@Valid Department department, Errors errors) {
-        if (errors.hasErrors()) {
-            return "registerForm";
-        }
+    public String processUpdate(@ModelAttribute Department department, @PathVariable Long deptId) {
 
-        departmentService.createDepartment(department);
-        return "redirect:/departments/" + department.getId();
+        Department dept = departmentService.getDepartmentById(deptId);
+        if(dept.getDeptname() == null) {
+            dept.setDeptname(department.getDeptname());
+        }
+        dept.setDepartment_id(deptId);
+        departmentService.createDepartment(dept);
+        return "redirect:/departments";
     }
 
     /**
@@ -85,6 +85,14 @@ public class DepartmentController {
     public String saveDepartment(Department department) {
 
         departmentService.createDepartment(department);
+        return "redirect:/departments";
+    }
+
+    @RequestMapping(value = "/departments", method = RequestMethod.POST)
+    public String removeAd(@RequestParam("department") long deptId) {
+
+        Department dept = departmentService.getDepartmentById(deptId);
+        departmentService.deleteDepartment(dept);
         return "redirect:/departments";
     }
 }

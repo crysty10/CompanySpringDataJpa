@@ -14,33 +14,39 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<h1>Audit
-    <small>used to see all the changes made to every entities from database!</small>
-</h1>
-<c:forEach items="${auditList}" var="audit">
-    <div class="row" style="text-align: center; color:white;">
-        <div class="col-md-2">
-            <c:out value="${audit.id}"/>
+<%@ include file="util/header.jsp" %>
+<center>
+    <h1>Audit
+        <small>used to see all the changes made to every entities from database!</small>
+    </h1>
+    <c:forEach items="${auditList}" var="audit">
+        <div class="row" style="text-align: center; color:white;">
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <c:out value="${audit.id}"/>
+            </div>
+            <div class="col-md-2">
+                <c:out value="${audit.objectId}"/>
+            </div>
+            <div class="col-md-2">
+                <c:out value="${audit.objectType}"/>
+            </div>
+            <div class="col-md-2">
+                <c:out value="${audit.action}"/>
+            </div>
+            <div class="col-md-2"></div>
         </div>
-        <div class="col-md-2">
-            <c:out value="${audit.objectId}"/>
-        </div>
-        <div class="col-md-2">
-            <c:out value="${audit.objectType}"/>
-        </div>
-        <div class="col-md-2">
-            <c:out value="${audit.action}"/>
-        </div>
-    </div>
-</c:forEach>
+    </c:forEach>
 
-<div class="row" style="text-align: center;">
-    <div class="col-md-6"></div>
-    <div class="col-md-2">
-        <button type="button" class="btn btn-primary"
-                onclick="window.location = '/Company'">Back to company
-        </button>
+    <div class="row" style="text-align: center;">
+        <div class="col-md-8"></div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary"
+                    onclick="window.location = '/Company'">Back to company
+            </button>
+        </div>
     </div>
-</div>
+</center>
+<%@ include file="util/footer.jsp" %>
 </body>
 </html>

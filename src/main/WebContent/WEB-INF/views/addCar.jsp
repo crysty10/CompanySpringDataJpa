@@ -14,35 +14,37 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-
-<form method="POST">
-    <div class="row">
-        <div class="col-md-2">
-            <span>Car's name:</span>
+<%@ include file="util/header.jsp" %>
+<center>
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-2">
+                <span>Car's name:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="carName">
+            </div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="carName">
+        <div class="row">
+            <div class="col-md-2">
+                <span>Car's model:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="carModel">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Car's model:</span>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <input type="submit" name="addCarButton" value="Register"/>
+                <button type="button" class="btn btn-primary"
+                        onclick="window.location = '/Company/cars'">Back to cars
+                </button>
+            </div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="carModel">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-2">
-            <input type="submit" name="addCarButton" value="Register"/>
-            <button type="button" class="btn btn-primary"
-                    onclick="window.location = '/Company/cars'">Back to cars
-            </button>
-        </div>
-    </div>
-</form>
-
+    </form>
+</center>
+<%@ include file="util/footer.jsp" %>
 </body>
 </html>

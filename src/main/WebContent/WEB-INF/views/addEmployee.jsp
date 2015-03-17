@@ -14,44 +14,45 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-
-<form method="POST">
-
-    <div class="row">
-        <div class="col-md-2">
-            <span>First name:</span>
+<%@ include file="util/header.jsp" %>
+<center>
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-2">
+                <span>First name:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="firstname">
+            </div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="firstname">
+        <div class="row">
+            <div class="col-md-2">
+                <span>Last name:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="lastname">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Last name:</span>
+        <div class="row">
+            <div class="col-md-2">
+                <span>Salary:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="salary">
+            </div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="lastname">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <input type="submit" name="addEmployeeButton" value="Register"/>
+                <button type="button" class="btn btn-primary"
+                        onclick="window.location = '/Company/employees'">Back to employees
+                </button>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Salary:</span>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="salary">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-2">
-            <input type="submit" name="addEmployeeButton" value="Register"/>
-            <button type="button" class="btn btn-primary"
-                    onclick="window.location = '/Company/employees'">Back to employees
-            </button>
-        </div>
-    </div>
-</form>
-
+    </form>
+</center>
+<%@ include file="util/footer.jsp" %>
 </body>
 </html>

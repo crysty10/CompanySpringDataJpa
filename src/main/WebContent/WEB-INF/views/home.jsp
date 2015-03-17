@@ -15,25 +15,30 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<h1>Welcome to your Company project homepage
-    <small>Developed by DCG and CFA!</small>
-</h1>
-<div class="row" style="text-align: center;">
-    <div class="col-md-2">
-        <a href="<c:url value='/employees' />">Show employees</a>
+<%@ include file="util/header.jsp" %>
+<center>
+    <h1>Choose an action from the menu</h1>
+
+    <div class="row" style="text-align: center;">
+        <div class="col-md-1"></div>
+        <div class="col-md-2">
+            <a href="<c:url value='/employees' />">Show employees</a>
+        </div>
+        <div class="col-md-2">
+            <a href="<c:url value='/departments' />">Show departments</a>
+        </div>
+        <div class="col-md-2">
+            <a href="<c:url value='/cars' />">Show cars</a>
+        </div>
+        <div class="col-md-2">
+            <a href="<c:url value='/addresss' />">Show addresses</a>
+        </div>
+        <div class="col-md-2">
+            <a href="<c:url value='/audit' />">Show audit</a>
+        </div>
+        <div class="col-md-1"></div>
     </div>
-    <div class="col-md-2">
-        <a href="<c:url value='/departments' />">Show departments</a>
-    </div>
-    <div class="col-md-2">
-        <a href="<c:url value='/cars' />">Show cars</a>
-    </div>
-    <div class="col-md-2">
-        <a href="<c:url value='/addresss' />">Show addresses</a>
-    </div>
-    <div class="col-md-2">
-        <a href="<c:url value='/audit' />">Show audit</a>
-    </div>
-</div>
+</center>
+<%@ include file="util/footer.jsp" %>
 </body>
 </html>

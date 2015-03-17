@@ -14,67 +14,69 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-
-<form method="POST">
-    <div class="row">
-        <div class="col-md-2">
-            <span>Street:</span>
+<%@ include file="util/header.jsp" %>
+<center>
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-2">
+                <span>Street:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="street">
+            </div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="street">
+        <div class="row">
+            <div class="col-md-2">
+                <span>Street nr.:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="street_nr">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Street nr.:</span>
+        <div class="row">
+            <div class="col-md-2">
+                <span>Building:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="building">
+            </div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="street_nr">
+        <div class="row">
+            <div class="col-md-2">
+                <span>Floor:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="floor">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Building:</span>
+        <div class="row">
+            <div class="col-md-2">
+                <span>Locality:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="locality">
+            </div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="building">
+        <div class="row">
+            <div class="col-md-2">
+                <span>Country:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="country">
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Floor:</span>
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
+                <input type="submit" name="addAddressButton" value="Register"/>
+                <button type="button" class="btn btn-primary"
+                        onclick="window.location = '/Company/addresss'">Back to addresses
+                </button>
+            </div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="floor">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Locality:</span>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="locality">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Country:</span>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="country">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-        </div>
-        <div class="col-md-2">
-            <input type="submit" name="addAddressButton" value="Register"/>
-            <button type="button" class="btn btn-primary"
-                    onclick="window.location = '/Company/addresss'">Back to addresses
-            </button>
-        </div>
-    </div>
-</form>
-
+    </form>
+</center>
+<%@ include file="util/footer.jsp" %>
 </body>
 </html>

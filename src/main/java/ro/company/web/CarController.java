@@ -6,6 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ro.company.domain.Car;
 import ro.company.service.CarService;
 
@@ -45,6 +46,7 @@ public class CarController {
 
     @RequestMapping(value = "/cars/{carId}", method = RequestMethod.GET)
     public String updateCar(@PathVariable long carId, Model model) {
+
         Car car = carService.getCarById(carId);
         model.addAttribute(car);
         return "updateCar";
@@ -57,5 +59,13 @@ public class CarController {
         }
         carService.createCar(car);
         return "redirect:/cars/" + car.getId();
+    }
+
+    @RequestMapping(value = "/cars", method = RequestMethod.POST)
+    public String removeAd(@RequestParam("car") long carId) {
+
+        Car car = carService.getCarById(carId);
+        carService.deleteCar(car);
+        return "redirect:/cars";
     }
 }

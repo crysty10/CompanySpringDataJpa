@@ -14,43 +14,50 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<h1>All the Company employees cars!
-    <small> You can update data as well!</small>
-</h1>
-
-<c:forEach items="${carList}" var="car">
-    <div class="row" style="text-align: center; color:white;">
-        <div class="col-md-2">
-            <c:out value="${car.id}"/>
+<%@ include file="util/header.jsp" %>
+<center>
+    <h1>All the Company employees cars!
+        <small> You can update data as well!</small>
+    </h1>
+    <c:forEach items="${carList}" var="car">
+        <div class="row" style="text-align: center; color:white;">
+            <div class="col-md-1"></div>
+            <div class="col-md-2">
+                <c:out value="${car.id}"/>
+            </div>
+            <div class="col-md-2">
+                <c:out value="${car.carName}"/>
+            </div>
+            <div class="col-md-2">
+                <c:out value="${car.carModel}"/>
+            </div>
+            <div class="col-md-2">
+                <input style="color:black;" type="submit" value="Update"
+                       onclick="window.location = '/Company/cars/${cars.id}'"/>
+            </div>
+            <div class="col-md-2" style="color:black;">
+                <c:url var="deleteUrl" value="cars"/>
+                <form id="${employeeFormId}" action="${deleteUrl}" method="POST">
+                    <input id="car" name="car" type="hidden" value="${car.id}"/>
+                    <input type="submit" value="Delete" onClick="return
+                        confirm('Are you sure you want to delete this car?')"/>
+                </form>
+            </div>
+            <div class="col-md-1"></div>
         </div>
+    </c:forEach>
+    <div class="row" style="text-align: center;">
+        <div class="col-md-9"></div>
         <div class="col-md-2">
-            <c:out value="${car.carName}"/>
-        </div>
-        <div class="col-md-2">
-            <c:out value="${car.carModel}"/>
-        </div>
-        <div class="col-md-2">
-            <input style="color:black;" type="submit" value="Update"
-                   onclick="window.location = '/Company/cars/${cars.id}'"/>
-        </div>
-        <div class="col-md-2" style="color:black;">
-            <c:url var="deleteUrl" value="cars"/>
-            <form id="${employeeFormId}" action="${deleteUrl}" method="POST">
-                <input id="car" name="car" type="hidden" value="${car.id}"/>
-                <input type="submit" value="Delete" onClick="return
-                        confirm('Are you sure you want to delete employee ${car.carName} ${car.carModel}?')"/>
-            </form>
+            <button type="button" class="btn btn-primary"
+                    onclick="window.location = '/Company'">Back to Company
+            </button>
         </div>
     </div>
-</c:forEach>
-<div class="row" style="text-align: center;">
-    <div class="col-md-8"></div>
-    <div class="col-md-2">
-        <button type="button" class="btn btn-primary"
-                onclick="window.location = '/Company'">Back to Company
-        </button>
-    </div>
-</div>
-<p><span style="font-size: 200%"><a style="color:blue;" href="<c:url value='/addCar'/>">Add</a> a new car</span></p>
+    <p>
+        <span style="font-size: 200%"><a style="color:blue;" href="<c:url value='/addCar'/>">Add</a> a new car</span>
+    </p>
+</center>
+<%@ include file="util/footer.jsp" %>
 </body>
 </html>

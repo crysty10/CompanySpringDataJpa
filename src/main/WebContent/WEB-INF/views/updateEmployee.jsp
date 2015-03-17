@@ -14,45 +14,56 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<form method="POST">
-    <div class="row">
-        <div class="col-md-2" style="color:white;">
-            <span>First name:</span>
+<%@ include file="util/header.jsp" %>
+<center>
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color:white;">
+                <span>First name:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="firstname" value="<c:out value='${employee.firstname}'/>"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="firstname" value="<c:out value='${employee.firstname}'/>"/>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-2" style="color:white;">
-            <span>Last name:</span>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color:white;">
+                <span>Last name:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="lastname" value="<c:out value='${employee.lastname}'/>"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="lastname" value="<c:out value='${employee.lastname}'/>"/>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-2" style="color:white;">
-            <span>Salary:</span>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color:white;">
+                <span>Salary:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="salary" value="<c:out value='${employee.salary}'/>"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="salary" value="<c:out value='${employee.salary}'/>"/>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary"
-                    onclick="window.location = '/Company/employees'">Back to employees
-            </button>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary"
+                        onclick="window.location = '/Company/employees'">Back to employees
+                </button>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="UPDATE"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-2">
-            <input type="submit" value="UPDATE"/>
-        </div>
-    </div>
-</form>
-
+    </form>
+</center>
+<%@ include file="util/footer.jsp" %>
 </body>
 </html>

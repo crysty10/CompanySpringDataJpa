@@ -14,67 +14,84 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<form method="POST">
-    <div class="row">
-        <div class="col-md-2">
-            <span>Street:</span>
+<%@ include file="util/header.jsp" %>
+<center>
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <span>Street:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="street" value="<c:out value='${address.street}'/>"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="street" value="<c:out value='${address.street}'/>"/>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <span>Street nr.:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="street_nr" value="<c:out value='${address.street_nr}'/>"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Street nr.:</span>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <span>Building:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="building" value="<c:out value='${address.building}'/>"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="street_nr" value="<c:out value='${address.street_nr}'/>"/>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <span>Floor:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="floor" value="<c:out value='${address.floor}'/>"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Building:</span>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <span>Locality:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="locality" value="<c:out value='${address.locality}'/>"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-2">
-            <input type="text" name="building" value="<c:out value='${address.building}'/>"/>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <span>Country:</span>
+            </div>
+            <div class="col-md-2">
+                <input type="text" name="country" value="<c:out value='${address.country}'/>"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Floor:</span>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="floor" value="<c:out value='${address.floor}'/>"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Locality:</span>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="locality" value="<c:out value='${address.locality}'/>"/>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <span>Country:</span>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="country" value="<c:out value='${address.country}'/>"/>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-2">
-            <button type="button" class="btn btn-primary"
-                    onclick="window.location = '/Company/addresss'">Back to employees
-            </button>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary"
+                        onclick="window.location = '/Company/addresss'">Back to employees
+                </button>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" value="UPDATE"/>
+            </div>
+            <div class="col-md-4"></div>
         </div>
-        <div class="col-md-2">
-            <input type="submit" value="UPDATE"/>
-        </div>
-    </div>
-</form>
-
+    </form>
+</center>
+<%@ include file="util/footer.jsp" %>
 </body>
 </html>
