@@ -33,14 +33,14 @@
             </div>
             <div class="col-md-2">
                 <input style="color:black;" type="submit" value="Update"
-                       onclick="window.location = '/Company/cars/${cars.id}'"/>
+                       onclick="window.location = '/Company/cars/${car.id}'"/>
             </div>
             <div class="col-md-2" style="color:black;">
-                <c:url var="deleteUrl" value="cars"/>
-                <form id="${employeeFormId}" action="${deleteUrl}" method="POST">
+                <c:url var="carDeleteUrl" value="car"/>
+                <form id="${carFormId}" action="${deleteUrl}" method="POST">
                     <input id="car" name="car" type="hidden" value="${car.id}"/>
-                    <input type="submit" value="Delete" onClick="return
-                        confirm('Are you sure you want to delete this car?')"/>
+                    <input type="submit" value="Delete"
+                           onClick="return confirm('Are you sure you want to delete this car?')"/>
                 </form>
             </div>
             <div class="col-md-1"></div>

@@ -38,6 +38,12 @@
         </div>
         <div class="col-md-1"></div>
     </div>
+    <br/><br/>
+    <div class="row">
+        <div class="col-md-12">
+            <img src="<c:url value='/resources/logo.jpg'/>" alt="CompanyLogo"/>
+        </div>
+    </div>
 </center>
 <%@ include file="util/footer.jsp" %>
 </body>

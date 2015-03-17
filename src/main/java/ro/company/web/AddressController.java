@@ -3,10 +3,7 @@ package ro.company.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ro.company.domain.Address;
 import ro.company.service.AddressService;
 
@@ -53,13 +50,11 @@ public class AddressController {
     }
 
     @RequestMapping(value = "/addresss/{addressId}",method = RequestMethod.POST)
-    public String processUpdate(@Valid Address address, Errors errors) {
-        if(errors.hasErrors()){
-            return "registerForm";
-        }
+    public String processUpdate(@ModelAttribute Address address, @PathVariable Long addressId) {
 
+        address.setId(addressId);
         addressService.createAddress(address);
-        return "redirect:/addresss/" + address.getId();
+        return "redirect:/addresss";
     }
 
     @RequestMapping(value = "/addresss", method = RequestMethod.POST)

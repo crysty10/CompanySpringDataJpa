@@ -33,11 +33,11 @@
                        onclick="window.location = '/Company/departments/${department.id}'"/>
             </div>
             <div class="col-md-2" style="color:black;">
-                <c:url var="deleteUrl" value="department"/>
+                <c:url var="deptDeleteUrl" value="department"/>
                 <form id="${departmentFormId}" action="${deleteUrl}" method="POST">
                     <input id="department" name="department" type="hidden" value="${department.id}"/>
-                    <input type="submit" value="Delete" onClick="return
-                    confirm('Are you sure you want to delete this department?')"/>
+                    <input type="submit" value="Delete"
+                           onClick="return confirm('Are you sure you want to delete this department?')"/>
                 </form>
             </div>
             <div class="col-md-2"></div>

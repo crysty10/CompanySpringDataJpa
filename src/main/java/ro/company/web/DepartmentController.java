@@ -55,12 +55,8 @@ public class DepartmentController {
     @RequestMapping(value = "/departments/{departmentId}", method = RequestMethod.POST)
     public String processUpdate(@ModelAttribute Department department, @PathVariable Long deptId) {
 
-        Department dept = departmentService.getDepartmentById(deptId);
-        if(dept.getDeptname() == null) {
-            dept.setDeptname(department.getDeptname());
-        }
-        dept.setDepartment_id(deptId);
-        departmentService.createDepartment(dept);
+        department.setDepartment_id(deptId);
+        departmentService.createDepartment(department);
         return "redirect:/departments";
     }
 

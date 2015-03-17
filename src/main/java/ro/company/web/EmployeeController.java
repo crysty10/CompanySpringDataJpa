@@ -38,9 +38,9 @@ public class EmployeeController {
      * @return redirect to all employees page to check if the action executed.*/
     @RequestMapping(value = "/employees", method = RequestMethod.POST)
     public String removeAd(@RequestParam("employee") long employeeId) {
+
         Employee employee = employeeService.findEmployeeById(employeeId);
         employeeService.deleteEmployee(employee);
-
         return "redirect:/employees";
     }
 
@@ -69,16 +69,6 @@ public class EmployeeController {
     @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
     public String processUpdate(@ModelAttribute Employee employee, @PathVariable Long employeeId) {
 
-        Employee emp = employeeService.findEmployeeById(employeeId);
-        if(employee.getFirstname() == null) {
-            emp.setFirstname(emp.getFirstname());
-        }
-        if(employee.getLastname() == null) {
-            emp.setLastname(emp.getLastname());
-        }
-        if(employee.getSalary() == null) {
-            emp.setSalary(emp.getSalary());
-        }
         employee.setEmployee_id(employeeId);
         employeeService.createEmployee(employee);
         return "redirect:/employees";

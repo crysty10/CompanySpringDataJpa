@@ -13,7 +13,8 @@
 <body>
 <br/><br/>
 <center>
-    <p>Copyright © 2010, Company Spring Data Project. All rights reserved!</p>
+    <p>© Copyright 2015 Company Spring Data Project<br/>
+        All rights reserved | Terms and conditions</p>
 </center>
 </body>
 </html>
