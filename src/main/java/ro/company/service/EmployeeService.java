@@ -11,7 +11,6 @@ public interface EmployeeService {
 
     //CREATE OR UPDATE
     Employee createEmployee(Employee employee);
-    Employee updateEmployee(Employee employee);
 
     //READ
     Employee findEmployeeById(Long id);

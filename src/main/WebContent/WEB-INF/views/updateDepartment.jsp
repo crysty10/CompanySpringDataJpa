@@ -10,17 +10,8 @@
 <html>
 <head>
     <title>Update Department</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <style>
-        h1, h3, a, p, span, small {
-            color : white;
-        }
-        body {
-            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
-            text-color : white;
-            background-size: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
 <form method="POST">
@@ -29,10 +20,7 @@
             <span>Department's name:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${department.deptname}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="deptname">
+            <input type="text" name="deptname" value="<c:out value='${department.deptname}'/>">
         </div>
     </div>
     <div class="row">

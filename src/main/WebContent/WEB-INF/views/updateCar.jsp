@@ -12,16 +12,7 @@
 <head>
     <title>Update Car</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <style>
-        h1, h3, a, p, span, small {
-            color : white;
-        }
-        body {
-            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
-            text-color : white;
-            background-size: 100%;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
 <form method="POST">
@@ -30,10 +21,7 @@
             <span>Car's name:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${car.carName}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="carName">
+            <input type="text" name="carName" value="<c:out value='${car.carName}'/>">
         </div>
     </div>
 
@@ -42,15 +30,10 @@
             <span>Car's model:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${car.carModel}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="carModel">
+            <input type="text" name="carModel" value="<c:out value='${car.carModel}'/>">
         </div>
     </div>
     <div class="row">
-        <div class="col-md-2">
-        </div>
         <div class="col-md-2">
             <button type="button" class="btn btn-primary"
                     onclick="window.location = '/Company/cars'">Back to cars

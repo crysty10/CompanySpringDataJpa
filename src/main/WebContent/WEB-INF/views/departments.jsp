@@ -11,16 +11,7 @@
 <head>
     <title>Department</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <style>
-        h1, a, p, h1 > small {
-            color: white;
-        }
-
-        body {
-            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
-            background-size: 100%;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
 <h1>All the Company departments!
@@ -36,8 +27,8 @@
             <c:out value="${department.deptname}"/>
         </div>
         <div class="col-md-2">
-            <%--<a style="color:black;" href="<c:url value='/departments/${department.id}' />">Update</a>--%>
-            <input style="color:black;" type="submit" value="Update" onclick="window.location = '/Company/departments/${department.id}'"/>
+            <input style="color:black;" type="submit" value="Update"
+                   onclick="window.location = '/Company/departments/${department.id}'"/>
         </div>
         <div class="col-md-2" style="color:black;">
             <c:url var="deleteUrl" value="/departments/deleteDepartment"/>
@@ -56,6 +47,7 @@
         </button>
     </div>
 </div>
-<p><span style="font-size: 200%"><a style="color:blue;" href="<c:url value='/addDepartment'/>">Add</a> a new department</span></p>
+<p><span style="font-size: 200%"><a style="color:blue;" href="<c:url value='/addDepartment'/>">Add</a> a new department</span>
+</p>
 </body>
 </html>

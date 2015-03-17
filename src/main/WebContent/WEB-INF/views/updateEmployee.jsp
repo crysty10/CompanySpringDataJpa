@@ -10,58 +10,39 @@
 <html>
 <head>
     <title>Update Employee</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <style>
-        h1, a, h1 > small {
-            color : white;
-        }
-        body {
-            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
-            background-size: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
 <form method="POST">
-    <div class="row" style="color:white;">
-        <div class="col-md-2">
+    <div class="row">
+        <div class="col-md-2" style="color:white;">
             <span>First name:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${employee.firstname}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="firstname">
-        </div>
-    </div>
-
-    <div class="row" style="color:white;">
-        <div class="col-md-2">
-            <span>Last name:</span>
-        </div>
-        <div class="col-md-2">
-            <c:out value="${employee.lastname}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="lastname">
-        </div>
-    </div>
-
-    <div class="row" style="color:white;">
-        <div class="col-md-2">
-            <span>Salary:</span>
-        </div>
-        <div class="col-md-2">
-            <c:out value="${employee.salary}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="salary">
+            <input type="text" name="firstname" value="<c:out value='${employee.firstname}'/>"/>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2" style="color:white;">
+            <span>Last name:</span>
         </div>
+        <div class="col-md-2">
+            <input type="text" name="lastname" value="<c:out value='${employee.lastname}'/>"/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2" style="color:white;">
+            <span>Salary:</span>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="salary" value="<c:out value='${employee.salary}'/>"/>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-md-2">
             <button type="button" class="btn btn-primary"
                     onclick="window.location = '/Company/employees'">Back to employees

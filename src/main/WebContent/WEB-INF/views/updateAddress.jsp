@@ -11,16 +11,7 @@
 <head>
     <title>Update Employee</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <style>
-        h1, h3, a, p, span, small {
-            color : white;
-        }
-        body {
-            background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
-            text-color : white;
-            background-size: 100%;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
 <form method="POST">
@@ -29,10 +20,7 @@
             <span>Street:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${address.street}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="street">
+            <input type="text" name="street" value="<c:out value='${address.street}'/>"/>
         </div>
     </div>
     <div class="row">
@@ -40,10 +28,7 @@
             <span>Street nr.:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${address.street_nr}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="street_nr">
+            <input type="text" name="street_nr" value="<c:out value='${address.street_nr}'/>"/>
         </div>
     </div>
     <div class="row">
@@ -51,10 +36,7 @@
             <span>Building:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${address.building}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="building">
+            <input type="text" name="building" value="<c:out value='${address.building}'/>"/>
         </div>
     </div>
     <div class="row">
@@ -62,10 +44,7 @@
             <span>Floor:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${address.floor}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="floor">
+            <input type="text" name="floor" value="<c:out value='${address.floor}'/>"/>
         </div>
     </div>
     <div class="row">
@@ -73,10 +52,7 @@
             <span>Locality:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${address.locality}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="locality">
+            <input type="text" name="locality" value="<c:out value='${address.locality}'/>"/>
         </div>
     </div>
     <div class="row">
@@ -84,16 +60,11 @@
             <span>Country:</span>
         </div>
         <div class="col-md-2">
-            <c:out value="${address.country}"/>
-        </div>
-        <div class="col-md-2">
-            <input type="text" name="country">
+            <input type="text" name="country" value="<c:out value='${address.country}'/>"/>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-2">
-        </div>
         <div class="col-md-2">
             <button type="button" class="btn btn-primary"
                     onclick="window.location = '/Company/addresss'">Back to employees
