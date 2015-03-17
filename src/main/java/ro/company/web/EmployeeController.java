@@ -1,8 +1,13 @@
 package ro.company.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import ro.company.domain.Employee;
 import ro.company.service.EmployeeService;
@@ -17,10 +22,20 @@ import javax.validation.Valid;
 @RequestMapping("/")
 public class EmployeeController {
 
+
+    @Autowired(required = true)
+    private LocalValidatorFactoryBean localValidatorFactoryBean;
+
     EmployeeService employeeService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(this.localValidatorFactoryBean);
+    }
 
     @Inject
     public EmployeeController(EmployeeService employeeService) {
+
         this.employeeService = employeeService;
     }
 
@@ -80,7 +95,9 @@ public class EmployeeController {
      * @return the name of the view.
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
-    public String showRegistrationFormEmployee() {
+    public String showRegistrationFormEmployee(ModelMap model) {
+
+        model.addAttribute("employee",new Employee());
 
         return "addEmployee";
     }
@@ -92,9 +109,15 @@ public class EmployeeController {
      * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
-    public String saveEmployee(@Valid Employee employee, BindingResult bindingResult) {
+    public String saveEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult,Errors errors, Model model) {
+
+
         if(bindingResult.hasErrors()) {
-            return "redirect:/home";
+
+            //create a set of errors and iterate threw it to view the errors
+            localValidatorFactoryBean.validate(bindingResult,errors);
+
+            return "addEmployee";
         }
 
         employeeService.createEmployee(employee);

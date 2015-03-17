@@ -15,7 +15,7 @@
 </head>
 <body>
 <%@ include file="util/header.jsp" %>
-<center>
+<div style="text-align: center;">
     <h1>All the Company employees cars!
         <small> You can update data as well!</small>
     </h1>
@@ -57,7 +57,7 @@
     <p>
         <span style="font-size: 200%"><a style="color:blue;" href="<c:url value='/addCar'/>">Add</a> a new car</span>
     </p>
-</center>
+</div>
 <%@ include file="util/footer.jsp" %>
 </body>
 </html>

@@ -1,10 +1,10 @@
 package ro.company.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -27,17 +27,18 @@ public class Employee implements Identifiable<Long>, Serializable {
     @Column(name = "emp_id", unique = true, nullable = false)
     private Long id;
 
-    @NotNull
-    @Size(min=2, max=30)
+
+    @NotEmpty
+    @Size(min = 2,max = 30)
     private String firstname;
 
-    @NotNull
-    @Size(min=2, max=30)
+
+    @NotEmpty
+    @Size(min = 2,max = 30)
     private String lastname;
 
     @NotNull
-    @Min(value = 1)
-    @Max(value = 100000)
+    @Range(min = 1,max = 100000)
     private Double salary;
 
     @OneToOne(fetch = FetchType.LAZY, targetEntity = Department.class, cascade = CascadeType.ALL)

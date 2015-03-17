@@ -8,7 +8,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-
 <head>
     <title>CompanySpringDataJpa</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -16,7 +15,7 @@
 </head>
 <body>
 <%@ include file="util/header.jsp" %>
-<center>
+<div style="text-align: center;">
     <h1>Choose an action from the menu</h1>
 
     <div class="row" style="text-align: center;">
@@ -39,12 +38,13 @@
         <div class="col-md-1"></div>
     </div>
     <br/><br/>
+
     <div class="row">
         <div class="col-md-12">
             <img src="<c:url value='/resources/logo.jpg'/>" alt="CompanyLogo"/>
         </div>
     </div>
-</center>
+</div>
 <%@ include file="util/footer.jsp" %>
 </body>
 </html>

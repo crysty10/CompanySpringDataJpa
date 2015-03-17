@@ -1,6 +1,9 @@
 package ro.company.config;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
+import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -14,6 +17,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.inject.Inject;
@@ -88,6 +92,26 @@ public class CompanyConfig implements LoadTimeWeavingConfigurer {
         emfb.setPackagesToScan("ro/company/domain");
 
         return emfb;
+    }
+
+
+    @Bean
+    public MessageSource messageSource() {
+
+        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        messageSource.setBasename("messages");
+        messageSource.setCacheSeconds(1);
+        return messageSource;
+    }
+
+
+    @Bean
+    public LocalValidatorFactoryBean getValidator() {
+        LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
+        localValidatorFactoryBean.setValidationMessageSource(messageSource());
+        localValidatorFactoryBean.setParameterNameDiscoverer(new LocalVariableTableParameterNameDiscoverer());
+
+        return localValidatorFactoryBean;
     }
 
     @Bean

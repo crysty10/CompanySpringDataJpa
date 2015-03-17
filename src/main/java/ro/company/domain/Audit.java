@@ -25,26 +25,26 @@ public class Audit implements Identifiable<Long> {
     @Column(nullable = false)
     private String action;
 
-    @Column(nullable = false)
-    private byte[] objectSerializable;
+//    @Column(nullable = false)
+//    private byte[] objectSerializable;
 
     private Timestamp modifiedDate;
 
     public Audit() {};
 
-    public byte[] getObjectSerializable() {
-        return objectSerializable;
-    }
+//    public byte[] getObjectSerializable() {
+//        return objectSerializable;
+//    }
+//
+//    public void setObjectSerializable(byte[] objectSerializable) {
+//        this.objectSerializable = objectSerializable;
+//    }
 
-    public void setObjectSerializable(byte[] objectSerializable) {
-        this.objectSerializable = objectSerializable;
-    }
-
-    public Audit(Long objectId, String objectType, String action, byte[] objectSerializable, Timestamp modifiedDate) {
+    public Audit(Long objectId, String objectType, String action,/* byte[] objectSerializable,*/ Timestamp modifiedDate) {
         this.objectId = objectId;
         this.objectType = objectType;
         this.action = action;
-        this.objectSerializable = objectSerializable;
+       // this.objectSerializable = objectSerializable;
         this.modifiedDate = modifiedDate;
     }
 

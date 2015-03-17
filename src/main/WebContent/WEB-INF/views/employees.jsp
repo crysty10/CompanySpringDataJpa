@@ -9,13 +9,13 @@ To change this template use File | Settings | File Templates.
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Employee</title>
+    <title>Employees</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
 <%@ include file="util/header.jsp" %>
-<center>
+<div style="text-align: center;">
     <h1>All the Company employees!
         <small> You can update data as well!</small>
     </h1>
@@ -57,7 +57,7 @@ To change this template use File | Settings | File Templates.
     </div>
     <p><span style="font-size: 200%"><a style="color:blue;"
                                         href="<c:url value='/addEmployee'/>">Add</a> a new employee</span></p>
-</center>
+</div>
 <%@ include file="util/footer.jsp" %>
 </body>
 </html>

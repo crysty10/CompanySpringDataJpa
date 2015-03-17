@@ -2,13 +2,11 @@ package ro.company.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import ro.company.domain.Department;
 import ro.company.service.DepartmentService;
 
 import javax.inject.Inject;
-import javax.validation.Valid;
 
 /**
  * Created by Cristian.Dumitru on 3/9/2015.
@@ -18,10 +16,13 @@ import javax.validation.Valid;
 public class DepartmentController {
 
     private DepartmentService departmentService;
+//    private Validator validator;
 
     @Inject
     public DepartmentController(DepartmentService departmentService) {
         this.departmentService = departmentService;
+//        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
+//        validator = (Validator) validatorFactory.getValidator();
     }
 
     @RequestMapping(value = "/departments",method = RequestMethod.GET)
@@ -30,6 +31,22 @@ public class DepartmentController {
         model.addAttribute("departmentList", departmentService.getAllDepartments());
         return "departments";
     }
+
+//    @InitBinder
+//    public void initBinder(WebDataBinder binder) {
+//        binder.registerCustomEditor(Department.class, new DepartmentEditor());
+//    }
+
+//    @ModelAttribute("allDepartments")
+//    public List<Department> populateDepartments() {
+//        ArrayList<Department> departments = new ArrayList<>();
+////        departments.add(departmentService.getDepartmentById(1L));
+////        departments.add(departmentService.getDepartmentById(2L));
+////        departments.add(departmentService.getDepartmentById(3L));
+//        return departments;}
+
+
+
 
     /**
      * Edit details about an employee.

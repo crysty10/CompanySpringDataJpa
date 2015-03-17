@@ -6,6 +6,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
  * Created by Cristian.Dumitru on 3/9/2015.
  */
 public class CompanySpringWebConfig extends AbstractAnnotationConfigDispatcherServletInitializer {
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[]{CompanyConfig.class};

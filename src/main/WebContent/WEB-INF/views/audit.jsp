@@ -15,7 +15,7 @@
 </head>
 <body>
 <%@ include file="util/header.jsp" %>
-<center>
+<div style="text-align: center;">
     <h1>Audit
         <small>used to see all the changes made to every entities from database!</small>
     </h1>
@@ -46,7 +46,7 @@
             </button>
         </div>
     </div>
-</center>
+</div>
 <%@ include file="util/footer.jsp" %>
 </body>
 </html>
