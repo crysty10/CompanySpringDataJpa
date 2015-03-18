@@ -1,6 +1,9 @@
 package ro.company.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
@@ -18,7 +21,8 @@ public class EmployeeAddress implements Serializable {
     @Column(name = "add_id")
     private Long add_id;
 
-    public EmployeeAddress() {}
+    public EmployeeAddress() {
+    }
 
     public EmployeeAddress(Long emp_id, Long add_id) {
         this.emp_id = emp_id;

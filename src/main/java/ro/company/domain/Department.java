@@ -4,7 +4,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -25,10 +24,11 @@ public class Department implements Identifiable<Long>, Serializable {
     private Long id;
 
     @NotEmpty
-    @Size(min=2, max=20)
+    @Size(min = 2, max = 20)
     private String deptname;
 
-    public Department() {}
+    public Department() {
+    }
 
     public Department(String deptname) {
         this.deptname = deptname;
@@ -53,9 +53,6 @@ public class Department implements Identifiable<Long>, Serializable {
 
     @Override
     public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", deptname='" + deptname + '\'' +
-                '}';
+        return id + " " + deptname;
     }
 }

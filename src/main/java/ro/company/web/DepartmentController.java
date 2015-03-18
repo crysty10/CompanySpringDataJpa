@@ -26,18 +26,18 @@ public class DepartmentController {
 
     private DepartmentService departmentService;
 
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.setValidator(this.localValidatorFactoryBean);
-    }
-
     @Inject
     public DepartmentController(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
 
-    @RequestMapping(value = "/departments",method = RequestMethod.GET)
-    public String departments(Model model){
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(this.localValidatorFactoryBean);
+    }
+
+    @RequestMapping(value = "/departments", method = RequestMethod.GET)
+    public String departments(Model model) {
 
         model.addAttribute("departmentList", departmentService.getAllDepartments());
         return "departments";
@@ -47,7 +47,7 @@ public class DepartmentController {
      * Edit details about an employee.
      *
      * @param departmentId the employee you want to update
-     * @param model      used to save the employee details.
+     * @param model        used to save the employee details.
      * @return name of the view.
      */
     @RequestMapping(value = "/departments/{departmentId}", method = RequestMethod.GET)
@@ -92,9 +92,9 @@ public class DepartmentController {
      */
     @RequestMapping(value = "/addDepartment", method = RequestMethod.POST)
     public String saveDepartment(@Valid @ModelAttribute("department") Department department,
-                                 BindingResult bindingResult, Errors errors, Model model) {
+                                 BindingResult bindingResult, Errors errors) {
 
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             localValidatorFactoryBean.validate(bindingResult, errors);
             return "addDepartment";
         }

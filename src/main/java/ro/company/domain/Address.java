@@ -31,7 +31,7 @@ public class Address implements Identifiable<Long>, Serializable {
     private String street;
 
     @NotNull
-    @Range(min = 1,max = 100000)
+    @Range(min = 1, max = 100000)
     private Integer street_nr;
 
     @NotEmpty
@@ -56,7 +56,8 @@ public class Address implements Identifiable<Long>, Serializable {
     @Column(nullable = false)
     private String country;
 
-    public Address() {}
+    public Address() {
+    }
 
     public Address(String street, Integer street_nr, String building, Integer floor, Integer apartment, String locality, String country) {
 
@@ -67,10 +68,6 @@ public class Address implements Identifiable<Long>, Serializable {
         this.apartment = apartment;
         this.locality = locality;
         this.country = country;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getStreet() {
@@ -131,20 +128,15 @@ public class Address implements Identifiable<Long>, Serializable {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", street='" + street + '\'' +
-                ", street_nr=" + street_nr +
-                ", building='" + building + '\'' +
-                ", floor=" + floor +
-                ", apartment=" + apartment +
-                ", locality='" + locality + '\'' +
-                ", country='" + country + '\'' +
-                '}';
+        return id + " " + street + " " + street_nr + " " + building + " " + locality;
     }
 
     @Override
     public Long getId() {
         return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

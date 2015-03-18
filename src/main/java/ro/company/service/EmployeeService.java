@@ -14,7 +14,9 @@ public interface EmployeeService {
 
     //READ
     Employee findEmployeeById(Long id);
+
     Employee findEmployeeByFirstnameAndLastname(String firstname, String lastname);
+
     List<Employee> findAllEmployees();
 
     //EXIST

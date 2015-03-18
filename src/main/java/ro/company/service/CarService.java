@@ -9,14 +9,16 @@ import java.util.List;
  */
 public interface CarService {
 
-        //CREATE OR UPDATE
-        Car createCar(Car car);
+    //CREATE OR UPDATE
+    Car createCar(Car car);
 
-        //READ
-        Car getCarById(Long id);
-        Car getCarByCarName(String carName);
-        List<Car> getAllCars();
+    //READ
+    Car getCarById(Long id);
 
-        //DELETE
-        void deleteCar(Car car);
+    Car getCarByCarName(String carName);
+
+    List<Car> getAllCars();
+
+    //DELETE
+    void deleteCar(Car car);
 }

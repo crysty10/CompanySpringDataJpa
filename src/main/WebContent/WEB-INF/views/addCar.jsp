@@ -48,6 +48,21 @@
         </div>
         <div class="row">
             <div class="col-md-4"></div>
+            <div class="col-md-2" style="color : white;">
+                Employee :
+            </div>
+            <div class="col-md-2">
+                <form:select path="employees" multiple="false" cssStyle="width: 180px;">
+                    <form:option value="" label=""/>
+                    <form:options items="${employeeList}"/>
+                </form:select>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="employees" cssClass="error"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
             <div class="col-md-2">
             </div>
             <div class="col-md-2">

@@ -14,9 +14,13 @@ public interface AuditService {
 
     //READ
     Audit findFirstByObjectIdAndObjectType(Long objectId, String objectType);
+
     Audit findFirstByObjectId(Long objectId);
+
     Audit findAuditByObjectIdAndAction(Long objectId, String action);
+
     Audit findAuditByObjectIdAndObjectTypeAndAction(Long objectId, String objectType, String action);
+
     List<Audit> findAllAudits();
 
     //DELETE

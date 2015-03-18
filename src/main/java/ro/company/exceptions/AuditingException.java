@@ -9,7 +9,7 @@ public class AuditingException extends Exception {
         super();
     }
 
-    public AuditingException(String message){
+    public AuditingException(String message) {
         super(message);
     }
 }

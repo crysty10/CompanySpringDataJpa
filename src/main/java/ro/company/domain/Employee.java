@@ -28,34 +28,38 @@ public class Employee implements Identifiable<Long>, Serializable {
     private Long id;
 
     @NotEmpty
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String firstname;
 
     @NotEmpty
-    @Size(min = 2,max = 30)
+    @Size(min = 2, max = 30)
     private String lastname;
 
     @NotNull
-    @Range(min = 1,max = 100000)
+    @Range(min = 1, max = 100000)
     private Double salary;
 
-    @OneToOne(fetch = FetchType.LAZY, targetEntity = Department.class, cascade = CascadeType.ALL)
+    //@OneToOne(fetch = FetchType.LAZY, targetEntity = Department.class, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, targetEntity = Department.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "dep_id")
     private Department department;
 
     @OneToMany(fetch = FetchType.LAZY)
+    //@OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Employee_Address",
-                joinColumns = @JoinColumn(name = "emp_id"),
-                inverseJoinColumns = @JoinColumn(name = "add_id"))
+            joinColumns = @JoinColumn(name = "emp_id"),
+            inverseJoinColumns = @JoinColumn(name = "add_id"))
     private List<Address> addressList = new ArrayList<Address>();
 
     @ManyToMany(fetch = FetchType.LAZY)
+    //@OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Employee_Car",
             joinColumns = @JoinColumn(name = "emp_id"),
             inverseJoinColumns = @JoinColumn(name = "car_id"))
     private List<Car> cars = new ArrayList<Car>();
 
-    public Employee(){}
+    public Employee() {
+    }
 
     public Employee(String firstname, String lastname, Double salary) {
 
@@ -118,15 +122,7 @@ public class Employee implements Identifiable<Long>, Serializable {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "employee_id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", salary=" + salary +
-                ", department=" + department +
-                ", addressList=" + addressList +
-                ", cars=" + cars +
-                '}';
+        return id + " " + firstname + " " + lastname;
     }
 
     @Override

@@ -1,6 +1,26 @@
 # CompanySpringDataJpa
 
-(13/03/2015)...
+---------------------------------------------------
+TODO:
+
+    - check why doesn't show our validation errors
+    - check why addEmployee has different text color
+    - check validation for every drop down list
+    - IMPORTANT!! make save working with dropdown
+
+Updates(18/03/2015)...
+
+    - add default validation to all entities
+    - add drop down list for dept, car, address to addEmployee page
+    - add drop down list for employee to addCar page
+    - add style over the jsp
+
+Info debug:
+
+    - http://blog.trifork.com/2014/07/14/how-to-remotely-debug-application-running-on-tomcat-from-within-intellij-idea/
+
+-------------------------------------------------
+Updates(13/03/2015)...
 
 TODO:
     

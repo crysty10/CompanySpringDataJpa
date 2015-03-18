@@ -37,6 +37,7 @@ public class Car implements Identifiable<Long>, Serializable {
     private String carModel;
 
     @ManyToMany(mappedBy = "cars")
+    //@ManyToMany(mappedBy = "cars", fetch = FetchType.EAGER)
     private List<Employee> employees = new ArrayList<Employee>();
 
     public Car() {
@@ -50,6 +51,10 @@ public class Car implements Identifiable<Long>, Serializable {
     @Override
     public Long getId() {
         return this.id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public List<Employee> getEmployees() {
@@ -76,17 +81,8 @@ public class Car implements Identifiable<Long>, Serializable {
         this.carModel = carModel;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     @Override
     public String toString() {
-        return "Car{" +
-                "id=" + id +
-                ", carName='" + carName + '\'' +
-                ", carModel='" + carModel + '\'' +
-                ", employees=" + employees +
-                '}';
+        return id + " " + carName + " " + carModel;
     }
 }

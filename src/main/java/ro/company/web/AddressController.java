@@ -26,14 +26,14 @@ public class AddressController {
     @Autowired(required = true)
     private LocalValidatorFactoryBean localValidatorFactoryBean;
 
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.setValidator(this.localValidatorFactoryBean);
-    }
-
     @Inject
     public AddressController(AddressService addressService) {
         this.addressService = addressService;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(this.localValidatorFactoryBean);
     }
 
     @RequestMapping(value = "/addresss", method = RequestMethod.GET)
@@ -52,7 +52,7 @@ public class AddressController {
 
     @RequestMapping(value = "/addAddress", method = RequestMethod.POST)
     public String saveAddress(@Valid @ModelAttribute("address") Address address,
-                              BindingResult bindingResult, Errors errors, Model model) {
+                              BindingResult bindingResult, Errors errors) {
 
         if (bindingResult.hasErrors()) {
             localValidatorFactoryBean.validate(bindingResult, errors);

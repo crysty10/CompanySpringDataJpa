@@ -29,13 +29,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee updateEmployee(Employee employee) {
         Employee empToUpdate = employeeRepository.findEmployeeById(employee.getId());
 
-        if(empToUpdate.getFirstname() != employee.getFirstname()) {
+        if (empToUpdate.getFirstname() != employee.getFirstname()) {
             empToUpdate.setFirstname(employee.getFirstname());
         }
-        if(empToUpdate.getLastname() != employee.getLastname()) {
+        if (empToUpdate.getLastname() != employee.getLastname()) {
             empToUpdate.setLastname(employee.getLastname());
         }
-        if(empToUpdate.getSalary() != employee.getSalary()) {
+        if (empToUpdate.getSalary() != employee.getSalary()) {
             empToUpdate.setSalary(employee.getSalary());
         }
 

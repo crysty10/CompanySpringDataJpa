@@ -60,39 +60,52 @@
                 <form:errors path="salary" cssClass="error"/>
             </div>
         </div>
-        <%--<div class="row">--%>
-            <%--<div class="col-md-2" style="color : white;">--%>
-                <%--Department :--%>
-            <%--</div>--%>
-            <%--<div class="col-md-2">--%>
-                <%--<form:input path="department"/>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-4">--%>
-                <%--<form:errors path="department" cssClass="error"/>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="row">--%>
-        <%--<div class="col-md-2" style="color : white;">--%>
-        <%--Car :--%>
-        <%--</div>--%>
-        <%--<div class="col-md-2">--%>
-        <%--<form:input path="cars"/>--%>
-        <%--</div>--%>
-        <%--<div class="col-md-4">--%>
-        <%--<form:errors path="cars" cssClass="error"/>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="row">--%>
-        <%--<div class="col-md-2" style="color : white;">--%>
-        <%--Address :--%>
-        <%--</div>--%>
-        <%--<div class="col-md-2">--%>
-        <%--<form:input path="addressList"/>--%>
-        <%--</div>--%>
-        <%--<div class="col-md-4">--%>
-        <%--<form:errors path="addressList" cssClass="error"/>--%>
-        <%--</div>--%>
-        <%--</div>--%>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color : white;">
+                Department :
+            </div>
+            <div class="col-md-2">
+                <form:select path="department" multiple="false" cssStyle="width: 180px;">
+                    <form:option value="" label=""/>
+                    <form:options items="${departmentList}"/>
+                </form:select>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="department" cssClass="error"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color : white;">
+                Car :
+            </div>
+            <div class="col-md-2">
+                <form:select path="cars" multiple="false" cssStyle="width: 180px;">
+                    <form:option value="" label=""/>
+                    <form:options items="${carList}"/>
+                </form:select>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="cars" cssClass="error"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color : white;">
+                Address :
+            </div>
+            <div class="col-md-2">
+                <form:select path="addressList" multiple="false" cssStyle="width: 180px;">
+                    <form:option value="" label=""/>
+                    <form:options items="${addressList}"/>
+                </form:select>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="addressList" cssClass="error"/>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2">

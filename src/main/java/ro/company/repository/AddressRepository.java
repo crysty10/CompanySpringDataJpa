@@ -1,10 +1,9 @@
 package ro.company.repository;
 
-import ro.company.domain.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
+import ro.company.domain.Address;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
  * Created by Florin.Cojocaru on 2/17/2015.
  */
 
-public interface AddressRepository extends JpaRepository<Address, Long>  {
+public interface AddressRepository extends JpaRepository<Address, Long> {
 
     /*
     * Get an address by the locality name!

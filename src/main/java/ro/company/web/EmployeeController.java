@@ -3,17 +3,23 @@ package ro.company.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import ro.company.domain.Address;
+import ro.company.domain.Car;
+import ro.company.domain.Department;
 import ro.company.domain.Employee;
+import ro.company.service.AddressService;
+import ro.company.service.CarService;
+import ro.company.service.DepartmentService;
 import ro.company.service.EmployeeService;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by Cristian.Dumitru on 3/9/2015.
@@ -25,17 +31,27 @@ public class EmployeeController {
     @Autowired(required = true)
     private LocalValidatorFactoryBean localValidatorFactoryBean;
 
-    EmployeeService employeeService;
+    private EmployeeService employeeService;
+
+    private DepartmentService departmentService;
+
+    private CarService carService;
+
+    private AddressService addressService;
+
+    @Inject
+    public EmployeeController(EmployeeService employeeService, CarService carService,
+                              DepartmentService departmentService, AddressService addressService) {
+
+        this.employeeService = employeeService;
+        this.carService = carService;
+        this.departmentService = departmentService;
+        this.addressService = addressService;
+    }
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.setValidator(this.localValidatorFactoryBean);
-    }
-
-    @Inject
-    public EmployeeController(EmployeeService employeeService) {
-
-        this.employeeService = employeeService;
     }
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
@@ -94,9 +110,10 @@ public class EmployeeController {
      * @return the name of the view.
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
-    public String showRegistrationFormEmployee(ModelMap model) {
+    public String showRegistrationFormEmployee(Model model) {
 
-        model.addAttribute("employee",new Employee());
+        initModelList(model);
+        model.addAttribute("employee", new Employee());
         return "addEmployee";
     }
 
@@ -108,15 +125,27 @@ public class EmployeeController {
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
     public String saveEmployee(@Valid Employee employee,
-                               BindingResult bindingResult, Errors errors) {
+                               BindingResult bindingResult, Errors errors, Model model) {
 
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             //create a set of errors and iterate threw it to view the errors
+            initModelList(model);
             localValidatorFactoryBean.validate(bindingResult, errors);
             return "addEmployee";
         }
 
         employeeService.createEmployee(employee);
         return "redirect:/employees";
+    }
+
+    public void initModelList(Model model) {
+        List<Department> departmentList = departmentService.getAllDepartments();
+        model.addAttribute(departmentList);
+
+        List<Car> carList = carService.getAllCars();
+        model.addAttribute(carList);
+
+        List<Address> addressList = addressService.findAllAddresses();
+        model.addAttribute(addressList);
     }
 }

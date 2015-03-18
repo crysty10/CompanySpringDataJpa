@@ -30,7 +30,10 @@ public class Audit implements Identifiable<Long> {
 
     private Timestamp modifiedDate;
 
-    public Audit() {};
+    public Audit() {
+    }
+
+    ;
 
 //    public byte[] getObjectSerializable() {
 //        return objectSerializable;
@@ -44,12 +47,8 @@ public class Audit implements Identifiable<Long> {
         this.objectId = objectId;
         this.objectType = objectType;
         this.action = action;
-       // this.objectSerializable = objectSerializable;
+        // this.objectSerializable = objectSerializable;
         this.modifiedDate = modifiedDate;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getObjectId() {
@@ -87,5 +86,9 @@ public class Audit implements Identifiable<Long> {
     @Override
     public Long getId() {
         return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

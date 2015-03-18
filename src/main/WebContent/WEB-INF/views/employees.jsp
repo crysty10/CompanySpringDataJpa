@@ -21,7 +21,7 @@ To change this template use File | Settings | File Templates.
     </h1>
     <c:forEach items="${employeeList}" var="employee">
         <div class="row" style="text-align: center; color:white;">
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <c:out value="${employee.id}"/>
             </div>
             <div class="col-md-2">
@@ -30,8 +30,11 @@ To change this template use File | Settings | File Templates.
             <div class="col-md-2">
                 <c:out value="${employee.lastname}"/>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <c:out value="${employee.salary}"/>
+            </div>
+            <div class="col-md-2">
+                <c:out value="${employee.department}"/>
             </div>
             <div class="col-md-2">
                 <input style="color:black;" type="submit" value="Update"
