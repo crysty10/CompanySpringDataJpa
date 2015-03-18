@@ -22,7 +22,6 @@ import javax.validation.Valid;
 @RequestMapping("/")
 public class EmployeeController {
 
-
     @Autowired(required = true)
     private LocalValidatorFactoryBean localValidatorFactoryBean;
 
@@ -98,7 +97,6 @@ public class EmployeeController {
     public String showRegistrationFormEmployee(ModelMap model) {
 
         model.addAttribute("employee",new Employee());
-
         return "addEmployee";
     }
 
@@ -109,14 +107,12 @@ public class EmployeeController {
      * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
-    public String saveEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult,Errors errors, Model model) {
-
+    public String saveEmployee(@Valid Employee employee,
+                               BindingResult bindingResult, Errors errors) {
 
         if(bindingResult.hasErrors()) {
-
             //create a set of errors and iterate threw it to view the errors
-            localValidatorFactoryBean.validate(bindingResult,errors);
-
+            localValidatorFactoryBean.validate(bindingResult, errors);
             return "addEmployee";
         }
 

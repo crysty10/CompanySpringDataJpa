@@ -1,8 +1,12 @@
 package ro.company.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import ro.company.domain.Address;
 import ro.company.service.AddressService;
@@ -19,12 +23,20 @@ public class AddressController {
 
     private AddressService addressService;
 
+    @Autowired(required = true)
+    private LocalValidatorFactoryBean localValidatorFactoryBean;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(this.localValidatorFactoryBean);
+    }
+
     @Inject
     public AddressController(AddressService addressService) {
         this.addressService = addressService;
     }
 
-    @RequestMapping(value = "/addresss",method = RequestMethod.GET)
+    @RequestMapping(value = "/addresss", method = RequestMethod.GET)
     public String addresses(Model model) {
 
         model.addAttribute("addressList", addressService.findAllAddresses());
@@ -32,24 +44,33 @@ public class AddressController {
     }
 
     @RequestMapping(value = "/addAddress", method = RequestMethod.GET)
-    public String showRegistrationForm(){
+    public String showRegistrationForm(Model model) {
+
+        model.addAttribute("address", new Address());
         return "addAddress";
     }
 
     @RequestMapping(value = "/addAddress", method = RequestMethod.POST)
-    public String saveAddress(Address address){
+    public String saveAddress(@Valid @ModelAttribute("address") Address address,
+                              BindingResult bindingResult, Errors errors, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            localValidatorFactoryBean.validate(bindingResult, errors);
+            return "addAddress";
+        }
+
         addressService.createAddress(address);
         return "redirect:/addresss";
     }
 
-    @RequestMapping(value = "/addresss/{addressId}",method = RequestMethod.GET)
-    public String updateAddress(@PathVariable long addressId, Model model){
+    @RequestMapping(value = "/addresss/{addressId}", method = RequestMethod.GET)
+    public String updateAddress(@PathVariable long addressId, Model model) {
         Address address = addressService.findAddressById(addressId);
         model.addAttribute(address);
         return "updateAddress";
     }
 
-    @RequestMapping(value = "/addresss/{addressId}",method = RequestMethod.POST)
+    @RequestMapping(value = "/addresss/{addressId}", method = RequestMethod.POST)
     public String processUpdate(@ModelAttribute Address address, @PathVariable Long addressId) {
 
         address.setId(addressId);

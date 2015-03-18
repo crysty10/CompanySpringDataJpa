@@ -27,11 +27,9 @@ public class Employee implements Identifiable<Long>, Serializable {
     @Column(name = "emp_id", unique = true, nullable = false)
     private Long id;
 
-
     @NotEmpty
     @Size(min = 2,max = 30)
     private String firstname;
-
 
     @NotEmpty
     @Size(min = 2,max = 30)

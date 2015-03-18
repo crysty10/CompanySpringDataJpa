@@ -1,8 +1,12 @@
 package ro.company.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -21,24 +25,34 @@ public class Address implements Identifiable<Long>, Serializable {
     @Column(name = "add_id")
     private Long id;
 
+    @NotEmpty
+    @Size(min = 2, max = 30)
     @Column(nullable = false)
     private String street;
 
-    @Column
+    @NotNull
+    @Range(min = 1,max = 100000)
     private Integer street_nr;
 
-    @Column(length = 10)
+    @NotEmpty
+    @Size(min = 2, max = 30)
     private String building;
 
-    @Column
+    @NotNull
+    @Range(min = 1, max = 100000)
     private Integer floor;
 
-    @Column
+    @NotNull
+    @Range(min = 1, max = 100000)
     private Integer apartment;
 
+    @NotEmpty
+    @Size(min = 2, max = 30)
     @Column(nullable = false)
     private String locality;
 
+    @NotEmpty
+    @Size(min = 2, max = 30)
     @Column(nullable = false)
     private String country;
 

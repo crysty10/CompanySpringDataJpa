@@ -28,9 +28,9 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableJpaRepositories(basePackages = "ro.company.repository")
-@EnableAspectJAutoProxy//(proxyTargetClass = true)
+//@EnableAspectJAutoProxy//(proxyTargetClass = true)
 @ComponentScan(value = {"ro.company.repository", "ro.company.aspects", "ro.company.service", "ro.company"},
-    excludeFilters =  {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)})
+        excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)})
 //@PropertySource("classpath:/resources/jpaConnection.properties")
 @EnableJpaAuditing
 @EnableTransactionManagement
@@ -94,16 +94,14 @@ public class CompanyConfig implements LoadTimeWeavingConfigurer {
         return emfb;
     }
 
-
     @Bean
     public MessageSource messageSource() {
 
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
         messageSource.setBasename("messages");
-        messageSource.setCacheSeconds(1);
+        //messageSource.setCacheSeconds(1);
         return messageSource;
     }
-
 
     @Bean
     public LocalValidatorFactoryBean getValidator() {
@@ -123,9 +121,4 @@ public class CompanyConfig implements LoadTimeWeavingConfigurer {
     public LoadTimeWeaver getLoadTimeWeaver() {
         return new InstrumentationLoadTimeWeaver();
     }
-
-//    @InitBinder("employee")
-//    protected void initBinder(WebDataBinder binder) {
-//        binder.setValidator(new EmployeeValidator());
-//    }
 }

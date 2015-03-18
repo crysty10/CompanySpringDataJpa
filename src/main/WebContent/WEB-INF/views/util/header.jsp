@@ -11,11 +11,11 @@
     <title></title>
 </head>
 <body>
-<center>
+<div class="header">
     <h1>Welcome to your Company project homepage
         <small>Developed by DCG and CFA!</small>
     </h1>
-</center>
+</div>
 <br/><br/>
 </body>
 </html>

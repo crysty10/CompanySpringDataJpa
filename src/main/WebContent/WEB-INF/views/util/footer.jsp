@@ -12,9 +12,9 @@
 </head>
 <body>
 <br/><br/>
-<center>
+<div class="footer">
     <p>© Copyright 2015 Company Spring Data Project<br/>
         All rights reserved | Terms and conditions</p>
-</center>
+</div>
 </body>
 </html>

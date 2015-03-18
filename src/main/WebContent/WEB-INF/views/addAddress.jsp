@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,68 +16,106 @@
 </head>
 <body>
 <%@ include file="util/header.jsp" %>
-<center>
-    <form method="POST">
+
+<div class="formDiv">
+    <h1>Add page for Address!
+        <small> Populate the inputs to save a new address!</small>
+    </h1>
+    <form:form method="POST" commandName="address" action="addAddress" modelAttribute="address">
         <div class="row">
-            <div class="col-md-2">
-                <span>Street:</span>
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color: white;">
+                Street:
             </div>
             <div class="col-md-2">
-                <input type="text" name="street">
+                <form:input path="street"/>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="street" cssClass="error"/>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <span>Street nr.:</span>
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color: white;">
+                Street nr.:
             </div>
             <div class="col-md-2">
-                <input type="text" name="street_nr">
+                <form:input path="street_nr"/>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <span>Building:</span>
-            </div>
-            <div class="col-md-2">
-                <input type="text" name="building">
+            <div class="col-md-4">
+                <form:errors path="street_nr" cssClass="error"/>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <span>Floor:</span>
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color: white;">
+                Building:
             </div>
             <div class="col-md-2">
-                <input type="text" name="floor">
+                <form:input path="building"/>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2">
-                <span>Locality:</span>
-            </div>
-            <div class="col-md-2">
-                <input type="text" name="locality">
+            <div class="col-md-4">
+                <form:errors path="building" cssClass="error"/>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <span>Country:</span>
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color: white;">
+                Floor:
             </div>
             <div class="col-md-2">
-                <input type="text" name="country">
+                <form:input path="floor"/>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="floor" cssClass="error"/>
             </div>
         </div>
         <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color: white;">
+                Locality:
+            </div>
+            <div class="col-md-2">
+                <form:input path="locality"/>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="locality" cssClass="error"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color: white;">
+                Country:
+            </div>
+            <div class="col-md-2">
+                <form:input path="country"/>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="street" cssClass="error"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
             <div class="col-md-2">
             </div>
             <div class="col-md-2">
                 <input type="submit" name="addAddressButton" value="Register"/>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-2">
                 <button type="button" class="btn btn-primary"
                         onclick="window.location = '/Company/addresss'">Back to addresses
                 </button>
             </div>
         </div>
-    </form>
-</center>
+    </form:form>
+</div>
+
 <%@ include file="util/footer.jsp" %>
 </body>
 </html>

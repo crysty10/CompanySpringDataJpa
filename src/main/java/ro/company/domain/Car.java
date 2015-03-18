@@ -1,8 +1,10 @@
 package ro.company.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +26,13 @@ public class Car implements Identifiable<Long>, Serializable {
     @Column(name = "car_id", nullable = false)
     private Long id;
 
+    @NotEmpty
+    @Size(min = 2, max = 30)
     @Column(nullable = false, name = "car_name")
     private String carName;
 
+    @NotEmpty
+    @Size(min = 2, max = 30)
     @Column(nullable = false, name = "car_model")
     private String carModel;
 

@@ -1,12 +1,18 @@
 package ro.company.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import ro.company.domain.Department;
 import ro.company.service.DepartmentService;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 /**
  * Created by Cristian.Dumitru on 3/9/2015.
@@ -15,14 +21,19 @@ import javax.inject.Inject;
 @RequestMapping("/")
 public class DepartmentController {
 
+    @Autowired(required = true)
+    private LocalValidatorFactoryBean localValidatorFactoryBean;
+
     private DepartmentService departmentService;
-//    private Validator validator;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(this.localValidatorFactoryBean);
+    }
 
     @Inject
     public DepartmentController(DepartmentService departmentService) {
         this.departmentService = departmentService;
-//        ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
-//        validator = (Validator) validatorFactory.getValidator();
     }
 
     @RequestMapping(value = "/departments",method = RequestMethod.GET)
@@ -31,22 +42,6 @@ public class DepartmentController {
         model.addAttribute("departmentList", departmentService.getAllDepartments());
         return "departments";
     }
-
-//    @InitBinder
-//    public void initBinder(WebDataBinder binder) {
-//        binder.registerCustomEditor(Department.class, new DepartmentEditor());
-//    }
-
-//    @ModelAttribute("allDepartments")
-//    public List<Department> populateDepartments() {
-//        ArrayList<Department> departments = new ArrayList<>();
-////        departments.add(departmentService.getDepartmentById(1L));
-////        departments.add(departmentService.getDepartmentById(2L));
-////        departments.add(departmentService.getDepartmentById(3L));
-//        return departments;}
-
-
-
 
     /**
      * Edit details about an employee.
@@ -83,8 +78,9 @@ public class DepartmentController {
      * @return the name of the view.
      */
     @RequestMapping(value = "/addDepartment", method = RequestMethod.GET)
-    public String showRegistrationForm() {
+    public String showRegistrationForm(Model model) {
 
+        model.addAttribute("department", new Department());
         return "addDepartment";
     }
 
@@ -95,7 +91,13 @@ public class DepartmentController {
      * @return redirect to all departments page to check the result.
      */
     @RequestMapping(value = "/addDepartment", method = RequestMethod.POST)
-    public String saveDepartment(Department department) {
+    public String saveDepartment(@Valid @ModelAttribute("department") Department department,
+                                 BindingResult bindingResult, Errors errors, Model model) {
+
+        if(bindingResult.hasErrors()) {
+            localValidatorFactoryBean.validate(bindingResult, errors);
+            return "addDepartment";
+        }
 
         departmentService.createDepartment(department);
         return "redirect:/departments";

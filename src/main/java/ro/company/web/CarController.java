@@ -1,8 +1,12 @@
 package ro.company.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import ro.company.domain.Car;
 import ro.company.service.CarService;
@@ -19,6 +23,14 @@ public class CarController {
 
     private CarService carService;
 
+    @Autowired(required = true)
+    private LocalValidatorFactoryBean localValidatorFactoryBean;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        binder.setValidator(this.localValidatorFactoryBean);
+    }
+
     @Inject
     public CarController(CarService carService) {
         this.carService = carService;
@@ -31,12 +43,20 @@ public class CarController {
     }
 
     @RequestMapping(value = "/addCar", method = RequestMethod.GET)
-    public String showRegistrationForm(){
+    public String showRegistrationForm(Model model){
+
+        model.addAttribute("car", new Car());
         return "addCar";
     }
 
     @RequestMapping(value = "/addCar", method = RequestMethod.POST)
-    public String saveCar(Car car) {
+    public String saveCar(@Valid @ModelAttribute("car") Car car, BindingResult bindingResult,
+                          Errors errors, Model model) {
+        if(bindingResult.hasErrors()) {
+            localValidatorFactoryBean.validate(bindingResult, errors);
+            return "addCar";
+        }
+
         carService.createCar(car);
         return "redirect:/cars";
     }

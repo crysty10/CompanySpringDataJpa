@@ -6,12 +6,42 @@ input {
     color : black;
 }
 
-/*.row.col-md-2 {*/
-/*color:white;*/
-/*}*/
+span.error {
+    color: red;
+}
 
 body {
     background-image: url(http://cdn.hdwallpaperspics.com/uploads/2012/11/Apple-20Vector-20Desktop-20Ful-20HD-20Background1.jpg);
     background-size: 100%;
     font-family: sans-serif;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.errorblock {
+    color: #000;
+    border: 3px solid #ff0000;
+    padding: 8px;
+    margin: 16px;
+}
+
+div.formDiv {
+    text-align: center;
+}
+
+div.formDiv > h1 {
+    color : white;
+    text-align: center;
+}
+
+div.formDiv.h1 > small {
+    color : white;
+    text-align: center;
+}
+
+div.footer > p, div.header {
+    color:white;
+    text-align: center;
 }

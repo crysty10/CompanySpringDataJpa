@@ -1,8 +1,11 @@
 package ro.company.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import ro.company.annotation.AuditableAnnotation;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 /**
@@ -20,6 +23,9 @@ public class Department implements Identifiable<Long>, Serializable {
     @SequenceGenerator(name = "dept_seq", sequenceName = "department_dep_id_seq", allocationSize = 1)
     @Column(name = "dep_id")
     private Long id;
+
+    @NotEmpty
+    @Size(min=2, max=20)
     private String deptname;
 
     public Department() {}
