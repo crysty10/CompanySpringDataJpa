@@ -18,6 +18,10 @@ public class StringCarConverter implements Converter<String, Car> {
     @Transactional
     @Override
     public Car convert(String idStr) {
+
+        if(idStr == "") {
+            return null;
+        }
         return carService.getCarById(Long.valueOf(idStr));
     }
 }

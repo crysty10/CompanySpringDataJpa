@@ -53,7 +53,7 @@ public class Department implements Identifiable<Long>, Serializable {
 
     @Override
     public String toString() {
-        return id + " " + deptname;
+        return deptname;
     }
 
     @Override

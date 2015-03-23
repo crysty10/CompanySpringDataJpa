@@ -23,10 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
-import ro.company.web.CustomWebBindingInitializer;
-import ro.company.web.StringAddressConverter;
-import ro.company.web.StringCarConverter;
-import ro.company.web.StringDeptConverter;
+import ro.company.web.*;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;

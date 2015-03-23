@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,38 +20,101 @@
     <h1>Update a Employee
         <small>  -------->  Change what field do you want!</small>
     </h1>
-    <form method="POST">
+    <form:form method="POST" commandName="employee">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2" style="color:white;">
-                <span>First name:</span>
+                First name:
             </div>
             <div class="col-md-2">
                 <input type="text" name="firstname" value="<c:out value='${employee.firstname}'/>"/>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form:errors path="firstname" cssClass="error"/>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2" style="color:white;">
-                <span>Last name:</span>
+                Last name:
             </div>
             <div class="col-md-2">
                 <input type="text" name="lastname" value="<c:out value='${employee.lastname}'/>"/>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form:errors path="lastname" cssClass="error"/>
+            </div>
         </div>
 
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2" style="color:white;">
-                <span>Salary:</span>
+                Salary:
             </div>
             <div class="col-md-2">
                 <input type="text" name="salary" value="<c:out value='${employee.salary}'/>"/>
             </div>
+            <div class="col-md-4">
+                <form:errors path="salary" cssClass="error"/>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-4"></div>
+            <div class="col-md-2" style="color : white;">
+                Department :
+            </div>
+            <div class="col-md-2">
+                <%--<input type="text" name="department" value="<c:out value='${employee.department}'/>"/>--%>
+                <form:select  path="department" multiple="false" cssStyle="width: 180px;">
+                    <form:option value="${employee.department.id}" label="" selected="selected">${employee.department.deptname}</form:option>
+                    <c:forEach items="${departmentList}" var="department">
+                        <form:option value="${department.id}">${department.deptname}</form:option>
+                    </c:forEach>
+                </form:select>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="department" cssClass="error"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color : white;">
+                Car :
+            </div>
+            <div class="col-md-2">
+                <%--<input type="text" name="addressList" value="<c:out value='${employee.addressList}'/>"/>--%>
+                <form:select  path="cars" multiple="false" cssStyle="width: 180px;">
+                    <form:option value="${employee.cars}" label="" selected="selected">${employee.cars}</form:option>
+                    <c:forEach items="${carList}" var="car">
+                        <form:option value="${car.id}">${car.carName}</form:option>
+                    </c:forEach>
+                </form:select>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="cars" cssClass="error"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color : white;">
+                Address :
+            </div>
+            <div class="col-md-2">
+                <%--<input type="text" name="cars" value="<c:out value='${employee.cars}'/>"/>--%>
+                <form:select  path="addressList" multiple="false" cssStyle="width: 180px;">
+                    <form:option value="${employee.addressList}" label="" selected="selected">${employee.addressList}</form:option>
+                    <c:forEach items="${addressList}" var="address">
+                        <form:option value="${address.id}">${address}</form:option>
+                    </c:forEach>
+                </form:select>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="addressList" cssClass="error"/>
+            </div>
         </div>
 
         <div class="row">
@@ -65,7 +129,7 @@
             </div>
             <div class="col-md-4"></div>
         </div>
-    </form>
+    </form:form>
 </div>
 <%@ include file="util/footer.jsp" %>
 </body>

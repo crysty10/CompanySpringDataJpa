@@ -10,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import ro.company.domain.Address;
 import ro.company.domain.Car;
 import ro.company.domain.Department;
@@ -35,21 +36,6 @@ public class EmployeeController {
     @Autowired(required = true)
     private LocalValidatorFactoryBean localValidatorFactoryBean;
 
-//    @Inject
-//    private StringAddressConverter stringAddressConverter;
-//
-//    @Inject
-//    private StringCarConverter stringCarConverter;
-//
-//    @Inject
-//    private StringDeptConverter stringDeptConverter;
-
-
-    /*@Autowired(required = true)
-    private LocalContainerEntityManagerFactoryBean entityManager;*/
-
-    private EntityManager em;
-
     private EmployeeService employeeService;
 
     private DepartmentService departmentService;
@@ -57,7 +43,6 @@ public class EmployeeController {
     private CarService carService;
 
     private AddressService addressService;
-
 
     @Inject
     @Qualifier("conversionService")
@@ -78,20 +63,6 @@ public class EmployeeController {
         binder.setValidator(this.localValidatorFactoryBean);
         //binder.setConversionService(conversionService);
     }
-
-
-    /*@InitBinder
-    protected void initBinder(final HttpServletRequest request, final ServletRequestDataBinder binder) throws Exception {
-        binder.registerCustomEditor(Employee.class, "employeeId", new PropertyEditorSupport() {
-            @Override
-            public void setAsText(String text) {
-
-                Employee employee = (Employee) em.createNamedQuery("Employee.findEmployeeById")
-                    .setParameter("id", Short.parseShort(text)).getSingleResult();
-                setValue(employee);
-            }
-        });
-    }*/
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(Model model) {
@@ -125,6 +96,7 @@ public class EmployeeController {
             @PathVariable long employeeId, Model model) {
 
         Employee employee = employeeService.findEmployeeById(employeeId);
+        initModelList(model);
         model.addAttribute(employee);
         return "updateEmployee";
     }
@@ -136,9 +108,12 @@ public class EmployeeController {
      * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
-    public String processUpdate(@ModelAttribute Employee employee, @PathVariable Long employeeId) {
+    public String processUpdate(@ModelAttribute Employee employee,
+                                @PathVariable Long employeeId) {
 
         employee.setEmployee_id(employeeId);
+        //Department dept = departmentService.getDepartmentById(Long.valueOf(mrequest.getParameter("department")));
+        //employee.setDepartment(dept);
         employeeService.createEmployee(employee);
         return "redirect:/employees";
     }
@@ -173,27 +148,6 @@ public class EmployeeController {
             localValidatorFactoryBean.validate(bindingResult, errors);
             return "addEmployee";
         }
-//        employee.setFirstname(model.get("firstname"));
-//        employee.setLastname(model.get("lastname"));
-//        employee.setSalary(Double.valueOf(model.get("salary")));
-
-//          String deptId = map.get("department");
-////       // Department department = StringDeptConverter.convert(deptId);
-//          Department department = departmentService.getDepartmentById(Long.valueOf(deptId));
-//          employee.setDepartment(department);
-
-//        String carId = model.get("cars");
-//        //Car car = StringCarConverter.convert(carId);
-//        Car car = carService.getCarById(Long.valueOf(carId));
-//        ArrayList<Car> cars = new ArrayList<>();
-//        cars.add(car);
-//        employee.setCars(cars);
-//
-//        String addressId = model.get("addressList");
-//        //Address address = StringAddressConverter.convert(addressId);
-//        ArrayList<Address> addressList = new ArrayList<>();
-//        addressList.add(addressService.findAddressById(Long.valueOf(addressId)));
-//        employee.setAddressList(addressList);
 
         employeeService.createEmployee(employee);
         return "redirect:/employees";

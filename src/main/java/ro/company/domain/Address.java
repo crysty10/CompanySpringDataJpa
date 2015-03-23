@@ -128,7 +128,7 @@ public class Address implements Identifiable<Long>, Serializable {
 
     @Override
     public String toString() {
-        return id + " " + street + " " + street_nr + " " + building + " " + locality;
+        return street + " " + street_nr + " " + building + " " + locality;
     }
 
     @Override

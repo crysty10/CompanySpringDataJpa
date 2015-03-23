@@ -25,7 +25,7 @@ public class CarServiceImpl implements CarService {
     public Car createCar(Car car) {
 
         //return em.merge(car);
-        return carRepository.save(car);
+        return carRepository.saveAndFlush(car);
     }
 
     @Override

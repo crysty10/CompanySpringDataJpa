@@ -37,7 +37,6 @@ public class Car implements Identifiable<Long>, Serializable {
     private String carModel;
 
     @ManyToMany(mappedBy = "cars", cascade = CascadeType.ALL)
-    //@ManyToMany(mappedBy = "cars", fetch = FetchType.EAGER)
     private List<Employee> employees = new ArrayList<Employee>();
 
     public Car() {
@@ -83,6 +82,6 @@ public class Car implements Identifiable<Long>, Serializable {
 
     @Override
     public String toString() {
-        return id + " " + carName + " " + carModel;
+        return carName + " " + carModel;
     }
 }

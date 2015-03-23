@@ -22,6 +22,10 @@ public class StringAddressConverter implements Converter<String, Address> {
     @Transactional
     @Override
     public Address convert(String idStr) {
+
+        if(idStr == "") {
+            return null;
+        }
         return addressService.findAddressById(Long.valueOf(idStr));
     }
 }

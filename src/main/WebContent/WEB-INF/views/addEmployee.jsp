@@ -67,16 +67,12 @@
                 Department :
             </div>
             <div class="col-md-2">
-                <%--<form:select path="department" multiple="false" cssStyle="width: 180px;">--%>
-                    <%--<form:option value="" label=""/>--%>
-                    <%--<form:options items="${departmentList}"/>--%>
-                <%--</form:select>--%>
                     <form:select  path="department" multiple="false" cssStyle="width: 180px;">
+                        <form:option value="" label="" selected="selected">None</form:option>
                         <c:forEach items="${departmentList}" var="department">
-                            <form:option value="${department.id}" selected="selected">${department.deptname}</form:option>
+                            <form:option value="${department.id}">${department.deptname}</form:option>
                         </c:forEach>
                     </form:select>
-
             </div>
             <div class="col-md-4">
                 <form:errors path="department" cssClass="error"/>
@@ -88,13 +84,10 @@
                 Car :
             </div>
             <div class="col-md-2">
-                <%--<form:select path="cars" multiple="false" cssStyle="width: 180px;">--%>
-                    <%--<form:option value="" label=""/>--%>
-                    <%--<form:options items="${carList}"  itemValue="${car}" itemLabel="car"/>--%>
-                <%--</form:select>--%>
                     <form:select  path="cars" multiple="false" cssStyle="width: 180px;">
+                        <form:option value="" label="" selected="selected">None</form:option>
                         <c:forEach items="${carList}" var="car">
-                                <form:option value="${car.id}" selected="selected">${car.carName}</form:option>
+                                <form:option value="${car.id}">${car.carName}</form:option>
                         </c:forEach>
                     </form:select>
             </div>
@@ -109,13 +102,10 @@
                 Address :
             </div>
             <div class="col-md-2">
-                <%--<form:select path="addressList" multiple="false" cssStyle="width: 180px;">--%>
-                    <%--<form:option value="" label=""/>--%>
-                    <%--<form:options items="${addressList}"/>--%>
-                <%--</form:select>--%>
                     <form:select  path="addressList" multiple="false" cssStyle="width: 180px;">
+                        <form:option value="" label="" selected="selected">None</form:option>
                         <c:forEach items="${addressList}" var="address">
-                          <form:option value="${address.id}"   selected="selected">${address}</form:option>
+                          <form:option value="${address.id}">${address}</form:option>
                         </c:forEach>
                     </form:select>
 

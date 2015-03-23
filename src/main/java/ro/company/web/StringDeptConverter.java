@@ -19,6 +19,10 @@ public class StringDeptConverter implements Converter<String, Department> {
     @Transactional
     @Override
     public Department convert(final String deptIdStr) {
+
+        if (deptIdStr == "") {
+            return null;
+        }
         return departmentService.getDepartmentById(Long.valueOf(deptIdStr));
     }
 }

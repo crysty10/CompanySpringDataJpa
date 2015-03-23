@@ -25,7 +25,7 @@ public class AddressServiceImpl implements AddressService {
     public Address createAddress(Address address) {
 
         //return em.merge(address);
-        return addressRepository.save(address);
+        return addressRepository.saveAndFlush(address);
     }
 
     @Override

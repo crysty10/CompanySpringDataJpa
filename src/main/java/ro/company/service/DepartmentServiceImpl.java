@@ -25,7 +25,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     public Department createDepartment(Department department) {
 
         //return em.merge(department);
-        return departmentRepository.save(department);
+        return departmentRepository.saveAndFlush(department);
     }
 
     @Override

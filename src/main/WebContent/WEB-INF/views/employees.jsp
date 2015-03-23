@@ -24,23 +24,29 @@ To change this template use File | Settings | File Templates.
             <div class="col-md-1">
                 <c:out value="${employee.id}"/>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <c:out value="${employee.firstname}"/>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <c:out value="${employee.lastname}"/>
             </div>
             <div class="col-md-1">
                 <c:out value="${employee.salary}"/>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <c:out value="${employee.department}"/>
             </div>
             <div class="col-md-2">
+                <c:out value="${employee.cars}"/>
+            </div>
+            <div class="col-md-3">
+                <c:out value="${employee.addressList}"/>
+            </div>
+            <div class="col-md-1">
                 <input style="color:black;" type="submit" value="Update"
                        onclick="window.location = '/Company/employees/${employee.id}'"/>
             </div>
-            <div class="col-md-2" style="color:black;">
+            <div class="col-md-1" style="color:black;">
                 <c:url var="deleteUrl" value="employees"/>
                 <form id="${employeeFormId}" action="${deleteUrl}" method="POST">
                     <input id="employee" name="employee" type="hidden" value="${employee.id}"/>
@@ -52,7 +58,7 @@ To change this template use File | Settings | File Templates.
     </c:forEach>
     <div class="row" style="text-align: center;">
         <div class="col-md-10"></div>
-        <div class="col-md-2">
+        <div class="col-md-1">
             <button type="button" class="btn btn-primary"
                     onclick="window.location = '/Company'">Back to Company
             </button>
