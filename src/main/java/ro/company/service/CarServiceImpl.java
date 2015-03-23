@@ -7,6 +7,8 @@ import ro.company.domain.Car;
 import ro.company.repository.CarRepository;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
@@ -20,9 +22,9 @@ public class CarServiceImpl implements CarService {
     private CarRepository carRepository;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Car createCar(Car car) {
 
+        //return em.merge(car);
         return carRepository.save(car);
     }
 

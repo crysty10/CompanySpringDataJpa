@@ -80,8 +80,6 @@ public class CompanyConfig implements LoadTimeWeavingConfigurer {
         return dataSource;
     }
 
-
-
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
 

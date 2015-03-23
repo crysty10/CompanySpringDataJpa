@@ -40,18 +40,18 @@ public class Employee implements Identifiable<Long>, Serializable {
     private Double salary;
 
     //@OneToOne(fetch = FetchType.LAZY, targetEntity = Department.class, cascade = CascadeType.ALL)
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = Department.class, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, targetEntity = Department.class, cascade = CascadeType.MERGE)
     @JoinColumn(name = "dep_id")
     private Department department;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     //@OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Employee_Address",
             joinColumns = @JoinColumn(name = "emp_id"),
             inverseJoinColumns = @JoinColumn(name = "add_id"))
     private List<Address> addressList = new ArrayList<Address>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     //@OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "Employee_Car",
             joinColumns = @JoinColumn(name = "emp_id"),

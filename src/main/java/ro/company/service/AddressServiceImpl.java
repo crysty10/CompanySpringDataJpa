@@ -7,6 +7,8 @@ import ro.company.domain.Address;
 import ro.company.repository.AddressRepository;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
@@ -19,11 +21,10 @@ public class AddressServiceImpl implements AddressService {
     @Inject
     private AddressRepository addressRepository;
 
-
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Address createAddress(Address address) {
 
+        //return em.merge(address);
         return addressRepository.save(address);
     }
 

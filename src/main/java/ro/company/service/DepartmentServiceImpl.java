@@ -7,6 +7,8 @@ import ro.company.domain.Department;
 import ro.company.repository.DepartmentRepository;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
@@ -20,9 +22,9 @@ public class DepartmentServiceImpl implements DepartmentService {
     private DepartmentRepository departmentRepository;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Department createDepartment(Department department) {
 
+        //return em.merge(department);
         return departmentRepository.save(department);
     }
 

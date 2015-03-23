@@ -21,8 +21,6 @@ import ro.company.web.StringDeptConverter;
 @ComponentScan("ro.company.web")
 public class CompanyWebConfig extends WebMvcConfigurerAdapter {
 
-
-
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver =
@@ -36,15 +34,16 @@ public class CompanyWebConfig extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
-
     @Bean
     public StringCarConverter stringCarConverter(){
         return new StringCarConverter();
     }
+
     @Bean
     public StringDeptConverter stringDeptConverter(){
         return new StringDeptConverter();
     }
+
     @Bean
     public StringAddressConverter stringAddressConverter(){
         return new StringAddressConverter();
@@ -56,6 +55,7 @@ public class CompanyWebConfig extends WebMvcConfigurerAdapter {
         registry.addConverter(stringDeptConverter());
         registry.addConverter(stringAddressConverter());
     }
+
     /**
      * Ask DispatcherServlet to forward requests for static resources to the servlet
      * container's default servlet and not to try to handle them itself.
@@ -67,6 +67,4 @@ public class CompanyWebConfig extends WebMvcConfigurerAdapter {
 
         configurer.enable();
     }
-
-
 }

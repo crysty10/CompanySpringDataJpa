@@ -15,7 +15,6 @@ public class StringCarConverter implements Converter<String, Car> {
     @Inject
     private CarService carService;
 
-
     @Transactional
     @Override
     public Car convert(String idStr) {

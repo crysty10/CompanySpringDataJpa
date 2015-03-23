@@ -21,15 +21,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Inject
     private EmployeeRepository employeeRepository;
 
-    @PersistenceContext
-    private EntityManager em;
-
-
     @Override
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Employee createEmployee(Employee employee) {
-        em.flush();
-        return employeeRepository.save(employee);
+
+        return employeeRepository.saveAndFlush(employee);
     }
 
     public Employee updateEmployee(Employee employee) {

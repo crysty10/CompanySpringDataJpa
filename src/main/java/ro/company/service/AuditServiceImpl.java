@@ -5,6 +5,8 @@ import ro.company.domain.Audit;
 import ro.company.repository.AuditRepository;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
@@ -20,6 +22,7 @@ public class AuditServiceImpl implements AuditService {
     @Override
     public Audit createAudit(Audit audit) {
 
+        //return em.merge(audit);
         return auditRepository.save(audit);
     }
 
