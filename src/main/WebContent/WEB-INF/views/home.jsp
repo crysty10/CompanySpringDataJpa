@@ -41,7 +41,16 @@
 
     <div class="row">
         <div class="col-md-12">
-            <img src="<c:url value='/resources/logo.jpg'/>" alt="CompanyLogo"/>
+            <img src="<c:url value='/resources/logo1.jpg'/>" alt="CompanyLogo"/>
+            <a
+
+
+
+
+
+
+
+                ></a>
         </div>
     </div>
 </div>

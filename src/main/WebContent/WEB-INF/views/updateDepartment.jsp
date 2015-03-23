@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<%@ include file="util/header.jsp" %>
+<%--<%@ include file="util/header.jsp" %>--%>
 <center>
     <form method="POST">
         <div class="row">

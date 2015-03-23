@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="header">
-    <h1>Welcome to your Company project homepage
+    <h1>Welcome Company project
         <small>Developed by DCG and CFA!</small>
     </h1>
 </div>

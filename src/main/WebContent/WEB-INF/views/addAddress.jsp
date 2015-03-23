@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<%@ include file="util/header.jsp" %>
+<%--<%@ include file="util/header.jsp" %>--%>
 
 <div class="formDiv">
     <h1>Add page for Address!

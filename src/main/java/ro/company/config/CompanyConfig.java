@@ -4,9 +4,12 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
+import org.springframework.core.convert.ConversionService;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.format.support.FormattingConversionServiceFactoryBean;
 import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver;
 import org.springframework.instrument.classloading.LoadTimeWeaver;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
@@ -19,9 +22,16 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
+import ro.company.web.CustomWebBindingInitializer;
+import ro.company.web.StringAddressConverter;
+import ro.company.web.StringCarConverter;
+import ro.company.web.StringDeptConverter;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Cristian.Dumitru on 2/17/2015.
@@ -70,6 +80,8 @@ public class CompanyConfig implements LoadTimeWeavingConfigurer {
         return dataSource;
     }
 
+
+
     @Bean
     public JpaVendorAdapter jpaVendorAdapter() {
 
@@ -93,6 +105,32 @@ public class CompanyConfig implements LoadTimeWeavingConfigurer {
 
         return emfb;
     }
+
+    @Bean
+    public ConversionService conversionService() {
+        FormattingConversionServiceFactoryBean conversionService = new FormattingConversionServiceFactoryBean();
+        Set<Converter> converters = new HashSet<>();
+        converters.add(new StringDeptConverter());
+        converters.add(new StringCarConverter());
+        converters.add(new StringAddressConverter());
+        conversionService.setConverters(converters);
+        return conversionService.getObject();
+    }
+
+    @Bean
+    public CustomWebBindingInitializer customWebBindingInitializer(){
+        return new CustomWebBindingInitializer();
+    }
+
+    @Inject
+    @Bean
+    public RequestMappingHandlerAdapter requestMappingHandlerAdapter(CustomWebBindingInitializer customWebBindingInitializer){
+
+        RequestMappingHandlerAdapter requestMappingHandlerAdapter = new RequestMappingHandlerAdapter();
+        requestMappingHandlerAdapter.setWebBindingInitializer(customWebBindingInitializer);
+        return requestMappingHandlerAdapter;
+    }
+
 
     @Bean
     public MessageSource messageSource() {

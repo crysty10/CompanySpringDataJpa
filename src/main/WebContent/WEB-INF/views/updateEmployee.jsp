@@ -14,8 +14,11 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<%@ include file="util/header.jsp" %>
-<center>
+<%--<%@ include file="util/header.jsp" %>--%>
+<div style="text-align: center;">
+    <h1>Update a Employee
+        <small>  -------->  Change what field do you want!</small>
+    </h1>
     <form method="POST">
         <div class="row">
             <div class="col-md-4"></div>
@@ -63,7 +66,7 @@
             <div class="col-md-4"></div>
         </div>
     </form>
-</center>
+</div>
 <%@ include file="util/footer.jsp" %>
 </body>
 </html>

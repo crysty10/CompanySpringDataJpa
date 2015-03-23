@@ -1,6 +1,8 @@
 package ro.company.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,8 +20,10 @@ import ro.company.service.DepartmentService;
 import ro.company.service.EmployeeService;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Cristian.Dumitru on 3/9/2015.
@@ -31,6 +35,21 @@ public class EmployeeController {
     @Autowired(required = true)
     private LocalValidatorFactoryBean localValidatorFactoryBean;
 
+//    @Inject
+//    private StringAddressConverter stringAddressConverter;
+//
+//    @Inject
+//    private StringCarConverter stringCarConverter;
+//
+//    @Inject
+//    private StringDeptConverter stringDeptConverter;
+
+
+    /*@Autowired(required = true)
+    private LocalContainerEntityManagerFactoryBean entityManager;*/
+
+    private EntityManager em;
+
     private EmployeeService employeeService;
 
     private DepartmentService departmentService;
@@ -38,6 +57,11 @@ public class EmployeeController {
     private CarService carService;
 
     private AddressService addressService;
+
+
+    @Inject
+    @Qualifier("conversionService")
+    public ConversionService conversionService;
 
     @Inject
     public EmployeeController(EmployeeService employeeService, CarService carService,
@@ -52,7 +76,22 @@ public class EmployeeController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.setValidator(this.localValidatorFactoryBean);
+        //binder.setConversionService(conversionService);
     }
+
+
+    /*@InitBinder
+    protected void initBinder(final HttpServletRequest request, final ServletRequestDataBinder binder) throws Exception {
+        binder.registerCustomEditor(Employee.class, "employeeId", new PropertyEditorSupport() {
+            @Override
+            public void setAsText(String text) {
+
+                Employee employee = (Employee) em.createNamedQuery("Employee.findEmployeeById")
+                    .setParameter("id", Short.parseShort(text)).getSingleResult();
+                setValue(employee);
+            }
+        });
+    }*/
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public String employees(Model model) {
@@ -108,24 +147,25 @@ public class EmployeeController {
      * Get the page for adding a new employee.
      *
      * @return the name of the view.
+     * params = {"employee} --> @RequestParam(value = "employee")
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.GET)
-    public String showRegistrationFormEmployee(Model model) {
+    public String showRegistrationFormEmployee( Model model) {
 
         initModelList(model);
-        model.addAttribute("employee", new Employee());
+        model.addAttribute("employee",new Employee());
         return "addEmployee";
     }
 
     /**
      * Save an employee into the database.
      *
-     * @param employee the entity to populate with data.
+     *
      * @return redirect to all employees page to check the result.
+     * params = {"employee} --> @RequestParam(value = "employee")
      */
     @RequestMapping(value = "/addEmployee", method = RequestMethod.POST)
-    public String saveEmployee(@Valid Employee employee,
-                               BindingResult bindingResult, Errors errors, Model model) {
+    public String saveEmployee(@Valid Employee employee, BindingResult bindingResult,Map<String,String> map,Model model, Errors errors) {
 
         if (bindingResult.hasErrors()) {
             //create a set of errors and iterate threw it to view the errors
@@ -133,6 +173,27 @@ public class EmployeeController {
             localValidatorFactoryBean.validate(bindingResult, errors);
             return "addEmployee";
         }
+//        employee.setFirstname(model.get("firstname"));
+//        employee.setLastname(model.get("lastname"));
+//        employee.setSalary(Double.valueOf(model.get("salary")));
+
+//          String deptId = map.get("department");
+////       // Department department = StringDeptConverter.convert(deptId);
+//          Department department = departmentService.getDepartmentById(Long.valueOf(deptId));
+//          employee.setDepartment(department);
+
+//        String carId = model.get("cars");
+//        //Car car = StringCarConverter.convert(carId);
+//        Car car = carService.getCarById(Long.valueOf(carId));
+//        ArrayList<Car> cars = new ArrayList<>();
+//        cars.add(car);
+//        employee.setCars(cars);
+//
+//        String addressId = model.get("addressList");
+//        //Address address = StringAddressConverter.convert(addressId);
+//        ArrayList<Address> addressList = new ArrayList<>();
+//        addressList.add(addressService.findAddressById(Long.valueOf(addressId)));
+//        employee.setAddressList(addressList);
 
         employeeService.createEmployee(employee);
         return "redirect:/employees";

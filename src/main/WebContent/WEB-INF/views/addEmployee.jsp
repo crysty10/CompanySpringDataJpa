@@ -7,6 +7,7 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -17,10 +18,10 @@
 </head>
 
 <body>
-<%@ include file="util/header.jsp" %>
+<%--<%@ include file="util/header.jsp" %>--%>
 <div class="formDiv">
-    <h1>Add page for Employee!
-        <small> Populate the inputs to save a new employee!</small>
+    <h1>Add a new Employee
+        <small>    ----->   Populate the inputs to save a new employee!</small>
     </h1>
 
     <form:form method="POST" commandName="employee" action="addEmployee" modelAttribute="employee">
@@ -42,7 +43,7 @@
                 Last name :
             </div>
             <div class="col-md-2">
-                <form:input path="lastname"/>
+                <form:input  path="lastname"/>
             </div>
             <div class="col-md-4">
                 <form:errors path="lastname" cssClass="error"/>
@@ -66,10 +67,16 @@
                 Department :
             </div>
             <div class="col-md-2">
-                <form:select path="department" multiple="false" cssStyle="width: 180px;">
-                    <form:option value="" label=""/>
-                    <form:options items="${departmentList}"/>
-                </form:select>
+                <%--<form:select path="department" multiple="false" cssStyle="width: 180px;">--%>
+                    <%--<form:option value="" label=""/>--%>
+                    <%--<form:options items="${departmentList}"/>--%>
+                <%--</form:select>--%>
+                    <form:select  path="department" multiple="false" cssStyle="width: 180px;">
+                        <c:forEach items="${departmentList}" var="department">
+                            <form:option value="${department.id}" selected="selected">${department.deptname}</form:option>
+                        </c:forEach>
+                    </form:select>
+
             </div>
             <div class="col-md-4">
                 <form:errors path="department" cssClass="error"/>
@@ -81,10 +88,15 @@
                 Car :
             </div>
             <div class="col-md-2">
-                <form:select path="cars" multiple="false" cssStyle="width: 180px;">
-                    <form:option value="" label=""/>
-                    <form:options items="${carList}"/>
-                </form:select>
+                <%--<form:select path="cars" multiple="false" cssStyle="width: 180px;">--%>
+                    <%--<form:option value="" label=""/>--%>
+                    <%--<form:options items="${carList}"  itemValue="${car}" itemLabel="car"/>--%>
+                <%--</form:select>--%>
+                    <form:select  path="cars" multiple="false" cssStyle="width: 180px;">
+                        <c:forEach items="${carList}" var="car">
+                                <form:option value="${car.id}" selected="selected">${car.carName}</form:option>
+                        </c:forEach>
+                    </form:select>
             </div>
             <div class="col-md-4">
                 <form:errors path="cars" cssClass="error"/>
@@ -97,10 +109,16 @@
                 Address :
             </div>
             <div class="col-md-2">
-                <form:select path="addressList" multiple="false" cssStyle="width: 180px;">
-                    <form:option value="" label=""/>
-                    <form:options items="${addressList}"/>
-                </form:select>
+                <%--<form:select path="addressList" multiple="false" cssStyle="width: 180px;">--%>
+                    <%--<form:option value="" label=""/>--%>
+                    <%--<form:options items="${addressList}"/>--%>
+                <%--</form:select>--%>
+                    <form:select  path="addressList" multiple="false" cssStyle="width: 180px;">
+                        <c:forEach items="${addressList}" var="address">
+                          <form:option value="${address.id}"   selected="selected">${address}</form:option>
+                        </c:forEach>
+                    </form:select>
+
             </div>
             <div class="col-md-4">
                 <form:errors path="addressList" cssClass="error"/>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<%@ include file="util/header.jsp" %>
+<%--<%@ include file="util/header.jsp" %>--%>
 <div style="text-align: center;">
     <h1>Audit
         <small>used to see all the changes made to every entities from database!</small>

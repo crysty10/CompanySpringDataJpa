@@ -7,6 +7,8 @@ import ro.company.domain.Employee;
 import ro.company.repository.EmployeeRepository;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**
@@ -19,10 +21,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Inject
     private EmployeeRepository employeeRepository;
 
+    @PersistenceContext
+    private EntityManager em;
+
+
     @Override
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Employee createEmployee(Employee employee) {
-
+        em.flush();
         return employeeRepository.save(employee);
     }
 

@@ -1,5 +1,22 @@
 # CompanySpringDataJpa
 
+20.03.2015
+
+ERROR :))
+HTTP Status 500 - Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessApiUsageException: 
+detached entity passed to persist: ro.company.domain.Department; nested exception is org.hibernate.PersistentObjectException: 
+detached entity passed to persist: ro.company.domain.Department
+
+TODO:
+
+    - all that's left from last week 
+    - resolve above error for a working save
+    - important task (from Bogdan) : looking back on all that code to understand it at all ! 
+    
+Update:
+    
+    - converting String to Object
+
 ---------------------------------------------------
 TODO:
 
