@@ -65,9 +65,10 @@ public class DepartmentController {
      * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/departments/{departmentId}", method = RequestMethod.POST)
-    public String processUpdate(@ModelAttribute Department department, @PathVariable Long deptId) {
+    public String processUpdate(@ModelAttribute Department department,
+                                @PathVariable Long departmentId, BindingResult result) {
 
-        department.setDepartment_id(deptId);
+        department.setDepartment_id(departmentId);
         departmentService.createDepartment(department);
         return "redirect:/departments";
     }

@@ -70,6 +70,20 @@
                 <form:errors path="floor" cssClass="error"/>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-2" style="color: white;">
+                Apartment:
+            </div>
+            <div class="col-md-2">
+                <form:input path="apartment"/>
+            </div>
+            <div class="col-md-4">
+                <form:errors path="apartment" cssClass="error"/>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2" style="color: white;">

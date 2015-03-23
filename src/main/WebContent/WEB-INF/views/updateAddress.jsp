@@ -16,7 +16,7 @@
 <body>
 <%--<%@ include file="util/header.jsp" %>--%>
 <center>
-    <form method="POST">
+    <form method="POST" commandName="address">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2">

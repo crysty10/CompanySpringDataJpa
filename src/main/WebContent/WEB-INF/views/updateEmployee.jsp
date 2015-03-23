@@ -16,9 +16,9 @@
 </head>
 <body>
 <%--<%@ include file="util/header.jsp" %>--%>
-<div style="text-align: center;">
+<div class="formDiv">
     <h1>Update a Employee
-        <small>  -------->  Change what field do you want!</small>
+        <small> --------> Change what field do you want!</small>
     </h1>
     <form:form method="POST" commandName="employee">
         <div class="row">
@@ -66,9 +66,9 @@
                 Department :
             </div>
             <div class="col-md-2">
-                <%--<input type="text" name="department" value="<c:out value='${employee.department}'/>"/>--%>
-                <form:select  path="department" multiple="false" cssStyle="width: 180px;">
-                    <form:option value="${employee.department.id}" label="" selected="selected">${employee.department.deptname}</form:option>
+                <form:select path="department" multiple="false" cssStyle="width: 180px;">
+                    <form:option value="${employee.department.id}" label=""
+                                 selected="selected">${employee.department.deptname}</form:option>
                     <c:forEach items="${departmentList}" var="department">
                         <form:option value="${department.id}">${department.deptname}</form:option>
                     </c:forEach>
@@ -85,8 +85,7 @@
                 Car :
             </div>
             <div class="col-md-2">
-                <%--<input type="text" name="addressList" value="<c:out value='${employee.addressList}'/>"/>--%>
-                <form:select  path="cars" multiple="false" cssStyle="width: 180px;">
+                <form:select path="cars" multiple="false" cssStyle="width: 180px;">
                     <form:option value="${employee.cars}" label="" selected="selected">${employee.cars}</form:option>
                     <c:forEach items="${carList}" var="car">
                         <form:option value="${car.id}">${car.carName}</form:option>
@@ -104,9 +103,9 @@
                 Address :
             </div>
             <div class="col-md-2">
-                <%--<input type="text" name="cars" value="<c:out value='${employee.cars}'/>"/>--%>
-                <form:select  path="addressList" multiple="false" cssStyle="width: 180px;">
-                    <form:option value="${employee.addressList}" label="" selected="selected">${employee.addressList}</form:option>
+                <form:select path="addressList" multiple="false" cssStyle="width: 180px;">
+                    <form:option value="${employee.addressList}" label=""
+                                 selected="selected">${employee.addressList}</form:option>
                     <c:forEach items="${addressList}" var="address">
                         <form:option value="${address.id}">${address}</form:option>
                     </c:forEach>

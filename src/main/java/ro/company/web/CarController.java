@@ -52,16 +52,14 @@ public class CarController {
     @RequestMapping(value = "/addCar", method = RequestMethod.GET)
     public String showRegistrationForm(Model model) {
 
-        initModelList(model);
         model.addAttribute("car", new Car());
         return "addCar";
     }
 
     @RequestMapping(value = "/addCar", method = RequestMethod.POST)
     public String saveCar(@Valid @ModelAttribute("car") Car car, BindingResult bindingResult,
-                          Errors errors, Model model) {
+                          Errors errors) {
         if (bindingResult.hasErrors()) {
-            initModelList(model);
             localValidatorFactoryBean.validate(bindingResult, errors);
             return "addCar";
         }

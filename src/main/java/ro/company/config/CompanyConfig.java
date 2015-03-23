@@ -108,6 +108,7 @@ public class CompanyConfig implements LoadTimeWeavingConfigurer {
         converters.add(new StringDeptConverter());
         converters.add(new StringCarConverter());
         converters.add(new StringAddressConverter());
+        converters.add(new StringEmployeeConverter());
         conversionService.setConverters(converters);
         return conversionService.getObject();
     }

@@ -1,5 +1,9 @@
 # CompanySpringDataJpa
 
+TODO:
+
+    - update for employee and address!!
+
 20.03.2015
 
 ERROR :))

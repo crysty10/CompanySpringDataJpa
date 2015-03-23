@@ -12,6 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import ro.company.web.StringAddressConverter;
 import ro.company.web.StringCarConverter;
 import ro.company.web.StringDeptConverter;
+import ro.company.web.StringEmployeeConverter;
 
 /**
  * Created by Cristian.Dumitru on 3/9/2015.
@@ -49,11 +50,17 @@ public class CompanyWebConfig extends WebMvcConfigurerAdapter {
         return new StringAddressConverter();
     }
 
+    @Bean
+    public StringEmployeeConverter stringEmployeeConverter() {
+        return new StringEmployeeConverter();
+    }
+
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(stringCarConverter());
         registry.addConverter(stringDeptConverter());
         registry.addConverter(stringAddressConverter());
+        registry.addConverter(stringEmployeeConverter());
     }
 
     /**

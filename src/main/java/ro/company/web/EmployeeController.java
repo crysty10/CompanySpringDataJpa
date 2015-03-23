@@ -112,8 +112,6 @@ public class EmployeeController {
                                 @PathVariable Long employeeId) {
 
         employee.setEmployee_id(employeeId);
-        //Department dept = departmentService.getDepartmentById(Long.valueOf(mrequest.getParameter("department")));
-        //employee.setDepartment(dept);
         employeeService.createEmployee(employee);
         return "redirect:/employees";
     }

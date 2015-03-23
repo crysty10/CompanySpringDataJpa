@@ -65,13 +65,15 @@ public class AddressController {
 
     @RequestMapping(value = "/addresss/{addressId}", method = RequestMethod.GET)
     public String updateAddress(@PathVariable long addressId, Model model) {
+
         Address address = addressService.findAddressById(addressId);
         model.addAttribute(address);
         return "updateAddress";
     }
 
     @RequestMapping(value = "/addresss/{addressId}", method = RequestMethod.POST)
-    public String processUpdate(@ModelAttribute Address address, @PathVariable Long addressId) {
+    public String processUpdate(@ModelAttribute Address address,
+                                @PathVariable Long addressId) {
 
         address.setId(addressId);
         addressService.createAddress(address);

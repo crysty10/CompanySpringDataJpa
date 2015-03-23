@@ -36,7 +36,7 @@ public class Car implements Identifiable<Long>, Serializable {
     @Column(nullable = false, name = "car_model")
     private String carModel;
 
-    @ManyToMany(mappedBy = "cars", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "cars")//, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Employee> employees = new ArrayList<Employee>();
 
     public Car() {

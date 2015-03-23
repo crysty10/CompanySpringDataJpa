@@ -46,21 +46,23 @@
                 <form:errors path="carModel" cssClass="error"/>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-2" style="color : white;">
-                Employee :
-            </div>
-            <div class="col-md-2">
-                <form:select path="employees" multiple="false" cssStyle="width: 180px;">
-                    <form:option value="" label=""/>
-                    <form:options items="${employeeList}"/>
-                </form:select>
-            </div>
-            <div class="col-md-4">
-                <form:errors path="employees" cssClass="error"/>
-            </div>
-        </div>
+        <%--<div class="row">--%>
+            <%--<div class="col-md-4"></div>--%>
+            <%--<div class="col-md-2" style="color : white;">--%>
+                <%--Employee :--%>
+            <%--</div>--%>
+            <%--<div class="col-md-2">--%>
+                <%--<form:select path="employees" multiple="false" cssStyle="width: 180px;">--%>
+                    <%--<form:option value="" label="" selected="selected">None</form:option>--%>
+                    <%--<c:forEach items="${employeeList}" var="employee">--%>
+                        <%--<form:option value="${employee.id}">${employee.firstname} ${employee.lastname}</form:option>--%>
+                    <%--</c:forEach>--%>
+                <%--</form:select>--%>
+            <%--</div>--%>
+            <%--<div class="col-md-4">--%>
+                <%--<form:errors path="employees" cssClass="error"/>--%>
+            <%--</div>--%>
+        <%--</div>--%>
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2">
