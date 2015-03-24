@@ -71,7 +71,13 @@ public class AddressController {
     }
 
     @RequestMapping(value = "/addresss/{addressId}", method = RequestMethod.POST)
-    public String processUpdate(@ModelAttribute Address address, @PathVariable Long addressId) {
+    public String processUpdate(@Valid @ModelAttribute("address") Address address, Errors errors,
+                                BindingResult bindingResult, @PathVariable Long addressId) {
+
+        if (bindingResult.hasErrors()) {
+            localValidatorFactoryBean.validate(bindingResult, errors);
+            return "updateAddress";
+        }
 
         address.setId(addressId);
         addressService.createAddress(address);

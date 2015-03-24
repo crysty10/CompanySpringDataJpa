@@ -79,8 +79,13 @@ public class CarController {
     }
 
     @RequestMapping(value = "/cars/{carId}", method = RequestMethod.POST)
-    public String processUpdate(@ModelAttribute Car car, @PathVariable Long carId) {
+    public String processUpdate(@Valid @ModelAttribute Car car, BindingResult bindingResult,
+                                Errors errors, @PathVariable Long carId) {
 
+        if (bindingResult.hasErrors()) {
+            localValidatorFactoryBean.validate(bindingResult, errors);
+            return "updateCar";
+        }
         car.setId(carId);
         carService.createCar(car);
         return "redirect:/cars";

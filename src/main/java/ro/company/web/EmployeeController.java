@@ -106,8 +106,14 @@ public class EmployeeController {
      * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/employees/{employeeId}", method = RequestMethod.POST)
-    public String processUpdate(@ModelAttribute Employee employee,
-                                @PathVariable Long employeeId) {
+    public String processUpdate(@Valid @ModelAttribute Employee employee, BindingResult bindingResult,
+                                Errors errors, @PathVariable Long employeeId, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            initModelList(model);
+            localValidatorFactoryBean.validate(bindingResult, errors);
+            return "updateEmployee";
+        }
 
         employee.setEmployee_id(employeeId);
         employeeService.createEmployee(employee);

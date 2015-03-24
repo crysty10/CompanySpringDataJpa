@@ -21,7 +21,7 @@ CREATE TABLE Address (
 CREATE TABLE Car (
   car_ID       SERIAL  NOT NULL,
   car_name     TEXT    NOT NULL,
-  car_model    CHAR(10) NOT NULL,
+  car_model    VARCHAR(10) NOT NULL,
   createdDate  TIMESTAMP,
   modifiedDate TIMESTAMP,
   PRIMARY KEY (car_ID)

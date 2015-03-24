@@ -84,7 +84,7 @@
                 Car :
             </div>
             <div class="col-md-2">
-                <form:select path="cars" multiple="false" cssStyle="width: 180px;">
+                <form:select path="cars" size="5" multiple="true" cssStyle="width: 180px;">
                     <form:option value="" label="" selected="selected">None</form:option>
                     <c:forEach items="${carList}" var="car">
                         <form:option value="${car.id}">${car.carName}</form:option>
@@ -102,7 +102,7 @@
                 Address :
             </div>
             <div class="col-md-2">
-                <form:select path="addressList" multiple="false" cssStyle="width: 180px;">
+                <form:select path="addressList" size="5" multiple="true" cssStyle="width: 180px;">
                     <form:option value="" label="" selected="selected">None</form:option>
                     <c:forEach items="${addressList}" var="address">
                         <form:option value="${address.id}">${address}</form:option>

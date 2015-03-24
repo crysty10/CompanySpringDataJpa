@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -23,7 +24,7 @@
                 <span>Street:</span>
             </div>
             <div class="col-md-2">
-                <input type="text" name="street" value="<c:out value='${address.street}'/>"/>
+                <form:input path="street" value="${address.street}"/>
             </div>
             <div class="col-md-4">
                 <form:errors path="street" cssClass="error"/>
@@ -35,7 +36,7 @@
                 <span>Street nr.:</span>
             </div>
             <div class="col-md-2">
-                <input type="text" name="street_nr" value="<c:out value='${address.street_nr}'/>"/>
+                <form:input path="street_nr" value="${address.street_nr}"/>
             </div>
             <div class="col-md-4">
                 <form:errors path="street_nr" cssClass="error"/>
@@ -47,7 +48,7 @@
                 <span>Building:</span>
             </div>
             <div class="col-md-2">
-                <input type="text" name="building" value="<c:out value='${address.building}'/>"/>
+                <form:input path="building" value="${address.building}"/>
             </div>
             <div class="col-md-4">
                 <form:errors path="building" cssClass="error"/>
@@ -59,7 +60,7 @@
                 <span>Floor:</span>
             </div>
             <div class="col-md-2">
-                <input type="text" name="floor" value="<c:out value='${address.floor}'/>"/>
+                <form:input path="floor" value="${address.floor}"/>
             </div>
             <div class="col-md-4">
                 <form:errors path="floor" cssClass="error"/>
@@ -71,7 +72,7 @@
                 <span>Apartment:</span>
             </div>
             <div class="col-md-2">
-                <input type="text" name="apartment" value="<c:out value='${address.apartment}'/>"/>
+                <form:input path="apartment" value="${address.apartment}"/>
             </div>
             <div class="col-md-4">
                 <form:errors path="apartment" cssClass="error"/>
@@ -83,7 +84,7 @@
                 <span>Locality:</span>
             </div>
             <div class="col-md-2">
-                <input type="text" name="locality" value="<c:out value='${address.locality}'/>"/>
+                <form:input path="locality" value="${address.locality}"/>
             </div>
             <div class="col-md-4">
                 <form:errors path="locality" cssClass="error"/>
@@ -95,7 +96,7 @@
                 <span>Country:</span>
             </div>
             <div class="col-md-2">
-                <input type="text" name="country" value="<c:out value='${address.country}'/>"/>
+                <form:input path="country" value="${address.country}"/>
             </div>
             <div class="col-md-4">
                 <form:errors path="country" cssClass="error"/>

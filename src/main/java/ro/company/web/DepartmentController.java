@@ -65,9 +65,15 @@ public class DepartmentController {
      * @return redirect to all employees page to check the result.
      */
     @RequestMapping(value = "/departments/{departmentId}", method = RequestMethod.POST)
-    public String processUpdate(@ModelAttribute Department department, @PathVariable Long deptId) {
+    public String processUpdate(@Valid @ModelAttribute Department department, BindingResult bindingResult,
+                                Errors errors, @PathVariable Long departmentId) {
 
-        department.setDepartment_id(deptId);
+        if (bindingResult.hasErrors()) {
+            localValidatorFactoryBean.validate(bindingResult, errors);
+            return "updateDepartment";
+        }
+
+        department.setDepartment_id(departmentId);
         departmentService.createDepartment(department);
         return "redirect:/departments";
     }

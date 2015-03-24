@@ -85,10 +85,13 @@
                 Car :
             </div>
             <div class="col-md-2">
-                <form:select path="cars" multiple="false" cssStyle="width: 180px;">
-                    <form:option value="${employee.cars}" label="" selected="selected">${employee.cars}</form:option>
+                <form:select path="cars" size="5" multiple="true" cssStyle="width: 180px;">
+                    <c:forEach items="${employee.cars}" var="empCar">
+                        <form:option value="${empCar.id}" label=""
+                                     selected="selected">${empCar.carName} ${empCar.carModel}</form:option>
+                    </c:forEach>
                     <c:forEach items="${carList}" var="car">
-                        <form:option value="${car.id}">${car.carName}</form:option>
+                        <form:option value="${car.id}">${car.carName} ${car.carModel}</form:option>
                     </c:forEach>
                 </form:select>
             </div>
@@ -103,9 +106,12 @@
                 Address :
             </div>
             <div class="col-md-2">
-                <form:select path="addressList" multiple="false" cssStyle="width: 180px;">
-                    <form:option value="${employee.addressList}" label=""
-                                 selected="selected">${employee.addressList}</form:option>
+                <form:select path="addressList" size="5" multiple="true" cssStyle="width: 180px;">
+                    <c:forEach items="${employee.addressList}" var="empAdd">
+                        <form:option value="${empAdd.id}" label=""
+                                     selected="selected">${empAdd.street}
+                                        ${empAdd.street_nr} ${empAdd.building} ${empAdd.apartment} ${empAdd.locality}</form:option>
+                    </c:forEach>
                     <c:forEach items="${addressList}" var="address">
                         <form:option value="${address.id}">${address}</form:option>
                     </c:forEach>
