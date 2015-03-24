@@ -128,7 +128,6 @@
         </div>
     </form:form>
 </div>
-
 <%@ include file="util/footer.jsp" %>
 </body>
 </html>
