@@ -14,10 +14,10 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<%--<%@ include file="util/header.jsp" %>--%>
+<%@ include file="util/header.jsp" %>
 <div style="text-align: center;">
     <h1>All the Company employees cars!
-        <small> You can update data as well!</small>
+        <small>  ------->   You can update data as well!</small>
     </h1>
     <c:forEach items="${carList}" var="car">
         <div class="row" style="text-align: center; color:white;">

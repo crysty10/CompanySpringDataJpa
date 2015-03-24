@@ -10,7 +10,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import ro.company.domain.Address;
 import ro.company.domain.Car;
 import ro.company.domain.Department;
@@ -21,7 +20,6 @@ import ro.company.service.DepartmentService;
 import ro.company.service.EmployeeService;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
@@ -112,8 +110,6 @@ public class EmployeeController {
                                 @PathVariable Long employeeId) {
 
         employee.setEmployee_id(employeeId);
-        //Department dept = departmentService.getDepartmentById(Long.valueOf(mrequest.getParameter("department")));
-        //employee.setDepartment(dept);
         employeeService.createEmployee(employee);
         return "redirect:/employees";
     }

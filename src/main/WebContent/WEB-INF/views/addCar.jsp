@@ -7,25 +7,28 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Add Car</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
-<body>
-<%--<%@ include file="util/header.jsp" %>--%>
 
+<body>
+<%@ include file="util/header.jsp" %>
 <div class="formDiv">
-    <h1>Add page for Car!
-        <small> Populate the inputs to save a new car!</small>
+    <h1>Add a new Car
+        <small>    ----->   Populate the inputs to save a new car!</small>
     </h1>
+
     <form:form method="POST" commandName="car" action="addCar" modelAttribute="car">
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-2" style="color: white;">
-                Car's name:
+            <div class="col-md-2" style="color : white;">
+                Car's name :
             </div>
             <div class="col-md-2">
                 <form:input path="carName"/>
@@ -36,29 +39,14 @@
         </div>
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-2" style="color: white;">
-                <span>Car's model:</span>
+            <div class="col-md-2" style="color : white;">
+                Car's model :
             </div>
             <div class="col-md-2">
                 <form:input path="carModel"/>
             </div>
             <div class="col-md-4">
                 <form:errors path="carModel" cssClass="error"/>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-2" style="color : white;">
-                Employee :
-            </div>
-            <div class="col-md-2">
-                <form:select path="employees" multiple="false" cssStyle="width: 180px;">
-                    <form:option value="" label=""/>
-                    <form:options items="${employeeList}"/>
-                </form:select>
-            </div>
-            <div class="col-md-4">
-                <form:errors path="employees" cssClass="error"/>
             </div>
         </div>
         <div class="row">

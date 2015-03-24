@@ -24,7 +24,7 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2" style="color:white;">
-                First name:
+                <span>First name:</span>
             </div>
             <div class="col-md-2">
                 <input type="text" name="firstname" value="<c:out value='${employee.firstname}'/>"/>
@@ -37,7 +37,7 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2" style="color:white;">
-                Last name:
+                <span>Last name:</span>
             </div>
             <div class="col-md-2">
                 <input type="text" name="lastname" value="<c:out value='${employee.lastname}'/>"/>
@@ -50,7 +50,7 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2" style="color:white;">
-                Salary:
+                <span>Salary:</span>
             </div>
             <div class="col-md-2">
                 <input type="text" name="salary" value="<c:out value='${employee.salary}'/>"/>

@@ -119,7 +119,7 @@ public class Employee implements Identifiable<Long>, Serializable {
 
     @Override
     public String toString() {
-        return id + " " + firstname + " " + lastname;
+        return firstname + " " + lastname;
     }
 
     @Override

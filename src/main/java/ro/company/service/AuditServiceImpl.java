@@ -5,8 +5,6 @@ import ro.company.domain.Audit;
 import ro.company.repository.AuditRepository;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**

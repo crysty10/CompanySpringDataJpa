@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,9 +15,9 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<%--<%@ include file="util/header.jsp" %>--%>
-<center>
-    <form method="POST">
+<%@ include file="util/header.jsp" %>
+<div style="text-align: center;">
+    <form:form method="POST">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2">
@@ -25,7 +26,9 @@
             <div class="col-md-2">
                 <input type="text" name="deptname" value="<c:out value='${department.deptname}'/>">
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <form:errors path="deptname" cssClass="error"/>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-4"></div>
@@ -39,8 +42,8 @@
             </div>
             <div class="col-md-4"></div>
         </div>
-    </form>
-</center>
+    </form:form>
+</div>
 <%@ include file="util/footer.jsp" %>
 </body>
 </html>

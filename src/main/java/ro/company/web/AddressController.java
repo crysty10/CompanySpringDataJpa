@@ -1,6 +1,8 @@
 package ro.company.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,21 +23,27 @@ import javax.validation.Valid;
 @RequestMapping("/")
 public class AddressController {
 
-    private AddressService addressService;
-
     @Autowired(required = true)
     private LocalValidatorFactoryBean localValidatorFactoryBean;
 
+    private AddressService addressService;
+
+    @Inject
+    @Qualifier("conversionService")
+    public ConversionService conversionService;
+
     @Inject
     public AddressController(AddressService addressService) {
+
+
         this.addressService = addressService;
     }
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.setValidator(this.localValidatorFactoryBean);
+        //binder.setConversionService(conversionService);
     }
-
     @RequestMapping(value = "/addresss", method = RequestMethod.GET)
     public String addresses(Model model) {
 
@@ -43,16 +51,29 @@ public class AddressController {
         return "addresss";
     }
 
+    /**
+     * Get the page for adding a new address.
+     *
+     * @return the name of the view.
+     * params = {"address} --> @RequestParam(value = "address")
+     */
     @RequestMapping(value = "/addAddress", method = RequestMethod.GET)
-    public String showRegistrationForm(Model model) {
+    public String showRegistrationFormAddress(Model model) {
 
-        model.addAttribute("address", new Address());
+
+        model.addAttribute("address",new Address());
         return "addAddress";
     }
 
+    /**
+     * Save an address into the database.
+     *
+     *
+     * @return redirect to all addresses page to check the result.
+     * params = {"department} --> @RequestParam(value = "department")
+     */
     @RequestMapping(value = "/addAddress", method = RequestMethod.POST)
-    public String saveAddress(@Valid @ModelAttribute("address") Address address,
-                              BindingResult bindingResult, Errors errors) {
+    public String saveAddress(@Valid Address address, BindingResult bindingResult, Errors errors) {
 
         if (bindingResult.hasErrors()) {
             localValidatorFactoryBean.validate(bindingResult, errors);
@@ -63,21 +84,46 @@ public class AddressController {
         return "redirect:/addresss";
     }
 
+
+    /**
+     * Edit details about an address.
+     *
+     * @param addressId the address you want to update
+     * @param model      used to save the address details.
+     * @return name of the view.
+     */
     @RequestMapping(value = "/addresss/{addressId}", method = RequestMethod.GET)
-    public String updateAddress(@PathVariable long addressId, Model model) {
+    public String updateAddress(
+        @PathVariable long addressId, Model model) {
+
         Address address = addressService.findAddressById(addressId);
         model.addAttribute(address);
         return "updateAddress";
     }
 
+    /**
+     * Update an address from database.
+     *
+     * @param address the entity to populate with data.
+     * @return redirect to all addresses page to check the result.
+     */
     @RequestMapping(value = "/addresss/{addressId}", method = RequestMethod.POST)
-    public String processUpdate(@ModelAttribute Address address, @PathVariable Long addressId) {
+    public String processUpdate(@ModelAttribute Address address,
+                                @PathVariable Long addressId) {
 
         address.setId(addressId);
         addressService.createAddress(address);
         return "redirect:/addresss";
     }
 
+
+
+    /**
+    *
+    * Delete an address from database.
+    *
+    * @return redirect to all addresses page to check if the action executed.
+    */
     @RequestMapping(value = "/addresss", method = RequestMethod.POST)
     public String removeAd(@RequestParam("address") long addressId) {
 
@@ -85,4 +131,6 @@ public class AddressController {
         addressService.deleteAddress(address);
         return "redirect:/addresss";
     }
+
+
 }

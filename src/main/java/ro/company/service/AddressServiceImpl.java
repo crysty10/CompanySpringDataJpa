@@ -7,8 +7,6 @@ import ro.company.domain.Address;
 import ro.company.repository.AddressRepository;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**

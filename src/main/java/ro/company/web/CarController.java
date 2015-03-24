@@ -9,13 +9,10 @@ import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import ro.company.domain.Car;
-import ro.company.domain.Employee;
 import ro.company.service.CarService;
-import ro.company.service.EmployeeService;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * Created by Cristian.Dumitru on 3/9/2015.
@@ -26,15 +23,14 @@ public class CarController {
 
     private CarService carService;
 
-    private EmployeeService employeeService;
+
 
     @Autowired(required = true)
     private LocalValidatorFactoryBean localValidatorFactoryBean;
 
     @Inject
-    public CarController(CarService carService, EmployeeService employeeService) {
+    public CarController(CarService carService) {
 
-        this.employeeService = employeeService;
         this.carService = carService;
     }
 
@@ -49,26 +45,40 @@ public class CarController {
         return "cars";
     }
 
+    /**
+     * Get the page for adding a new car.
+     *
+     * @return the name of the view.
+     * params = {"car} --> @RequestParam(value = "car")
+     */
     @RequestMapping(value = "/addCar", method = RequestMethod.GET)
-    public String showRegistrationForm(Model model) {
+    public String showRegistrationFormCar( Model model) {
 
-        initModelList(model);
-        model.addAttribute("car", new Car());
+
+        model.addAttribute("car",new Car());
         return "addCar";
     }
 
+    /**
+     * Save an car into the database.
+     *
+     *
+     * @return redirect to all cars page to check the result.
+     * params = {"car} --> @RequestParam(value = "car")
+     */
     @RequestMapping(value = "/addCar", method = RequestMethod.POST)
-    public String saveCar(@Valid @ModelAttribute("car") Car car, BindingResult bindingResult,
-                          Errors errors, Model model) {
+    public String saveCar(@Valid Car car, BindingResult bindingResult,Model model, Errors errors) {
+
         if (bindingResult.hasErrors()) {
-            initModelList(model);
+            //create a set of errors and iterate threw it to view the errors
             localValidatorFactoryBean.validate(bindingResult, errors);
-            return "addCar";
+            return "addEmployee";
         }
 
         carService.createCar(car);
         return "redirect:/cars";
     }
+
 
     @RequestMapping(value = "/cars/{carId}", method = RequestMethod.GET)
     public String updateCar(@PathVariable long carId, Model model) {
@@ -94,8 +104,4 @@ public class CarController {
         return "redirect:/cars";
     }
 
-    public void initModelList(Model model) {
-        List<Employee> employeeList = employeeService.findAllEmployees();
-        model.addAttribute(employeeList);
-    }
 }

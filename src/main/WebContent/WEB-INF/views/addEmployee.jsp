@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<%--<%@ include file="util/header.jsp" %>--%>
+<%@ include file="util/header.jsp" %>
 <div class="formDiv">
     <h1>Add a new Employee
         <small>    ----->   Populate the inputs to save a new employee!</small>
@@ -73,6 +73,7 @@
                             <form:option value="${department.id}">${department.deptname}</form:option>
                         </c:forEach>
                     </form:select>
+
             </div>
             <div class="col-md-4">
                 <form:errors path="department" cssClass="error"/>
