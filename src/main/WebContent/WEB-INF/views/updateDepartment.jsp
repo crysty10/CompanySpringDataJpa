@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,9 +14,12 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<%@ include file="util/header.jsp" %>
-<div style="text-align: center;">
-    <form:form method="POST">
+<%--<%@ include file="util/header.jsp" %>--%>
+<div class="formDiv">
+    <h1>Update a Department
+        <small> --------> Change what field do you want!</small>
+    </h1>
+    <form:form method="POST" commandName="department" modelAttribute="department">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2">

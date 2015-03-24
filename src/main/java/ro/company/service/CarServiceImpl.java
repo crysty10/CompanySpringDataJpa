@@ -7,6 +7,8 @@ import ro.company.domain.Car;
 import ro.company.repository.CarRepository;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /**

@@ -36,6 +36,9 @@
             <div class="col-md-1">
                 <c:out value="${address.floor}"/>
             </div>
+            <div class="col-md-1">
+                <c:out value="${address.apartment}"/>
+            </div>
             <div class="col-md-2">
                 <c:out value="${address.locality}"/>
             </div>
@@ -46,7 +49,7 @@
                 <input style="color:black;" type="submit" value="Update"
                        onclick="window.location = '/Company/addresss/${address.id}'"/>
             </div>
-            <div class="col-md-2" style="color:black;">
+            <div class="col-md-1" style="color:black;">
                 <c:url var="deleteUrl" value="addresss"/>
                 <form id="${addressFormId}" action="${deleteUrl}" method="POST">
                     <input id="address" name="address" type="hidden" value="${address.id}"/>

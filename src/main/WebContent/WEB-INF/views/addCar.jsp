@@ -9,26 +9,24 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 <head>
     <title>Add Car</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
-
 <body>
-<%@ include file="util/header.jsp" %>
-<div class="formDiv">
-    <h1>Add a new Car
-        <small>    ----->   Populate the inputs to save a new car!</small>
-    </h1>
+<%--<%@ include file="util/header.jsp" %>--%>
 
+<div class="formDiv">
+    <h1>Add page for Car!
+        <small> Populate the inputs to save a new car!</small>
+    </h1>
     <form:form method="POST" commandName="car" action="addCar" modelAttribute="car">
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-2" style="color : white;">
-                Car's name :
+            <div class="col-md-2" style="color: white;">
+                Car's name:
             </div>
             <div class="col-md-2">
                 <form:input path="carName"/>
@@ -39,8 +37,8 @@
         </div>
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-2" style="color : white;">
-                Car's model :
+            <div class="col-md-2" style="color: white;">
+                <span>Car's model:</span>
             </div>
             <div class="col-md-2">
                 <form:input path="carModel"/>

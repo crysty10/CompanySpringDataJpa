@@ -17,7 +17,7 @@ To change this template use File | Settings | File Templates.
 <%@ include file="util/header.jsp" %>
 <div style="text-align: center;">
     <h1>All the Company employees!
-        <small>  ------->  You can update data as well!</small>
+        <small> -------> You can update data as well!</small>
     </h1>
     <c:forEach items="${employeeList}" var="employee">
         <div class="row" style="text-align: center; color:white;">

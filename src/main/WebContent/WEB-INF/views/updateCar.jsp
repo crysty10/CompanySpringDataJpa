@@ -15,9 +15,9 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<%@ include file="util/header.jsp" %>
-<div style="text-align: center;">
-    <form:form method="POST">
+<%--<%@ include file="util/header.jsp" %>--%>
+<div class="formDiv">
+    <form:form method="POST" commandName="car">
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-2">

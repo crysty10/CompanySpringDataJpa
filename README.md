@@ -1,7 +1,5 @@
 # CompanySpringDataJpa
 
-23.03.2015 - > update Employee, update Address!!!
-
 20.03.2015
 
 ERROR :))

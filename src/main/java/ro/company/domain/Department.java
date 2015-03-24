@@ -56,5 +56,23 @@ public class Department implements Identifiable<Long>, Serializable {
         return deptname;
     }
 
-
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof Department)) return false;
+//
+//        Department that = (Department) o;
+//
+//        if (!deptname.equals(that.deptname)) return false;
+//        if (!id.equals(that.id)) return false;
+//
+//        return true;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        int result = id.hashCode();
+//        result = 31 * result + deptname.hashCode();
+//        return result;
+//    }
 }

@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value='/resources/style.css'/>"/>
 </head>
 <body>
-<%@ include file="util/header.jsp" %>
+<%--<%@ include file="util/header.jsp" %>--%>
 
 <div class="formDiv">
     <h1>Add page for Address!
@@ -45,7 +45,6 @@
             <div class="col-md-4">
                 <form:errors path="street_nr" cssClass="error"/>
             </div>
-            
         </div>
         <div class="row">
             <div class="col-md-4"></div>

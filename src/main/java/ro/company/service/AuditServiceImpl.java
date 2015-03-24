@@ -20,8 +20,7 @@ public class AuditServiceImpl implements AuditService {
     @Override
     public Audit createAudit(Audit audit) {
 
-        //return em.merge(audit);
-        return auditRepository.saveAndFlush(audit);
+        return auditRepository.save(audit);
     }
 
     @Override
